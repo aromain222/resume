@@ -12,6 +12,7 @@ type Project = {
   why: string;
   built: string[];
   status: string;
+  url: string;
 };
 
 const projects: Project[] = [
@@ -28,6 +29,7 @@ const projects: Project[] = [
       "Financial dashboard designed for users with no finance background",
     ],
     status: "Active",
+    url: "https://stackr-silk.vercel.app",
   },
   {
     title: "CapitalBase",
@@ -42,6 +44,7 @@ const projects: Project[] = [
       "Onboarding designed for users with zero prior market exposure",
     ],
     status: "Active",
+    url: "https://www.capital-base.com/app",
   },
   {
     title: "AI Transfer Portal",
@@ -56,6 +59,7 @@ const projects: Project[] = [
       "Automated alerts for high-priority portal activity",
     ],
     status: "Active",
+    url: "https://jal-football.vercel.app",
   },
 ];
 
@@ -99,9 +103,20 @@ function ProjectCard({
         <span className="text-xs font-mono text-zinc-700 tracking-widest">
           0{index + 1}
         </span>
-        <span className="text-xs tracking-wider uppercase text-zinc-700 border border-white/5 px-2 py-0.5">
-          {project.status}
-        </span>
+        <div className="flex items-center gap-2">
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="text-[10px] tracking-wider text-zinc-700 hover:text-accent transition-colors duration-200 font-mono"
+          >
+            ↗
+          </a>
+          <span className="text-xs tracking-wider uppercase text-zinc-700 border border-white/5 px-2 py-0.5">
+            {project.status}
+          </span>
+        </div>
       </div>
 
       <h3 className="text-xl font-bold text-zinc-100 tracking-[-0.02em] mb-3">
@@ -284,6 +299,39 @@ function ExpandedView({
                   </motion.li>
                 ))}
               </ul>
+            </motion.div>
+
+            {/* Live link */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease, delay: 0.55 }}
+              className="pt-2 border-t border-white/5 flex items-center justify-between flex-wrap gap-4"
+            >
+              <span className="text-xs text-zinc-700">Live and in production.</span>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 px-5 py-2.5 bg-zinc-50 text-zinc-950 text-xs font-semibold tracking-wide hover:bg-accent transition-colors duration-200"
+              >
+                View Live
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
+                >
+                  <path
+                    d="M1 9L9 1M9 1H3.5M9 1v5.5"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
             </motion.div>
           </div>
         </motion.div>
