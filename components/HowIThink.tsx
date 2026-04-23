@@ -39,20 +39,20 @@ function Pillar({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease, delay: index * 0.1 }}
-      className="group relative border-t border-white/6 pt-8 pb-6"
+      className="border-t border-white/[0.06] pt-8 pb-10 md:pb-6"
     >
-      <div className="flex items-start justify-between mb-6">
-        <span className="text-xs font-mono text-zinc-700 tracking-widest">
+      <div className="flex items-start justify-between mb-7">
+        <span className="text-[10px] font-mono text-zinc-700 tracking-[0.2em]">
           {pillar.number}
         </span>
-        <span className="text-xs tracking-wider uppercase text-zinc-700 font-medium">
+        <span className="text-[10px] tracking-[0.15em] uppercase text-zinc-700 font-medium">
           {pillar.tag}
         </span>
       </div>
-      <h3 className="text-2xl font-bold text-zinc-100 mb-4 tracking-tight">
+      <h3 className="text-xl font-bold text-zinc-100 mb-4 tracking-[-0.02em]">
         {pillar.title}
       </h3>
       <p className="text-sm text-zinc-500 leading-[1.8]">{pillar.body}</p>
@@ -65,9 +65,8 @@ export default function HowIThink() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="thinking" className="relative py-32 border-t border-white/5">
+    <section id="thinking" className="relative py-28 lg:py-36 border-t border-white/[0.06]">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Section label */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 16 }}
@@ -75,13 +74,13 @@ export default function HowIThink() {
           transition={{ duration: 0.6, ease }}
           className="flex items-center gap-3 mb-16"
         >
-          <div className="w-6 h-px bg-accent" />
-          <span className="text-xs tracking-[0.2em] uppercase text-zinc-600 font-medium">
+          <div className="w-5 h-px bg-accent" />
+          <span className="text-[10px] tracking-[0.25em] uppercase text-zinc-600 font-medium">
             How I Think
           </span>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-16">
           {pillars.map((pillar, i) => (
             <Pillar key={pillar.number} pillar={pillar} index={i} />
           ))}

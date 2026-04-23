@@ -92,7 +92,7 @@ function ProjectCard({
         y: { duration: 0.7, ease, delay: index * 0.12 },
       }}
       onClick={onClick}
-      className="group relative bg-[#0a0a0d] border border-white/5 hover:border-white/10 p-8 cursor-pointer select-none transition-colors duration-300"
+      className="group relative bg-[#0a0a0d] border border-white/[0.06] hover:border-white/[0.12] p-8 cursor-pointer select-none transition-colors duration-300"
     >
       {/* Top row */}
       <div className="flex items-center justify-between mb-8">
@@ -104,7 +104,7 @@ function ProjectCard({
         </span>
       </div>
 
-      <h3 className="text-2xl font-bold text-zinc-100 tracking-tight mb-3">
+      <h3 className="text-xl font-bold text-zinc-100 tracking-[-0.02em] mb-3">
         {project.title}
       </h3>
 
@@ -316,7 +316,7 @@ export default function WhatImBuilding() {
   const selectedProject = projects.find((p) => p.title === selected) ?? null;
 
   return (
-    <section id="building" className="relative py-32 border-t border-white/5">
+    <section id="building" className="relative py-28 lg:py-36 border-t border-white/[0.06]">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
@@ -326,12 +326,12 @@ export default function WhatImBuilding() {
           className="flex items-center justify-between mb-16"
         >
           <div className="flex items-center gap-3">
-            <div className="w-6 h-px bg-accent" />
-            <span className="text-xs tracking-[0.2em] uppercase text-zinc-600 font-medium">
+            <div className="w-5 h-px bg-accent" />
+            <span className="text-[10px] tracking-[0.25em] uppercase text-zinc-600 font-medium">
               What I&apos;m Building
             </span>
           </div>
-          <span className="hidden sm:block text-xs text-zinc-700 tracking-wider">
+          <span className="hidden sm:block text-[10px] text-zinc-700 tracking-[0.15em] uppercase">
             3 systems
           </span>
         </motion.div>

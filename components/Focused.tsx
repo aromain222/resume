@@ -33,14 +33,14 @@ function FocusItem({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease, delay: index * 0.1 }}
     >
-      <p className="text-xs tracking-[0.2em] uppercase text-accent font-medium mb-4">
+      <p className="text-[10px] tracking-[0.22em] uppercase text-accent font-medium mb-4">
         {focus.label}
       </p>
-      <p className="text-sm text-zinc-500 leading-[1.85]">{focus.body}</p>
+      <p className="text-sm text-zinc-500 leading-[1.82]">{focus.body}</p>
     </motion.div>
   );
 }
@@ -50,11 +50,8 @@ export default function Focused() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative py-32 border-t border-white/5 line-grid">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050507] via-transparent to-[#050507]" />
-
-      <div className="relative max-w-6xl mx-auto px-6">
-        {/* Section label */}
+    <section className="relative py-28 lg:py-36 border-t border-white/[0.06]">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 16 }}
@@ -62,8 +59,8 @@ export default function Focused() {
           transition={{ duration: 0.6, ease }}
           className="flex items-center gap-3 mb-16"
         >
-          <div className="w-6 h-px bg-accent" />
-          <span className="text-xs tracking-[0.2em] uppercase text-zinc-600 font-medium">
+          <div className="w-5 h-px bg-accent" />
+          <span className="text-[10px] tracking-[0.25em] uppercase text-zinc-600 font-medium">
             What I&apos;m Focused On
           </span>
         </motion.div>

@@ -11,8 +11,7 @@ function AbstractElements() {
       className="absolute inset-0 overflow-hidden pointer-events-none"
       aria-hidden="true"
     >
-      {/* ── 1. Dot matrix — bottom-right ── */}
-      {/* 5 × 4 grid of circles; drifts upward very slowly */}
+      {/* Dot matrix — bottom-right, slow vertical drift */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -32,7 +31,7 @@ function AbstractElements() {
                   cy={row * 22 + 11}
                   r="1.5"
                   fill="white"
-                  fillOpacity={0.22 - row * 0.04}
+                  fillOpacity={0.2 - row * 0.04}
                 />
               ))
             )}
@@ -40,8 +39,7 @@ function AbstractElements() {
         </motion.div>
       </motion.div>
 
-      {/* ── 2. Axis bracket — top-right ── */}
-      {/* L-shaped coordinate reference with tick marks; slow opacity breath */}
+      {/* Axis bracket — top-right, slow opacity breath */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -53,7 +51,7 @@ function AbstractElements() {
           height="72"
           viewBox="0 0 72 72"
           fill="none"
-          animate={{ opacity: [0.12, 0.22, 0.12] }}
+          animate={{ opacity: [0.1, 0.2, 0.1] }}
           transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
         >
           <path d="M72 1H1V72" stroke="white" strokeWidth="0.75" />
@@ -64,8 +62,7 @@ function AbstractElements() {
         </motion.svg>
       </motion.div>
 
-      {/* ── 3. Data lines — right edge ── */}
-      {/* Four horizontal lines of staggered widths; each breathes independently */}
+      {/* Data lines — right edge, staggered scaleX breath */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -83,7 +80,7 @@ function AbstractElements() {
         ).map((line, i) => (
           <motion.div
             key={i}
-            animate={{ scaleX: [1, 0.55, 1], opacity: [0.13, 0.22, 0.13] }}
+            animate={{ scaleX: [1, 0.55, 1], opacity: [0.12, 0.2, 0.12] }}
             transition={{
               duration: line.dur,
               repeat: Infinity,
@@ -100,8 +97,7 @@ function AbstractElements() {
         ))}
       </motion.div>
 
-      {/* ── 4. Crosshair — left, mid-height ── */}
-      {/* Small target mark; drifts upward independently */}
+      {/* Crosshair — mid-left, slow vertical float */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -114,7 +110,7 @@ function AbstractElements() {
           height="20"
           viewBox="0 0 20 20"
           fill="none"
-          animate={{ y: [0, -10, 0], opacity: [0.16, 0.28, 0.16] }}
+          animate={{ y: [0, -10, 0], opacity: [0.15, 0.26, 0.15] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         >
           <circle cx="10" cy="10" r="2.5" stroke="white" strokeWidth="0.75" />
@@ -133,58 +129,56 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center dot-grid overflow-hidden">
-      {/* Gradient vignette over dot grid */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#050507]/60 via-transparent to-[#050507]" />
       <div className="absolute inset-0 bg-gradient-to-r from-[#050507]/80 via-transparent to-[#050507]/80" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
-      {/* Thin accent line top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-      {/* Abstract structural elements */}
       <AbstractElements />
 
-      <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-24">
+      <div className="relative max-w-6xl mx-auto px-6 pt-36 pb-28">
         {/* Identity label */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease }}
-          className="flex items-center gap-3 mb-12"
+          className="flex items-center gap-3 mb-14"
         >
-          <div className="w-6 h-px bg-accent" />
-          <span className="text-xs tracking-[0.2em] uppercase text-zinc-500 font-medium">
+          <div className="w-5 h-px bg-accent" />
+          <span className="text-[10px] tracking-[0.25em] uppercase text-zinc-500 font-medium">
             Avery Romain
           </span>
         </motion.div>
 
-        {/* Main headline */}
-        <div className="overflow-hidden mb-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 48 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease, delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight text-zinc-50"
-          >
-            Finance is a system.
-          </motion.h1>
-        </div>
-        <div className="overflow-hidden mb-12">
-          <motion.h1
-            initial={{ opacity: 0, y: 48 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease, delay: 0.2 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight text-zinc-600"
-          >
-            I build the interface.
-          </motion.h1>
-        </div>
+        {/* Single semantic h1 with two motion spans */}
+        <h1 className="mb-14">
+          <div className="overflow-hidden mb-4">
+            <motion.span
+              initial={{ opacity: 0, y: 52 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, ease, delay: 0.08 }}
+              className="block text-[44px] sm:text-6xl md:text-7xl lg:text-[88px] xl:text-[96px] font-black leading-[0.92] tracking-[-0.03em] text-zinc-50"
+            >
+              Finance is a system.
+            </motion.span>
+          </div>
+          <div className="overflow-hidden">
+            <motion.span
+              initial={{ opacity: 0, y: 52 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, ease, delay: 0.18 }}
+              className="block text-[44px] sm:text-6xl md:text-7xl lg:text-[88px] xl:text-[96px] font-black leading-[0.92] tracking-[-0.03em] text-zinc-600"
+            >
+              I build the interface.
+            </motion.span>
+          </div>
+        </h1>
 
         {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease, delay: 0.35 }}
-          className="max-w-xl text-base sm:text-lg text-zinc-400 leading-relaxed mb-10"
+          transition={{ duration: 0.7, ease, delay: 0.32 }}
+          className="max-w-md text-[15px] sm:text-base text-zinc-400 leading-[1.75] mb-9"
         >
           Student athlete. Three products in production. Focused on the
           financial gap that hits hardest between 18 and 22 — and the AI
@@ -193,41 +187,46 @@ export default function Hero() {
 
         {/* Identity line */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease, delay: 0.45 }}
-          className="flex items-center gap-3 mb-12 text-xs tracking-[0.15em] uppercase text-zinc-600 font-medium"
+          transition={{ duration: 0.6, ease, delay: 0.42 }}
+          className="flex items-center gap-2.5 mb-12 flex-wrap"
         >
-          <span>Amherst</span>
-          <span className="text-zinc-800">·</span>
-          <span>Football</span>
-          <span className="text-zinc-800">·</span>
-          <span>Fintech</span>
-          <span className="text-zinc-800">·</span>
-          <span>Financial Literacy</span>
+          {["Amherst", "Football", "Fintech", "Financial Literacy"].map(
+            (item, i, arr) => (
+              <span key={item} className="flex items-center gap-2.5">
+                <span className="text-[10px] tracking-[0.18em] uppercase text-zinc-600 font-medium">
+                  {item}
+                </span>
+                {i < arr.length - 1 && (
+                  <span className="text-zinc-800 text-xs">·</span>
+                )}
+              </span>
+            )
+          )}
         </motion.div>
 
-        {/* CTA Buttons */}
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease, delay: 0.55 }}
-          className="flex items-center gap-4 flex-wrap"
+          transition={{ duration: 0.6, ease, delay: 0.52 }}
+          className="flex items-center gap-3 flex-wrap"
         >
           <a
             href="#building"
-            className="group inline-flex items-center gap-3 px-6 py-3 bg-zinc-50 text-zinc-950 text-sm font-semibold tracking-wide hover:bg-accent transition-colors duration-200"
+            className="group inline-flex items-center gap-3 px-6 py-3 bg-zinc-50 text-zinc-950 text-xs font-semibold tracking-[0.06em] uppercase hover:bg-accent transition-colors duration-200"
           >
             View Work
             <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
               fill="none"
               className="group-hover:translate-x-0.5 transition-transform duration-200"
             >
               <path
-                d="M1 7h12M8 2l5 5-5 5"
+                d="M1 6h10M7 2l4 4-4 4"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
@@ -237,7 +236,7 @@ export default function Hero() {
           </a>
           <button
             onClick={() => setOpen(true)}
-            className="inline-flex items-center gap-3 px-6 py-3 border border-white/10 text-zinc-300 text-sm font-semibold tracking-wide hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer"
+            className="inline-flex items-center gap-3 px-6 py-3 border border-white/[0.1] text-zinc-400 text-xs font-semibold tracking-[0.06em] uppercase hover:border-accent/60 hover:text-accent transition-all duration-200 cursor-pointer"
           >
             Resume
           </button>
@@ -248,11 +247,11 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
+        transition={{ duration: 1.2, delay: 1.4 }}
         className="absolute bottom-10 left-6 flex items-center gap-3"
       >
-        <div className="w-px h-12 bg-gradient-to-b from-transparent to-white/15" />
-        <span className="text-xs tracking-[0.2em] uppercase text-zinc-700">
+        <div className="w-px h-10 bg-gradient-to-b from-transparent to-white/12" />
+        <span className="text-[10px] tracking-[0.2em] uppercase text-zinc-700">
           Scroll
         </span>
       </motion.div>

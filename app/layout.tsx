@@ -18,11 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Avery Romain",
   description:
-    "Product builder at the intersection of fintech, AI, and sports intelligence. Building tools that make complex systems legible.",
+    "Student athlete and founder building financial infrastructure, AI tooling, and sports intelligence systems. Based at Amherst.",
   openGraph: {
     title: "Avery Romain",
     description:
-      "Product builder at the intersection of fintech, AI, and sports intelligence.",
+      "Building the financial tools that don't exist yet. Fintech, AI, sports intelligence.",
     type: "website",
   },
 };
