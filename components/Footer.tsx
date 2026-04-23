@@ -8,12 +8,6 @@ export default function Footer() {
 
         <div className="flex items-center gap-6">
           <a
-            href="#thinking"
-            className="text-[10px] tracking-[0.18em] uppercase text-zinc-700 hover:text-zinc-500 transition-colors duration-200"
-          >
-            Thinking
-          </a>
-          <a
             href="#building"
             className="text-[10px] tracking-[0.18em] uppercase text-zinc-700 hover:text-zinc-500 transition-colors duration-200"
           >

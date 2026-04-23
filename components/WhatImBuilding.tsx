@@ -1,154 +1,153 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-type Project = {
-  title: string;
-  summary: string;
-  description: string;
-  why: string;
-  built: string[];
-  status: string;
-  url: string;
-};
-
-const projects: Project[] = [
+const projects = [
   {
-    title: "Stackr",
-    summary: "Personal finance infrastructure for athletes who earn before they learn.",
+    num: "01",
+    title: "Stackwise",
+    tagline: "Build your financial stack.",
     description:
-      "A tracking and accountability system for athletes navigating NIL income, stipends, and early financial decisions without professional support. Built to make the numbers make sense — not to add another app to manage.",
-    why: "The average athlete makes consequential financial decisions at 18. There's no infrastructure for that moment. Stackr is that infrastructure.",
-    built: [
-      "Budget tracking and expense categorization by income type",
-      "Goal-setting modules with milestone checkpoints",
-      "Income logging for NIL deals, stipends, and part-time work",
-      "Financial dashboard designed for users with no finance background",
-    ],
-    status: "Active",
+      "Personal finance infrastructure. Answer 8 questions, get your exact checking, savings, credit, and investing accounts — each with a specific explanation of why it fits.",
     url: "https://stackr-silk.vercel.app",
+    status: "Live",
   },
   {
+    num: "02",
     title: "CapitalBase",
-    summary: "Investment intelligence for people entering markets without a guide.",
+    tagline: "AI financial modeling in under 10 seconds.",
     description:
-      "Portfolio tracking, market context, and investment education in one interface. Built for the 18–22 cohort that's one click away from buying their first position and has no framework for what they're doing.",
-    why: "Most investment apps give you charts. CapitalBase gives you the logic behind the chart — the context that actually helps someone make a better decision.",
-    built: [
-      "Portfolio tracking with real-time position updates",
-      "Market context feed that explains movement — not just data",
-      "Investment education modules tied to live portfolio holdings",
-      "Onboarding designed for users with zero prior market exposure",
-    ],
-    status: "Active",
+      "Generates full financial models (DCF, LBO, Comps) from a simple prompt. Designed for analysts and founders who need structured outputs fast.",
     url: "https://www.capital-base.com/app",
+    status: "Live",
   },
   {
-    title: "AI Transfer Portal",
-    summary: "Recruiting intelligence built for the speed of the transfer portal.",
+    num: "03",
+    title: "Transfer Portal",
+    tagline: "Find the right player. Close the edge.",
     description:
-      "An AI system that processes portal entries, performance metrics, and roster gaps to surface fit signals before the competition identifies them.",
-    why: "The portal moves in hours. Programs that still recruit by spreadsheet and phone call are already behind. This closes that gap.",
-    built: [
-      "Data pipeline ingesting portal entries and performance metrics",
-      "AI-powered player-to-program fit scoring model",
-      "Recruiter dashboard surfacing ranked transfer targets by need",
-      "Automated alerts for high-priority portal activity",
-    ],
-    status: "Active",
+      "AI-powered search and fit scoring for the college football transfer market. Built for personnel directors who recruit by data, not reputation.",
     url: "https://jal-football.vercel.app",
+    status: "Live",
   },
 ];
+
+function StackwisePreview() {
+  return (
+    <div className="absolute inset-0 flex flex-col justify-between p-7">
+      <div className="flex items-center gap-2">
+        <div className="w-1.5 h-1.5 rounded-full bg-blue-400/50" />
+        <span className="text-[9px] tracking-[0.28em] uppercase text-blue-400/50 font-medium">
+          Stackwise
+        </span>
+      </div>
+      <div>
+        <p className="text-sm font-bold text-white/75 leading-snug mb-4">
+          Build your financial stack.
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {["CHECKING", "SAVINGS", "CREDIT", "INVESTING"].map((t) => (
+            <span
+              key={t}
+              className="text-[8px] tracking-wider px-2 py-0.5 border border-white/[0.08] text-white/25 font-medium"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CapitalBasePreview() {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+      <div className="w-11 h-11 border border-green-500/25 flex items-center justify-center">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path
+            d="M2 16L7 9L12 12L18 4"
+            stroke="#22c55e"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.5"
+          />
+        </svg>
+      </div>
+      <span className="text-[10px] tracking-[0.32em] uppercase text-white/25 font-medium">
+        CapitalBase
+      </span>
+    </div>
+  );
+}
+
+function PortalPreview() {
+  return (
+    <div className="absolute inset-0 bg-gradient-to-br from-[#0e1f12] to-[#050507] flex flex-col justify-end p-7">
+      <p className="text-[9px] tracking-[0.3em] uppercase text-green-500/45 mb-2 font-medium">
+        Transfer Portal
+      </p>
+      <p className="text-sm font-black text-white/85 leading-tight tracking-[-0.01em]">
+        Find the right player.
+        <br />
+        Close the edge.
+      </p>
+    </div>
+  );
+}
+
+const previews = [StackwisePreview, CapitalBasePreview, PortalPreview];
 
 function ProjectCard({
   project,
   index,
-  isFaded,
-  onClick,
 }: {
-  project: Project;
+  project: (typeof projects)[0];
   index: number;
-  isFaded: boolean;
-  onClick: () => void;
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const Preview = previews[index];
 
   return (
-    <motion.div
+    <motion.a
       ref={ref}
-      initial={{ opacity: 0, y: 36 }}
-      animate={
-        inView
-          ? {
-              opacity: isFaded ? 0.07 : 1,
-              y: 0,
-              scale: isFaded ? 0.97 : 1,
-            }
-          : { opacity: 0, y: 36 }
-      }
-      transition={{
-        opacity: { duration: 0.35, ease },
-        scale: { duration: 0.35, ease },
-        y: { duration: 0.7, ease, delay: index * 0.12 },
-      }}
-      onClick={onClick}
-      className="group relative bg-[#0a0a0d] border border-white/[0.06] hover:border-white/[0.12] p-8 cursor-pointer select-none transition-colors duration-300"
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 32 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.65, ease, delay: index * 0.1 }}
+      className="group block border border-white/[0.06] hover:border-white/[0.14] transition-colors duration-300 bg-[#0a0a0d]"
     >
-      {/* Top row */}
-      <div className="flex items-center justify-between mb-8">
-        <span className="text-xs font-mono text-zinc-700 tracking-widest">
-          0{index + 1}
-        </span>
-        <div className="flex items-center gap-2">
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="text-[10px] tracking-wider text-zinc-700 hover:text-accent transition-colors duration-200 font-mono"
-          >
-            ↗
-          </a>
-          <span className="text-xs tracking-wider uppercase text-zinc-700 border border-white/5 px-2 py-0.5">
+      {/* Thumbnail */}
+      <div className="relative w-full aspect-video overflow-hidden bg-[#080808]">
+        <Preview />
+        <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/[0.04] transition-colors duration-300" />
+      </div>
+
+      {/* Info */}
+      <div className="p-6 border-t border-white/[0.06]">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-xs font-mono text-zinc-700 tracking-widest">
+            {project.num}
+          </span>
+          <span className="text-[10px] tracking-wider uppercase text-zinc-700 border border-white/5 px-2 py-0.5">
             {project.status}
           </span>
         </div>
-      </div>
-
-      <h3 className="text-xl font-bold text-zinc-100 tracking-[-0.02em] mb-3">
-        {project.title}
-      </h3>
-
-      <p className="text-sm font-medium text-accent mb-6 leading-relaxed">
-        {project.summary}
-      </p>
-
-      <p className="text-sm text-zinc-500 leading-[1.8] mb-8">
-        {project.description}
-      </p>
-
-      <div className="border-t border-white/5 pt-6">
-        <p className="text-xs tracking-[0.15em] uppercase text-zinc-700 mb-3 font-medium">
-          Why it matters
-        </p>
-        <p className="text-xs text-zinc-600 leading-[1.8]">{project.why}</p>
-      </div>
-
-      {/* Hover reveal */}
-      <div className="absolute bottom-7 right-7 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-        <div className="flex items-center gap-1.5 text-xs text-zinc-600">
-          <span>Expand</span>
-          <svg
-            width="9"
-            height="9"
-            viewBox="0 0 9 9"
-            fill="none"
-            className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
-          >
+        <h3 className="text-base font-bold text-zinc-100 tracking-[-0.01em] mb-1">
+          {project.title}
+        </h3>
+        <p className="text-xs font-medium text-accent mb-3">{project.tagline}</p>
+        <p className="text-xs text-zinc-600 leading-[1.75]">{project.description}</p>
+        <div className="flex items-center gap-1.5 mt-5 text-xs text-zinc-700 group-hover:text-zinc-400 transition-colors duration-200">
+          <span>View live</span>
+          <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
             <path
               d="M1 8L8 1M8 1H2.5M8 1v5.5"
               stroke="currentColor"
@@ -159,219 +158,23 @@ function ProjectCard({
           </svg>
         </div>
       </div>
-    </motion.div>
-  );
-}
-
-function ExpandedView({
-  project,
-  onClose,
-}: {
-  project: Project;
-  onClose: () => void;
-}) {
-  const index = projects.findIndex((p) => p.title === project.title);
-
-  return (
-    <>
-      {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3, ease }}
-        onClick={onClose}
-        className="fixed inset-0 z-40 bg-[#050507]/88 backdrop-blur-[2px]"
-      />
-
-      {/* Expanded panel */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.96, y: 10 }}
-          transition={{ duration: 0.4, ease }}
-          className="relative w-full max-w-2xl max-h-[88vh] bg-[#0a0a0d] border border-white/10 overflow-y-auto pointer-events-auto"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {/* Accent line top */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-
-          {/* Sticky header */}
-          <div className="sticky top-0 z-10 flex items-center justify-between px-8 py-5 bg-[#0a0a0d]/95 backdrop-blur-sm border-b border-white/5">
-            <div className="flex items-center gap-4">
-              <span className="text-xs font-mono text-zinc-700 tracking-widest">
-                0{index + 1}
-              </span>
-              <span className="text-xs tracking-wider uppercase text-zinc-700 border border-white/5 px-2 py-0.5">
-                {project.status}
-              </span>
-            </div>
-            <button
-              onClick={onClose}
-              className="text-zinc-600 hover:text-zinc-300 transition-colors duration-200 cursor-pointer p-1"
-              aria-label="Close"
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M1 1l12 12M13 1L1 13"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Body */}
-          <div className="px-8 py-8 space-y-8">
-            {/* Title + summary */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease, delay: 0.15 }}
-            >
-              <h2 className="text-3xl sm:text-4xl font-black text-zinc-50 tracking-tight mb-3">
-                {project.title}
-              </h2>
-              <p className="text-base font-medium text-accent leading-relaxed">
-                {project.summary}
-              </p>
-            </motion.div>
-
-            {/* What it is */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease, delay: 0.2 }}
-            >
-              <p className="text-xs tracking-[0.2em] uppercase text-zinc-600 font-medium mb-3">
-                What it is
-              </p>
-              <p className="text-sm text-zinc-400 leading-[1.85]">
-                {project.description}
-              </p>
-            </motion.div>
-
-            {/* Why it matters */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease, delay: 0.25 }}
-              className="bg-white/[0.025] border border-white/5 p-6"
-            >
-              <p className="text-xs tracking-[0.2em] uppercase text-zinc-600 font-medium mb-3">
-                Why it matters
-              </p>
-              <p className="text-sm text-zinc-400 leading-[1.85]">
-                {project.why}
-              </p>
-            </motion.div>
-
-            {/* What I built */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease, delay: 0.3 }}
-            >
-              <p className="text-xs tracking-[0.2em] uppercase text-zinc-600 font-medium mb-5">
-                What I built
-              </p>
-              <ul className="space-y-4">
-                {project.built.map((item, i) => (
-                  <motion.li
-                    key={item}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.3,
-                      ease,
-                      delay: 0.35 + i * 0.06,
-                    }}
-                    className="flex items-start gap-4"
-                  >
-                    <span className="text-xs font-mono text-accent/70 mt-0.5 shrink-0 tabular-nums">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-sm text-zinc-400 leading-relaxed">
-                      {item}
-                    </span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Live link */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease, delay: 0.55 }}
-              className="pt-2 border-t border-white/5 flex items-center justify-between flex-wrap gap-4"
-            >
-              <span className="text-xs text-zinc-700">Live and in production.</span>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 px-5 py-2.5 bg-zinc-50 text-zinc-950 text-xs font-semibold tracking-wide hover:bg-accent transition-colors duration-200"
-              >
-                View Live
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
-                >
-                  <path
-                    d="M1 9L9 1M9 1H3.5M9 1v5.5"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-    </>
+    </motion.a>
   );
 }
 
 export default function WhatImBuilding() {
-  const [selected, setSelected] = useState<string | null>(null);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
-  useEffect(() => {
-    if (!selected) return;
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSelected(null);
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [selected]);
-
-  useEffect(() => {
-    document.body.style.overflow = selected ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [selected]);
-
-  const selectedProject = projects.find((p) => p.title === selected) ?? null;
-
   return (
-    <section id="building" className="relative py-28 lg:py-36 border-t border-white/[0.06]">
+    <section id="building" className="border-t border-white/[0.06] py-10 lg:py-14">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease }}
-          className="flex items-center justify-between mb-16"
+          transition={{ duration: 0.5, ease }}
+          className="flex items-center justify-between mb-10"
         >
           <div className="flex items-center gap-3">
             <div className="w-5 h-px bg-accent" />
@@ -380,31 +183,16 @@ export default function WhatImBuilding() {
             </span>
           </div>
           <span className="hidden sm:block text-[10px] text-zinc-700 tracking-[0.15em] uppercase">
-            3 systems
+            3 live products
           </span>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {projects.map((project, i) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              index={i}
-              isFaded={!!selected && selected !== project.title}
-              onClick={() => setSelected(project.title)}
-            />
+            <ProjectCard key={project.title} project={project} index={i} />
           ))}
         </div>
       </div>
-
-      <AnimatePresence>
-        {selectedProject && (
-          <ExpandedView
-            project={selectedProject}
-            onClose={() => setSelected(null)}
-          />
-        )}
-      </AnimatePresence>
     </section>
   );
 }

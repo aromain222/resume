@@ -76,7 +76,7 @@ export default function Contact() {
               </svg>
             </a>
             <a
-              href="mailto:aromain22@amherst.edu"
+              href="mailto:averyromain5@gmail.com"
               className="group inline-flex items-center gap-3 px-6 py-3 border border-white/[0.1] text-zinc-400 text-xs font-semibold tracking-[0.06em] uppercase hover:border-accent/60 hover:text-accent transition-all duration-200"
             >
               Email
