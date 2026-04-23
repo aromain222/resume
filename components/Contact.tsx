@@ -36,7 +36,7 @@ export default function Contact() {
             transition={{ duration: 0.7, ease, delay: 0.1 }}
             className="text-3xl sm:text-4xl font-black text-zinc-100 tracking-tight leading-tight mb-6"
           >
-            I&apos;m building in public.
+            I build with people who have a real problem.
           </motion.h2>
 
           <motion.p
@@ -45,9 +45,9 @@ export default function Contact() {
             transition={{ duration: 0.7, ease, delay: 0.2 }}
             className="text-base text-zinc-500 leading-relaxed mb-12"
           >
-            If you&apos;re working on something at the intersection of finance,
-            AI, or sports intelligence — I&apos;m interested. Whether it&apos;s
-            collaboration, an internship, or just a conversation worth having.
+            If you&apos;re working on finance infrastructure, AI tooling, or
+            sports intelligence — reach out. I&apos;m interested in the
+            problem before the pitch.
           </motion.p>
 
           <motion.div

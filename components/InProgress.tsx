@@ -39,10 +39,9 @@ export default function InProgress() {
               </h3>
 
               <p className="text-sm text-zinc-500 leading-[1.8] max-w-xl">
-                An interface that translates plain English into executable SQL
-                queries — making database access intuitive for users without
-                technical backgrounds. Built for teams where data analysis
-                shouldn&apos;t require a dedicated analyst.
+                Plain English to SQL. Not a chatbot — a structured query
+                interface that gives non-technical users direct access to their
+                data without writing a single line of code.
               </p>
             </div>
 

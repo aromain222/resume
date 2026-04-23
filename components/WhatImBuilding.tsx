@@ -17,10 +17,10 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Stackr",
-    summary: "Personal finance infrastructure for student-athletes.",
+    summary: "Personal finance infrastructure for athletes who earn before they learn.",
     description:
-      "A financial tracking and accountability system built for athletes who generate income early and lack access to professional financial support. Covers budgeting, goal-setting, and long-term planning.",
-    why: "Athletes face financial decisions at 18 that most people face at 30. The infrastructure to handle those decisions shouldn't require a $300/hour advisor.",
+      "A tracking and accountability system for athletes navigating NIL income, stipends, and early financial decisions without professional support. Built to make the numbers make sense — not to add another app to manage.",
+    why: "The average athlete makes consequential financial decisions at 18. There's no infrastructure for that moment. Stackr is that infrastructure.",
     built: [
       "Budget tracking and expense categorization by income type",
       "Goal-setting modules with milestone checkpoints",
@@ -31,24 +31,24 @@ const projects: Project[] = [
   },
   {
     title: "CapitalBase",
-    summary: "Investment intelligence for first-time investors.",
+    summary: "Investment intelligence for people entering markets without a guide.",
     description:
-      "A platform that combines portfolio tracking, market education, and investment context in a single interface — built for the 18–22 cohort entering markets without institutional support.",
-    why: "First-generation investors don't need another brokerage. They need context, clarity, and a system that explains the logic behind the numbers.",
+      "Portfolio tracking, market context, and investment education in one interface. Built for the 18–22 cohort that's one click away from buying their first position and has no framework for what they're doing.",
+    why: "Most investment apps give you charts. CapitalBase gives you the logic behind the chart — the context that actually helps someone make a better decision.",
     built: [
       "Portfolio tracking with real-time position updates",
       "Market context feed that explains movement — not just data",
       "Investment education modules tied to live portfolio holdings",
-      "Onboarding flow designed for users with zero prior market exposure",
+      "Onboarding designed for users with zero prior market exposure",
     ],
     status: "Active",
   },
   {
     title: "AI Transfer Portal",
-    summary: "Recruiting intelligence for college football's transfer market.",
+    summary: "Recruiting intelligence built for the speed of the transfer portal.",
     description:
-      "An AI system that processes transfer portal data, player performance metrics, and program roster needs to surface fit signals that traditional recruiting pipelines miss.",
-    why: "The transfer portal is now the primary talent acquisition mechanism in college football. The programs that build intelligence around it will win.",
+      "An AI system that processes portal entries, performance metrics, and roster gaps to surface fit signals before the competition identifies them.",
+    why: "The portal moves in hours. Programs that still recruit by spreadsheet and phone call are already behind. This closes that gap.",
     built: [
       "Data pipeline ingesting portal entries and performance metrics",
       "AI-powered player-to-program fit scoring model",

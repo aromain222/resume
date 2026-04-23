@@ -8,15 +8,15 @@ const ease = [0.22, 1, 0.36, 1] as const;
 const focuses = [
   {
     label: "18–22 Cohort",
-    body: "Building financial tools for the generation closest to major financial decisions that has historically had the least access to guidance. The gap between what they need and what exists is the opportunity.",
+    body: "The 18–22 window is when financial habits form and most consequential decisions get made — usually without a framework. That's not a market gap. It's just a fact.",
   },
   {
     label: "AI-Native Finance",
-    body: "Not AI as a feature bolted onto existing products — AI as the primary interface layer that removes friction from complex processes. The financial products built natively around this will replace everything else.",
+    body: "AI isn't a feature you add. It's the interface layer that replaces the forms, the friction, and the phone calls. Finance products built natively around that assumption will make everything before them obsolete.",
   },
   {
     label: "Legibility",
-    body: "The goal of every tool I build is the same: reduce the cognitive load required to make a good decision. Complexity is a design failure. Simplicity is earned.",
+    body: "Every tool I build has one standard: can someone make a better decision faster because of it? If not, the interface failed. Complexity isn't depth — it's a design problem I haven't solved yet.",
   },
 ];
 

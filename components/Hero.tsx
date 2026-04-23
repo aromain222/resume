@@ -186,9 +186,9 @@ export default function Hero() {
           transition={{ duration: 0.7, ease, delay: 0.35 }}
           className="max-w-xl text-base sm:text-lg text-zinc-400 leading-relaxed mb-10"
         >
-          Product builder at the intersection of fintech, AI, and sports
-          intelligence. Focused on tools that make complex systems legible for
-          the people who need them most.
+          Student athlete. Three products in production. Focused on the
+          financial gap that hits hardest between 18 and 22 — and the AI
+          tooling that closes it.
         </motion.p>
 
         {/* Identity line */}

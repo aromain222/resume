@@ -9,19 +9,19 @@ const pillars = [
   {
     number: "01",
     title: "Discipline",
-    body: "Football doesn't reward potential. It rewards execution, every day, under pressure. That standard carries into everything I build — the practice of showing up, iterating, and delivering without excuses.",
+    body: "Football doesn't run on potential. It runs on reps, under pressure, with consequences. I build the same way — show up, ship, correct. No perfect conditions. No excuses.",
     tag: "Football",
   },
   {
     number: "02",
     title: "Systems Thinking",
-    body: "Finance and product are the same discipline. Both require mapping every input, output, and failure point before touching any part. I think in systems before I write a line of code.",
+    body: "Finance and product are the same problem: a system with inputs, outputs, and failure modes you need to understand before you touch any of it. I map the whole thing first. Code comes after.",
     tag: "Finance · Product",
   },
   {
     number: "03",
     title: "Execution",
-    body: "Ideas are cheap. I've built working tools — not decks, not mockups. The measure of any idea is whether it functions when a real user depends on it.",
+    body: "The only metric that matters: does it work when someone actually depends on it? Not in a demo. Not in review. In production, with a real user. That's the bar.",
     tag: "Building",
   },
 ];
