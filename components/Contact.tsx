@@ -30,20 +30,10 @@ export default function Contact() {
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease, delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-black text-zinc-100 tracking-[-0.025em] leading-[1.1] mb-5"
+            className="text-3xl sm:text-4xl font-black text-zinc-100 tracking-[-0.025em] leading-[1.1] mb-10"
           >
             Football, fitness, gaming, and everything in between.
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease, delay: 0.18 }}
-            className="text-[15px] text-zinc-500 leading-[1.75] mb-10"
-          >
-            When I&apos;m not building I&apos;m on the field, in the gym, or
-            deep in a game. Always down to connect — feel free to reach out.
-          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 14 }}
