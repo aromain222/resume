@@ -13,6 +13,7 @@ const projects = [
     description:
       "Personal finance infrastructure. Answer 8 questions, get your exact checking, savings, credit, and investing accounts — each with a specific explanation of why it fits.",
     url: "https://stackr-silk.vercel.app",
+    thumbnail: "https://image.thum.io/get/width/1200/crop/800/https://stackr-silk.vercel.app",
     status: "Live",
   },
   {
@@ -22,6 +23,7 @@ const projects = [
     description:
       "Generates full financial models (DCF, LBO, Comps) from a simple prompt. Designed for analysts and founders who need structured outputs fast.",
     url: "https://www.capital-base.com/app",
+    thumbnail: "https://image.thum.io/get/width/1200/crop/800/https://www.capital-base.com",
     status: "Live",
   },
   {
@@ -31,76 +33,10 @@ const projects = [
     description:
       "AI-powered search and fit scoring for the college football transfer market. Built for personnel directors who recruit by data, not reputation.",
     url: "https://jal-football.vercel.app",
+    thumbnail: "https://image.thum.io/get/width/1200/crop/800/https://jal-football.vercel.app",
     status: "Live",
   },
 ];
-
-function StackwisePreview() {
-  return (
-    <div className="absolute inset-0 flex flex-col justify-between p-7">
-      <div className="flex items-center gap-2">
-        <div className="w-1.5 h-1.5 rounded-full bg-blue-400/50" />
-        <span className="text-[9px] tracking-[0.28em] uppercase text-blue-400/50 font-medium">
-          Stackwise
-        </span>
-      </div>
-      <div>
-        <p className="text-sm font-bold text-white/75 leading-snug mb-4">
-          Build your financial stack.
-        </p>
-        <div className="flex flex-wrap gap-1.5">
-          {["CHECKING", "SAVINGS", "CREDIT", "INVESTING"].map((t) => (
-            <span
-              key={t}
-              className="text-[8px] tracking-wider px-2 py-0.5 border border-white/[0.08] text-white/25 font-medium"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CapitalBasePreview() {
-  return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-      <div className="w-11 h-11 border border-green-500/25 flex items-center justify-center">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path
-            d="M2 16L7 9L12 12L18 4"
-            stroke="#22c55e"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity="0.5"
-          />
-        </svg>
-      </div>
-      <span className="text-[10px] tracking-[0.32em] uppercase text-white/25 font-medium">
-        CapitalBase
-      </span>
-    </div>
-  );
-}
-
-function PortalPreview() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-br from-[#0e1f12] to-[#050507] flex flex-col justify-end p-7">
-      <p className="text-[9px] tracking-[0.3em] uppercase text-green-500/45 mb-2 font-medium">
-        Transfer Portal
-      </p>
-      <p className="text-sm font-black text-white/85 leading-tight tracking-[-0.01em]">
-        Find the right player.
-        <br />
-        Close the edge.
-      </p>
-    </div>
-  );
-}
-
-const previews = [StackwisePreview, CapitalBasePreview, PortalPreview];
 
 function ProjectCard({
   project,
@@ -111,7 +47,6 @@ function ProjectCard({
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const Preview = previews[index];
 
   return (
     <motion.a
@@ -125,9 +60,15 @@ function ProjectCard({
       className="group block border border-white/[0.06] hover:border-white/[0.14] transition-colors duration-300 bg-[#0a0a0d]"
     >
       {/* Thumbnail */}
-      <div className="relative w-full aspect-video overflow-hidden bg-[#080808]">
-        <Preview />
-        <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/[0.04] transition-colors duration-300" />
+      <div className="relative w-full aspect-video overflow-hidden bg-[#0d0d0d]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={project.thumbnail}
+          alt={project.title}
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-[#050507]/0 group-hover:bg-[#050507]/10 transition-colors duration-300" />
       </div>
 
       {/* Info */}
