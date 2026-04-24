@@ -36,13 +36,13 @@ export default function InProgress() {
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-zinc-100 tracking-[-0.02em] mb-3">
-                Transfer Portal + PFF Data Tool
+                Natural Language → SQL Interface
               </h3>
 
               <p className="text-sm text-zinc-500 leading-[1.8] max-w-lg">
-                A workflow system to ingest, filter, and surface player data into
-                actionable recruiting decisions. Designed so coaches can query by
-                measurables, usage, and fit — not just scroll a list.
+                Plain English to SQL. Not a chatbot — a structured query interface
+                that gives non-technical users direct access to their data without
+                writing a single line of code.
               </p>
             </div>
 
@@ -51,7 +51,7 @@ export default function InProgress() {
                 Stack
               </p>
               <div className="flex flex-wrap sm:flex-col gap-1.5 sm:items-end">
-                {["TypeScript", "Next.js", "Supabase", "PFF API"].map((tech) => (
+                {["TypeScript", "PostgreSQL", "OpenAI API", "Next.js"].map((tech) => (
                   <span
                     key={tech}
                     className="text-[11px] text-zinc-600 border border-white/[0.06] px-2 py-0.5 font-mono"
