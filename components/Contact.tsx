@@ -32,7 +32,7 @@ export default function Contact() {
             transition={{ duration: 0.7, ease, delay: 0.1 }}
             className="text-3xl sm:text-4xl font-black text-zinc-100 tracking-[-0.025em] leading-[1.1] mb-5"
           >
-            I build with people who have a real problem.
+            Football, fitness, gaming, and everything in between.
           </motion.h2>
 
           <motion.p
@@ -41,9 +41,8 @@ export default function Contact() {
             transition={{ duration: 0.7, ease, delay: 0.18 }}
             className="text-[15px] text-zinc-500 leading-[1.75] mb-10"
           >
-            If you&apos;re working on finance infrastructure, AI tooling, or
-            sports intelligence — reach out. I&apos;m interested in the
-            problem before the pitch.
+            When I&apos;m not building I&apos;m on the field, in the gym, or
+            deep in a game. Always down to connect — feel free to reach out.
           </motion.p>
 
           <motion.div
