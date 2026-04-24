@@ -48,26 +48,26 @@ export default function About() {
             className="space-y-5"
           >
             <p className="text-[15px] text-zinc-300 leading-[1.8]">
-              I grew up in the Bay Area and have been obsessed with two things
-              for as long as I can remember — sports and figuring out how things
-              work. That curiosity eventually turned into building products.
+              Grew up in the Bay Area. Been obsessed with sports and figuring
+              out how things work for as long as I can remember. That curiosity
+              is what pushed me into building products.
             </p>
             <p className="text-[15px] text-zinc-500 leading-[1.8]">
-              Financial literacy is something I care about deeply. A lot of
-              people — especially young people — are making real money decisions
-              without the tools or context to do it well. That gap is what most
-              of what I build is trying to close.
+              Financial literacy is something I genuinely care about. A lot of
+              people, especially young people, are out here making real money
+              decisions without the tools or context they need. That&apos;s the
+              gap I&apos;m trying to close.
             </p>
             <p className="text-[15px] text-zinc-500 leading-[1.8]">
-              I&apos;m also passionate about pro Black activism and believe the
-              intersection of technology, ownership, and financial education is
-              one of the most important places to be building right now.
+              I&apos;m passionate about pro Black activism. The intersection of
+              technology, ownership, and financial education is one of the most
+              important places anyone can be building right now.
             </p>
             <p className="text-[15px] text-zinc-500 leading-[1.8]">
-              Outside of that — I&apos;m watching game film, in the gym, at a
-              basketball court, or at a baseball game. Big fan of all sports.
-              Pickleball has been creeping up the list lately. Off the field,
-              R&B and jazz are always on.
+              Outside of building I&apos;m usually watching film, in the gym,
+              at a basketball court, or catching a baseball game. Big fan of all
+              sports. Pickleball has been climbing the list. R&B and jazz always
+              on.
             </p>
           </motion.div>
 
