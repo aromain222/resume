@@ -134,11 +134,10 @@ export default function ResumeModal() {
                 </span>
                 <div className="flex items-center gap-5">
                   <a
-                    href="/resume.pdf"
-                    download
+                    href="/resume" target="_blank" rel="noopener noreferrer"
                     className="group flex items-center gap-2 text-xs tracking-wider uppercase text-zinc-500 hover:text-accent transition-colors duration-200"
                   >
-                    Download PDF
+                    View Resume
                     <svg
                       width="10"
                       height="10"
@@ -326,13 +325,12 @@ export default function ResumeModal() {
                   transition={{ duration: 0.35, ease, delay: 0.6 }}
                   className="pt-2 border-t border-white/5 flex items-center justify-between flex-wrap gap-4"
                 >
-                  <p className="text-xs text-zinc-700">Full resume available as PDF.</p>
+                  <p className="text-xs text-zinc-700">Open full resume — print or save as PDF from there.</p>
                   <a
-                    href="/resume.pdf"
-                    download
+                    href="/resume" target="_blank" rel="noopener noreferrer"
                     className="group inline-flex items-center gap-3 px-5 py-2.5 bg-zinc-50 text-zinc-950 text-xs font-semibold tracking-wide hover:bg-accent transition-colors duration-200"
                   >
-                    Download Resume
+                    View Full Resume
                     <svg
                       width="11"
                       height="11"
