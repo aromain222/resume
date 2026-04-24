@@ -21,9 +21,20 @@ export default function Hero() {
         <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-[-0.025em] leading-snug mb-3 max-w-lg">
           Building financial tools, AI systems, and sports intelligence platforms.
         </h1>
-        <p className="text-xs text-zinc-600 mb-8 tracking-wide">
-          Amherst College · Defensive Line · San Mateo, CA
-        </p>
+        <div className="flex items-center gap-2.5 mb-8 flex-wrap">
+          {["Football", "Fitness", "Coding", "Networking", "Sports", "Gaming"].map(
+            (item, i, arr) => (
+              <span key={item} className="flex items-center gap-2.5">
+                <span className="text-[10px] tracking-[0.18em] uppercase text-zinc-600 font-medium">
+                  {item}
+                </span>
+                {i < arr.length - 1 && (
+                  <span className="text-zinc-800 text-xs">·</span>
+                )}
+              </span>
+            )
+          )}
+        </div>
         <button
           onClick={() => setOpen(true)}
           className="text-[10px] tracking-[0.2em] uppercase px-4 py-2 border border-white/[0.1] text-zinc-400 hover:border-accent/60 hover:text-accent transition-all duration-200 cursor-pointer"

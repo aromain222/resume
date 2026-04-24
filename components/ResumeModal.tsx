@@ -226,7 +226,7 @@ export default function ResumeModal() {
                         B.A. Political Science & Black Studies · Expected May 2027
                       </p>
                       <ul className="space-y-1.5">
-                        <BulletPoint>Division III Football — Defensive Line</BulletPoint>
+                        <BulletPoint>Division III Football — Student Athlete</BulletPoint>
                         <BulletPoint>Alumni Outreach · Amherst Black Business Club</BulletPoint>
                       </ul>
                     </div>
