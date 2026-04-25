@@ -70,7 +70,7 @@ export interface Player {
   school_from: string;
   school_to: string | null;
   source: string;
-  source_id: string;
+  source_id: string | null;
   /** Cross-source IDs stored as { on3: string, "247sports": string, espn: string } */
   source_ids: Record<string, string>;
   status: PlayerStatus;
@@ -191,7 +191,7 @@ export interface StatProfile {
 export interface QueuedPlayer {
   queueId: string;
   playerId: string;
-  playerData: Player;
+  player: Player;
   attempts: number;
 }
 
@@ -232,8 +232,8 @@ export interface IngestionRunResult {
   committed: number;
   /** Players detected as withdrawn from the portal */
   withdrawn: number;
-  /** Errors encountered per source or per player */
-  errors: string[];
+  /** Count of errors encountered during this run */
+  errors: number;
   /** Number of items in the queue after this run */
   queue_size: number;
 }

@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS players (
   school_from           TEXT                  NOT NULL,
   school_to             TEXT,
   source                TEXT                  NOT NULL,
-  source_id             TEXT                  NOT NULL,
+  source_id             TEXT,
   source_ids            JSONB                 NOT NULL DEFAULT '{}',
   status                player_status         NOT NULL DEFAULT 'pending',
   active_in_portal      BOOLEAN               NOT NULL DEFAULT TRUE,
