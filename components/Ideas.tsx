@@ -125,7 +125,7 @@ export default function Ideas() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="border-t border-white/[0.06] py-20 lg:py-28">
+    <section id="ideas" className="border-t border-white/[0.06] py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
