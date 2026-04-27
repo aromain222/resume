@@ -6,17 +6,17 @@ import { motion, useInView } from "framer-motion";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const tags = [
-  "Bay Area",
+  "Amherst College",
+  "Student Athlete",
+  "Political Science",
+  "Black Studies",
   "Financial Literacy",
   "Football",
   "Fitness",
-  "Pro Black",
-  "Basketball",
-  "Baseball",
-  "Pickleball",
+  "Bay Area",
+  "Builder",
   "R&B",
   "Jazz",
-  "Builder",
 ];
 
 export default function About() {
@@ -48,26 +48,27 @@ export default function About() {
             className="space-y-5"
           >
             <p className="text-[15px] text-zinc-300 leading-[1.8]">
-              Grew up in the Bay Area. Been obsessed with sports and figuring
-              out how things work for as long as I can remember. That curiosity
-              is what pushed me into building products.
+              Student-athlete at Amherst College studying Political Science and
+              Black Studies. A lot of my life is shaped by football, fitness,
+              and the discipline that comes with both.
             </p>
             <p className="text-[15px] text-zinc-500 leading-[1.8]">
-              Financial literacy is something I genuinely care about. A lot of
-              people, especially young people, are out here making real money
-              decisions without the tools or context they need. That&apos;s the
-              gap I&apos;m trying to close.
+              I&apos;m especially passionate about financial literacy. Access to
+              financial knowledge is uneven and that has real consequences. I
+              spend a lot of time thinking about how to make financial systems
+              easier to understand and more accessible, especially for people
+              who were not naturally exposed to them.
             </p>
             <p className="text-[15px] text-zinc-500 leading-[1.8]">
-              I&apos;m passionate about pro Black activism. The intersection of
-              technology, ownership, and financial education is one of the most
-              important places anyone can be building right now.
+              I like building things and improving how systems work. I tend to
+              notice when something feels inefficient and try to figure out a
+              better way to approach it.
             </p>
             <p className="text-[15px] text-zinc-500 leading-[1.8]">
-              Outside of building I&apos;m usually watching film, in the gym,
-              at a basketball court, or catching a baseball game. Big fan of all
-              sports. Pickleball has been climbing the list. R&B and jazz always
-              on.
+              Football and training influence how I approach everything else.
+              They have taught me consistency, structure, and how to stay locked
+              in even when things are difficult. That mindset carries into how I
+              learn and what I choose to work on.
             </p>
           </motion.div>
 
