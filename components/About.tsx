@@ -54,21 +54,36 @@ export default function About() {
             </p>
             <p className="text-[15px] text-zinc-500 leading-[1.8]">
               I&apos;m especially passionate about financial literacy. Access to
-              financial knowledge is uneven and that has real consequences. I
-              spend a lot of time thinking about how to make financial systems
-              easier to understand and more accessible, especially for people
-              who were not naturally exposed to them.
+              financial knowledge is uneven and that has real consequences. It
+              affects the decisions people can make, the risks they take, and
+              the opportunities they even know exist. I spend a lot of time
+              thinking about how to make financial systems easier to understand
+              and more accessible, especially for people who were not naturally
+              exposed to them. That shows up in the things I build and the
+              problems I choose to spend time on.
             </p>
             <p className="text-[15px] text-zinc-500 leading-[1.8]">
-              I like building things and improving how systems work. I tend to
-              notice when something feels inefficient and try to figure out a
-              better way to approach it.
+              I like building and improving systems. I naturally pay attention
+              to what feels slow, confusing, or unnecessarily complex and try to
+              simplify it. Most of what I work on comes from that instinct to
+              take something that feels difficult to navigate and make it more
+              intuitive and useful.
             </p>
             <p className="text-[15px] text-zinc-500 leading-[1.8]">
               Football and training influence how I approach everything else.
               They have taught me consistency, structure, and how to stay locked
-              in even when things are difficult. That mindset carries into how I
-              learn and what I choose to work on.
+              in even when things are difficult or repetitive. There is a level
+              of discipline required to show up every day, improve incrementally,
+              and trust the process even when results are not immediate. That
+              mindset carries into how I learn, how I build, and how I handle
+              challenges.
+            </p>
+            <p className="text-[15px] text-zinc-500 leading-[1.8]">
+              I care about growth, both personally and in the people around me.
+              I want to keep putting myself in environments that push me, force
+              me to adapt, and raise my standard. At a high level, I am focused
+              on getting better, building things that matter, and creating
+              access where it does not already exist.
             </p>
           </motion.div>
 
