@@ -8,6 +8,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 type Idea = {
   title: string;
   tag: string;
+  tagColor: string;
   paragraphs: string[];
 };
 
@@ -15,6 +16,7 @@ const ideas: Idea[] = [
   {
     title: "AI as a Platform for Creative Access",
     tag: "AI · Access",
+    tagColor: "bg-violet-100 text-violet-700",
     paragraphs: [
       "A lot of creative people never get the chance to show what they can do. Not because they lack talent, but because they lack access to tools, technical skills, and the networks that put work in front of the right people. That gap has been consistent, and it has been especially visible for young Black and Brown creators.",
       "AI is starting to shift that in a meaningful way. Tools like Cursor and Claude Code make it possible to build without a deep technical background. Someone with an idea can now turn it into something real, whether that is an app, a tool, or a system. The distance between thinking of something and actually creating it is smaller than it has ever been.",
@@ -26,6 +28,7 @@ const ideas: Idea[] = [
   {
     title: 'AI, Finance, and the End of "Learning by Repetition"',
     tag: "AI · Finance",
+    tagColor: "bg-emerald-100 text-emerald-700",
     paragraphs: [
       "A lot of early career roles in finance have always been built on repetition. Analysts spend hours building models, cleaning data, updating comps, and formatting decks. The work is not valuable because it is efficient. It is valuable because it forces exposure. Over time, that repetition is supposed to turn into intuition.",
       "AI is breaking that model.",
@@ -52,25 +55,21 @@ function IdeaCard({ idea, index }: { idea: Idea; index: number }) {
       initial={{ opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, ease, delay: index * 0.12 }}
-      className="border border-white/[0.06] bg-[#0a0a0d] hover:border-white/[0.1] transition-colors duration-300"
+      className="border border-black/[0.08] bg-white hover:border-black/[0.15] hover:shadow-md transition-all duration-300 rounded-2xl"
     >
       <div className="p-8 sm:p-10">
-        {/* Tag */}
-        <p className="text-[10px] tracking-[0.22em] uppercase text-accent font-medium mb-5">
+        <span className={`inline-block text-[11px] tracking-[0.14em] uppercase font-bold px-3 py-1.5 rounded-full mb-5 ${idea.tagColor}`}>
           {idea.tag}
-        </p>
+        </span>
 
-        {/* Title */}
-        <h3 className="text-lg sm:text-xl font-bold text-zinc-100 tracking-[-0.02em] leading-[1.3] mb-6">
+        <h3 className="text-lg sm:text-xl font-bold text-[#0f0f0f] tracking-[-0.02em] leading-[1.3] mb-6">
           {idea.title}
         </h3>
 
-        {/* Preview — always visible */}
-        <p className="text-[14px] text-zinc-400 leading-[1.85]">
+        <p className="text-[14px] text-[#4b5563] leading-[1.85]">
           {idea.paragraphs[0]}
         </p>
 
-        {/* Expanded content */}
         <AnimatePresence initial={false}>
           {expanded && (
             <motion.div
@@ -83,7 +82,7 @@ function IdeaCard({ idea, index }: { idea: Idea; index: number }) {
             >
               <div className="pt-5 space-y-5">
                 {idea.paragraphs.slice(1).map((p, i) => (
-                  <p key={i} className="text-[14px] text-zinc-500 leading-[1.85]">
+                  <p key={i} className="text-[14px] text-[#6b7280] leading-[1.85]">
                     {p}
                   </p>
                 ))}
@@ -92,10 +91,9 @@ function IdeaCard({ idea, index }: { idea: Idea; index: number }) {
           )}
         </AnimatePresence>
 
-        {/* Toggle */}
         <button
           onClick={() => setExpanded((v) => !v)}
-          className="mt-7 flex items-center gap-2 text-[11px] tracking-[0.12em] uppercase text-zinc-600 hover:text-accent transition-colors duration-200 font-medium"
+          className="mt-7 flex items-center gap-2 text-[11px] tracking-[0.12em] uppercase text-[#9ca3af] hover:text-accent transition-colors duration-200 font-semibold cursor-pointer"
         >
           {expanded ? "Collapse" : "Read more"}
           <motion.svg
@@ -109,7 +107,7 @@ function IdeaCard({ idea, index }: { idea: Idea; index: number }) {
             <path
               d="M1 3L4.5 6.5L8 3"
               stroke="currentColor"
-              strokeWidth="1.25"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
@@ -125,7 +123,7 @@ export default function Ideas() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="ideas" className="border-t border-white/[0.06] py-20 lg:py-28">
+    <section id="ideas" className="border-t border-black/[0.07] py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
@@ -134,13 +132,13 @@ export default function Ideas() {
           transition={{ duration: 0.6, ease }}
           className="flex items-center gap-3 mb-12"
         >
-          <div className="w-5 h-px bg-accent" />
-          <span className="text-[10px] tracking-[0.25em] uppercase text-zinc-600 font-medium">
+          <div className="w-6 h-[2px] bg-accent rounded-full" />
+          <span className="text-[11px] tracking-[0.22em] uppercase text-[#6b7280] font-semibold">
             Ideas
           </span>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {ideas.map((idea, i) => (
             <IdeaCard key={idea.title} idea={idea} index={i} />
           ))}

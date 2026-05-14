@@ -10,7 +10,7 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="relative py-28 lg:py-36 border-t border-white/[0.06]">
+    <section id="contact" className="relative py-28 lg:py-36 border-t border-black/[0.07]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-xl">
           <motion.div
@@ -20,8 +20,8 @@ export default function Contact() {
             transition={{ duration: 0.6, ease }}
             className="flex items-center gap-3 mb-12"
           >
-            <div className="w-5 h-px bg-accent" />
-            <span className="text-[10px] tracking-[0.25em] uppercase text-zinc-600 font-medium">
+            <div className="w-6 h-[2px] bg-accent rounded-full" />
+            <span className="text-[11px] tracking-[0.22em] uppercase text-[#6b7280] font-semibold">
               Contact
             </span>
           </motion.div>
@@ -30,10 +30,19 @@ export default function Contact() {
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease, delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-black text-zinc-100 tracking-[-0.025em] leading-[1.1] mb-10"
+            className="text-3xl sm:text-4xl font-black text-[#0f0f0f] tracking-[-0.025em] leading-[1.1] mb-4"
           >
             Football, fitness, gaming, and everything in between.
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease, delay: 0.18 }}
+            className="text-[15px] text-[#6b7280] leading-relaxed mb-10"
+          >
+            Always open to connecting — whether it&apos;s about building something, finance, sports, or just to talk.
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -45,7 +54,7 @@ export default function Contact() {
               href="https://linkedin.com/in/avery-romain"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-6 py-3 bg-zinc-50 text-zinc-950 text-xs font-semibold tracking-[0.06em] uppercase hover:bg-accent transition-colors duration-200"
+              className="group inline-flex items-center gap-3 px-6 py-3 bg-[#0f0f0f] text-white text-xs font-bold tracking-[0.06em] uppercase hover:bg-accent transition-colors duration-200 cursor-pointer"
             >
               LinkedIn
               <svg
@@ -58,7 +67,7 @@ export default function Contact() {
                 <path
                   d="M1 9L9 1M9 1H3.5M9 1v5.5"
                   stroke="currentColor"
-                  strokeWidth="1.4"
+                  strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -66,7 +75,7 @@ export default function Contact() {
             </a>
             <a
               href="mailto:averyromain5@gmail.com"
-              className="group inline-flex items-center gap-3 px-6 py-3 border border-white/[0.1] text-zinc-400 text-xs font-semibold tracking-[0.06em] uppercase hover:border-accent/60 hover:text-accent transition-all duration-200"
+              className="group inline-flex items-center gap-3 px-6 py-3 border-2 border-black/[0.12] text-[#4b5563] text-xs font-bold tracking-[0.06em] uppercase hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer"
             >
               Email
               <svg
@@ -79,7 +88,7 @@ export default function Contact() {
                 <path
                   d="M1 9L9 1M9 1H3.5M9 1v5.5"
                   stroke="currentColor"
-                  strokeWidth="1.4"
+                  strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />

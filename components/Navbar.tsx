@@ -17,14 +17,14 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-white/[0.06] backdrop-blur-xl bg-[#050507]/85"
+          ? "border-b border-black/[0.08] backdrop-blur-xl bg-[#f9f7f4]/90 shadow-sm"
           : ""
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
         <a
           href="#"
-          className="text-[11px] font-bold tracking-[0.2em] text-zinc-200 uppercase hover:text-accent transition-colors duration-200"
+          className="text-[13px] font-black tracking-[0.15em] text-[#0f0f0f] uppercase hover:text-accent transition-colors duration-200"
         >
           AR
         </a>
@@ -38,14 +38,14 @@ export default function Navbar() {
             <a
               key={label}
               href={href}
-              className="text-[10px] tracking-[0.2em] uppercase text-zinc-500 hover:text-zinc-200 transition-colors duration-200"
+              className="text-[11px] tracking-[0.15em] uppercase text-[#6b7280] font-medium hover:text-[#0f0f0f] transition-colors duration-200"
             >
               {label}
             </a>
           ))}
           <button
             onClick={() => setOpen(true)}
-            className="text-[10px] tracking-[0.2em] uppercase px-4 py-2 border border-white/[0.1] text-zinc-400 hover:border-accent/60 hover:text-accent transition-all duration-200 cursor-pointer"
+            className="text-[11px] tracking-[0.15em] uppercase px-4 py-2 bg-[#0f0f0f] text-white font-semibold hover:bg-accent transition-all duration-200 cursor-pointer"
           >
             Resume
           </button>
@@ -53,7 +53,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(true)}
-          className="md:hidden text-[10px] tracking-[0.2em] uppercase px-3 py-2 border border-white/[0.1] text-zinc-400 hover:border-accent/60 hover:text-accent transition-all duration-200 cursor-pointer"
+          className="md:hidden text-[11px] tracking-[0.15em] uppercase px-3 py-2 bg-[#0f0f0f] text-white font-semibold hover:bg-accent transition-all duration-200 cursor-pointer"
         >
           Resume
         </button>

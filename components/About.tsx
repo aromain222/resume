@@ -6,17 +6,17 @@ import { motion, useInView } from "framer-motion";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const tags = [
-  "Amherst College",
-  "Student Athlete",
-  "Political Science",
-  "Black Studies",
-  "Financial Literacy",
-  "Football",
-  "Fitness",
-  "Bay Area",
-  "Builder",
-  "R&B",
-  "Jazz",
+  { label: "Amherst College", color: "bg-blue-100 text-blue-700 border-blue-200" },
+  { label: "Student Athlete", color: "bg-emerald-100 text-emerald-700 border-emerald-200" },
+  { label: "Political Science", color: "bg-violet-100 text-violet-700 border-violet-200" },
+  { label: "Black Studies", color: "bg-rose-100 text-rose-700 border-rose-200" },
+  { label: "Financial Literacy", color: "bg-amber-100 text-amber-700 border-amber-200" },
+  { label: "Football", color: "bg-green-100 text-green-700 border-green-200" },
+  { label: "Fitness", color: "bg-cyan-100 text-cyan-700 border-cyan-200" },
+  { label: "Bay Area", color: "bg-orange-100 text-orange-700 border-orange-200" },
+  { label: "Builder", color: "bg-indigo-100 text-indigo-700 border-indigo-200" },
+  { label: "R&B", color: "bg-pink-100 text-pink-700 border-pink-200" },
+  { label: "Jazz", color: "bg-purple-100 text-purple-700 border-purple-200" },
 ];
 
 export default function About() {
@@ -24,7 +24,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="border-t border-white/[0.06] py-20 lg:py-28">
+    <section className="border-t border-black/[0.07] py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
@@ -33,8 +33,8 @@ export default function About() {
           transition={{ duration: 0.6, ease }}
           className="flex items-center gap-3 mb-12"
         >
-          <div className="w-5 h-px bg-accent" />
-          <span className="text-[10px] tracking-[0.25em] uppercase text-zinc-600 font-medium">
+          <div className="w-6 h-[2px] bg-accent rounded-full" />
+          <span className="text-[11px] tracking-[0.22em] uppercase text-[#6b7280] font-semibold">
             About
           </span>
         </motion.div>
@@ -47,12 +47,12 @@ export default function About() {
             transition={{ duration: 0.7, ease, delay: 0.1 }}
             className="space-y-5"
           >
-            <p className="text-[15px] text-zinc-300 leading-[1.8]">
+            <p className="text-[15px] text-[#0f0f0f] leading-[1.8] font-medium">
               Student-athlete at Amherst College studying Political Science and
               Black Studies. A lot of my life is shaped by football, fitness,
               and the discipline that comes with both.
             </p>
-            <p className="text-[15px] text-zinc-500 leading-[1.8]">
+            <p className="text-[15px] text-[#4b5563] leading-[1.8]">
               I&apos;m especially passionate about financial literacy. Access to
               financial knowledge is uneven and that has real consequences. It
               affects the decisions people can make, the risks they take, and
@@ -62,28 +62,18 @@ export default function About() {
               exposed to them. That shows up in the things I build and the
               problems I choose to spend time on.
             </p>
-            <p className="text-[15px] text-zinc-500 leading-[1.8]">
+            <p className="text-[15px] text-[#4b5563] leading-[1.8]">
               I like building and improving systems. I naturally pay attention
               to what feels slow, confusing, or unnecessarily complex and try to
               simplify it. Most of what I work on comes from that instinct to
               take something that feels difficult to navigate and make it more
               intuitive and useful.
             </p>
-            <p className="text-[15px] text-zinc-500 leading-[1.8]">
+            <p className="text-[15px] text-[#4b5563] leading-[1.8]">
               Football and training influence how I approach everything else.
               They have taught me consistency, structure, and how to stay locked
-              in even when things are difficult or repetitive. There is a level
-              of discipline required to show up every day, improve incrementally,
-              and trust the process even when results are not immediate. That
-              mindset carries into how I learn, how I build, and how I handle
-              challenges.
-            </p>
-            <p className="text-[15px] text-zinc-500 leading-[1.8]">
-              I care about growth, both personally and in the people around me.
-              I want to keep putting myself in environments that push me, force
-              me to adapt, and raise my standard. At a high level, I am focused
-              on getting better, building things that matter, and creating
-              access where it does not already exist.
+              in even when things are difficult or repetitive. That mindset
+              carries into how I learn, how I build, and how I handle challenges.
             </p>
           </motion.div>
 
@@ -96,13 +86,13 @@ export default function About() {
           >
             {tags.map((tag, i) => (
               <motion.span
-                key={tag}
+                key={tag.label}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.4, ease, delay: 0.25 + i * 0.04 }}
-                className="text-[10px] tracking-[0.18em] uppercase text-zinc-500 border border-white/[0.08] px-3 py-1.5 font-medium hover:border-accent/40 hover:text-accent transition-colors duration-200"
+                className={`text-[11px] tracking-[0.12em] uppercase font-semibold px-3 py-1.5 rounded-full border ${tag.color}`}
               >
-                {tag}
+                {tag.label}
               </motion.span>
             ))}
           </motion.div>

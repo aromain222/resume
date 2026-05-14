@@ -1,7 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #c8a97e;
+  --color-accent: #3b82f6;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-green: #10b981;
+  --color-accent-orange: #f59e0b;
+  --color-surface: #ffffff;
+  --color-border: #e5e4e0;
+  --color-muted: #6b7280;
 }
 
 @theme inline {
@@ -11,13 +17,13 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #050507;
+  background-color: #f9f7f4;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-color: #050507;
-  color: #f0f0f0;
+  background-color: #f9f7f4;
+  color: #0f0f0f;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,31 +31,38 @@ body {
 }
 
 ::selection {
-  background-color: rgb(200 169 126 / 0.18);
-  color: #f0f0f0;
+  background-color: rgb(59 130 246 / 0.15);
+  color: #0f0f0f;
 }
 
 :focus-visible {
-  outline: 1px solid rgb(200 169 126 / 0.5);
+  outline: 2px solid rgb(59 130 246 / 0.6);
   outline-offset: 3px;
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #f9f7f4;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(255 255 255 / 0.07);
-  border-radius: 2px;
+  background: #d1d5db;
+  border-radius: 4px;
 }
 
 .dot-grid {
   background-image: radial-gradient(
     circle,
-    rgb(255 255 255 / 0.038) 1px,
+    rgb(0 0 0 / 0.06) 1px,
     transparent 1px
   );
   background-size: 28px 28px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

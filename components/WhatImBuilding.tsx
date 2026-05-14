@@ -13,6 +13,7 @@ type Project = {
   url: string;
   thumbnail: "stackwise" | "capitalbase" | "portal";
   status: string;
+  accent: string;
 };
 
 const projects: Project[] = [
@@ -25,6 +26,7 @@ const projects: Project[] = [
     url: "https://stackr-silk.vercel.app",
     thumbnail: "stackwise",
     status: "Live",
+    accent: "#3b82f6",
   },
   {
     num: "02",
@@ -35,6 +37,7 @@ const projects: Project[] = [
     url: "https://www.capital-base.com/app",
     thumbnail: "capitalbase",
     status: "Live",
+    accent: "#10b981",
   },
   {
     num: "03",
@@ -45,23 +48,24 @@ const projects: Project[] = [
     url: "https://jal-football.vercel.app",
     thumbnail: "portal",
     status: "Live",
+    accent: "#8b5cf6",
   },
 ];
 
 function StackwiseThumbnail() {
   return (
-    <div className="absolute inset-0 bg-[#0c0c14] flex flex-col items-center justify-center px-6 text-center">
-      <div className="flex items-center gap-1.5 border border-white/15 rounded-full px-3 py-1 mb-5">
-        <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-        <span className="text-[7px] tracking-widest text-white/40 font-medium">
+    <div className="absolute inset-0 bg-[#EFF6FF] flex flex-col items-center justify-center px-6 text-center">
+      <div className="flex items-center gap-1.5 border border-blue-200 bg-white rounded-full px-3 py-1 mb-5">
+        <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+        <span className="text-[7px] tracking-widest text-blue-500 font-bold">
           CHECKING · SAVINGS · CREDIT · INVESTING
         </span>
       </div>
       <p className="text-xl font-black leading-tight mb-3">
-        <span className="text-white">Build your </span>
+        <span className="text-[#0f0f0f]">Build your </span>
         <span
           style={{
-            background: "linear-gradient(90deg, #60a5fa, #a78bfa)",
+            background: "linear-gradient(90deg, #3b82f6, #8b5cf6)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
@@ -69,15 +73,15 @@ function StackwiseThumbnail() {
           financial stack
         </span>
       </p>
-      <p className="text-[8px] text-white/35 max-w-[200px] leading-relaxed mb-5">
+      <p className="text-[8px] text-[#6b7280] max-w-[200px] leading-relaxed mb-5">
         Answer 8 questions. Get your exact checking, savings, credit, and
         investing accounts — each with a specific explanation of why it fits.
       </p>
       <div className="flex gap-2">
-        <div className="bg-blue-500 text-white text-[8px] px-4 py-1.5 rounded-full font-semibold">
+        <div className="bg-blue-600 text-white text-[8px] px-4 py-1.5 rounded-full font-semibold">
           View my stack →
         </div>
-        <div className="border border-white/20 text-white/50 text-[8px] px-4 py-1.5 rounded-full">
+        <div className="border border-blue-200 text-blue-500 text-[8px] px-4 py-1.5 rounded-full">
           Update answers
         </div>
       </div>
@@ -87,21 +91,23 @@ function StackwiseThumbnail() {
 
 function CapitalBaseThumbnail() {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#080d08]">
-      <div className="w-11 h-11 border border-green-500/25 flex items-center justify-center">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#ECFDF5]">
+      <div className="w-12 h-12 border-2 border-emerald-300 bg-white rounded-xl flex items-center justify-center shadow-sm">
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
           <path
             d="M2 16L7 9L12 12L18 4"
-            stroke="#22c55e"
-            strokeWidth="1.5"
+            stroke="#10b981"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            opacity="0.5"
           />
         </svg>
       </div>
-      <span className="text-[10px] tracking-[0.32em] uppercase text-white/25 font-medium">
+      <span className="text-[11px] tracking-[0.25em] uppercase text-emerald-700 font-bold">
         CapitalBase
+      </span>
+      <span className="text-[8px] text-emerald-600/60 tracking-widest">
+        AI · DCF · LBO · COMPS
       </span>
     </div>
   );
@@ -110,9 +116,8 @@ function CapitalBaseThumbnail() {
 function PortalThumbnail() {
   return (
     <div className="absolute inset-0 flex overflow-hidden text-left">
-      {/* Left — white marketing panel */}
-      <div className="w-[44%] bg-white flex flex-col justify-center px-5 py-4 shrink-0">
-        <p className="text-[6px] font-black tracking-[0.18em] text-green-700 mb-2 uppercase">
+      <div className="w-[44%] bg-white flex flex-col justify-center px-5 py-4 shrink-0 border-r border-gray-100">
+        <p className="text-[6px] font-black tracking-[0.18em] text-violet-600 mb-2 uppercase">
           Transfer Portal
         </p>
         <p className="text-[11px] font-black text-gray-900 leading-[1.05] tracking-tight mb-2">
@@ -120,33 +125,27 @@ function PortalThumbnail() {
           <br />
           RIGHT PLAYER.
           <br />
-          <span className="text-green-700">CLOSE THE EDGE.</span>
+          <span className="text-violet-600">CLOSE THE EDGE.</span>
         </p>
-        <p className="text-[6px] font-bold text-gray-700 mb-4">
-          <span className="text-green-700">AI-POWERED</span> SEARCH. DATA-BACKED DECISIONS.
+        <p className="text-[6px] font-bold text-gray-600 mb-4">
+          <span className="text-violet-600">AI-POWERED</span> SEARCH. DATA-BACKED DECISIONS.
         </p>
         <div className="flex gap-2">
           {["AI SEARCH", "INSIGHTS", "CONFIDENCE"].map((f) => (
-            <div
-              key={f}
-              className="text-[5px] font-black text-gray-600 tracking-wide"
-            >
+            <div key={f} className="text-[5px] font-black text-violet-500 tracking-wide">
               {f}
             </div>
           ))}
         </div>
       </div>
 
-      {/* Right — app mockup */}
-      <div className="flex-1 bg-[#edf3ed] p-2.5 overflow-hidden">
-        <div className="bg-white rounded shadow-sm p-2.5 h-full flex flex-col gap-2">
-          {/* Player header */}
+      <div className="flex-1 bg-[#F5F3FF] p-2.5 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-sm p-2.5 h-full flex flex-col gap-2">
           <div>
             <p className="text-[5px] text-gray-400 tracking-widest mb-0.5">DL · 3-TECH</p>
             <p className="text-[8px] font-bold text-gray-900 mb-0.5">Adepoju Adebawore</p>
             <p className="text-[5px] text-gray-400">JR · FBS · Transfer Portal</p>
           </div>
-          {/* Measurables */}
           <div className="flex gap-2">
             {[["HEIGHT", "6'4\""], ["WEIGHT", "275 lbs"], ["CLASS", "Junior"]].map(([l, v]) => (
               <div key={l}>
@@ -155,23 +154,18 @@ function PortalThumbnail() {
               </div>
             ))}
           </div>
-          {/* Grade cards */}
           <div className="flex gap-1">
             {[
               { l: "PASS RUSH", v: "62.6", c: "#f97316" },
               { l: "RUN DEF", v: "68.7", c: "#f97316" },
               { l: "TACKLING", v: "48.9", c: "#ef4444" },
             ].map(({ l, v, c }) => (
-              <div
-                key={l}
-                className="flex-1 border border-gray-100 rounded-sm p-1"
-              >
+              <div key={l} className="flex-1 border border-violet-100 rounded-lg p-1 bg-violet-50/50">
                 <p className="text-[4px] text-gray-400 tracking-wider mb-0.5">{l}</p>
                 <p className="text-[9px] font-black" style={{ color: c }}>{v}</p>
               </div>
             ))}
           </div>
-          {/* Stats row */}
           <div className="flex gap-2 pt-1 border-t border-gray-50">
             {[["PRESSURES", "10"], ["SACKS", "2"], ["QB HITS", "3"]].map(([l, v]) => (
               <div key={l}>
@@ -206,30 +200,32 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, ease, delay: index * 0.1 }}
-      className="group block border border-white/[0.06] hover:border-white/[0.14] transition-colors duration-300 bg-[#0a0a0d]"
+      className="group block border border-black/[0.08] hover:border-black/[0.18] hover:shadow-lg transition-all duration-300 bg-white rounded-xl overflow-hidden cursor-pointer"
     >
-      <div className="relative w-full aspect-video overflow-hidden bg-[#0d0d0d]">
+      <div className="relative w-full aspect-video overflow-hidden bg-gray-50">
         <Thumb />
-        <div className="absolute inset-0 bg-[#050507]/0 group-hover:bg-[#050507]/10 transition-colors duration-300" />
       </div>
 
-      <div className="p-6 border-t border-white/[0.06]">
+      <div className="p-6 border-t border-black/[0.06]">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-mono text-zinc-700 tracking-widest">{project.num}</span>
-          <span className="text-[10px] tracking-wider uppercase text-zinc-700 border border-white/5 px-2 py-0.5">
+          <span className="text-xs font-mono text-[#9ca3af] tracking-widest">{project.num}</span>
+          <span
+            className="text-[10px] tracking-wider uppercase font-bold px-2.5 py-1 rounded-full"
+            style={{ background: `${project.accent}18`, color: project.accent }}
+          >
             {project.status}
           </span>
         </div>
-        <h3 className="text-base font-bold text-zinc-100 tracking-[-0.01em] mb-1">{project.title}</h3>
-        <p className="text-xs font-medium text-accent mb-3">{project.tagline}</p>
-        <p className="text-xs text-zinc-600 leading-[1.75]">{project.description}</p>
-        <div className="flex items-center gap-1.5 mt-5 text-xs text-zinc-700 group-hover:text-zinc-400 transition-colors duration-200">
+        <h3 className="text-base font-bold text-[#0f0f0f] tracking-[-0.01em] mb-1">{project.title}</h3>
+        <p className="text-xs font-semibold mb-3" style={{ color: project.accent }}>{project.tagline}</p>
+        <p className="text-xs text-[#6b7280] leading-[1.75]">{project.description}</p>
+        <div className="flex items-center gap-1.5 mt-5 text-xs text-[#9ca3af] group-hover:text-[#0f0f0f] transition-colors duration-200 font-medium">
           <span>View live</span>
           <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
             <path
               d="M1 8L8 1M8 1H2.5M8 1v5.5"
               stroke="currentColor"
-              strokeWidth="1.25"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
@@ -245,7 +241,7 @@ export default function WhatImBuilding() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="building" className="border-t border-white/[0.06] py-10 lg:py-14">
+    <section id="building" className="border-t border-black/[0.07] py-10 lg:py-14">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
@@ -255,17 +251,17 @@ export default function WhatImBuilding() {
           className="flex items-center justify-between mb-10"
         >
           <div className="flex items-center gap-3">
-            <div className="w-5 h-px bg-accent" />
-            <span className="text-[10px] tracking-[0.25em] uppercase text-zinc-600 font-medium">
+            <div className="w-6 h-[2px] bg-accent rounded-full" />
+            <span className="text-[11px] tracking-[0.22em] uppercase text-[#6b7280] font-semibold">
               What I&apos;m Building
             </span>
           </div>
-          <span className="hidden sm:block text-[10px] text-zinc-700 tracking-[0.15em] uppercase">
+          <span className="hidden sm:block text-[11px] text-[#9ca3af] tracking-[0.12em] uppercase font-medium">
             3 live products
           </span>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {projects.map((project, i) => (
             <ProjectCard key={project.title} project={project} index={i} />
           ))}
