@@ -1,13 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #3b82f6;
-  --color-accent-purple: #8b5cf6;
-  --color-accent-green: #10b981;
-  --color-accent-orange: #f59e0b;
-  --color-surface: #ffffff;
-  --color-border: #e5e4e0;
-  --color-muted: #6b7280;
+  --color-accent: #d4562a;
 }
 
 @theme inline {
@@ -23,7 +17,7 @@ html {
 
 body {
   background-color: #f9f7f4;
-  color: #0f0f0f;
+  color: #0a0a0a;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,12 +25,12 @@ body {
 }
 
 ::selection {
-  background-color: rgb(59 130 246 / 0.15);
-  color: #0f0f0f;
+  background-color: rgb(212 86 42 / 0.12);
+  color: #0a0a0a;
 }
 
 :focus-visible {
-  outline: 2px solid rgb(59 130 246 / 0.6);
+  outline: 2px solid rgb(212 86 42 / 0.5);
   outline-offset: 3px;
 }
 
@@ -47,22 +41,15 @@ body {
   background: #f9f7f4;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: #d6d0c8;
   border-radius: 4px;
 }
 
 .dot-grid {
   background-image: radial-gradient(
     circle,
-    rgb(0 0 0 / 0.06) 1px,
+    rgb(0 0 0 / 0.05) 1px,
     transparent 1px
   );
   background-size: 28px 28px;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
