@@ -9,10 +9,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-* {
-  cursor: none;
-}
-
 html {
   scroll-behavior: smooth;
   background-color: #f9f7f4;
