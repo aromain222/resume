@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useSpring, useReducedMotion } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -167,8 +167,27 @@ const thumbnails = {
 };
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLAnchorElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const shouldReduce = useReducedMotion();
+
+  const rotateX = useSpring(0, { stiffness: 200, damping: 22 });
+  const rotateY = useSpring(0, { stiffness: 200, damping: 22 });
+
+  function handleMouseMove(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (shouldReduce || !ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const cx = (e.clientX - rect.left) / rect.width - 0.5;
+    const cy = (e.clientY - rect.top) / rect.height - 0.5;
+    rotateY.set(cx * 14);
+    rotateX.set(-cy * 9);
+  }
+
+  function resetTilt() {
+    rotateX.set(0);
+    rotateY.set(0);
+  }
+
   const Thumb = thumbnails[project.thumbnail];
 
   return (
@@ -180,7 +199,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, ease, delay: index * 0.1 }}
-      className="group block border border-black/[0.08] hover:border-black/[0.2] hover:shadow-md transition-all duration-300 bg-white cursor-pointer"
+      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={resetTilt}
+      className="group block border border-black/[0.08] hover:border-black/[0.2] hover:shadow-xl transition-all duration-300 bg-white cursor-pointer"
     >
       <div className="relative w-full aspect-video overflow-hidden bg-[#f5f0e8]">
         <Thumb />

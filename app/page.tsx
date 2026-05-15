@@ -8,10 +8,12 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FootballAnimation from "@/components/FootballAnimation";
 import ScrollProgress from "@/components/ScrollProgress";
+import CustomCursor from "@/components/CustomCursor";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f9f7f4] text-[#0f0f0f]">
+      <CustomCursor />
       <ScrollProgress />
       <FootballAnimation />
       <Navbar />
