@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo, useCallback, type ReactNode } from "react";
+import { useState, useMemo, useCallback, useEffect, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 type BurstData = { id: number; x: number; y: number };
@@ -11,7 +12,7 @@ function Burst({ x, y }: { x: number; y: number }) {
       Array.from({ length: 10 }, (_, i) => ({
         id: i,
         angle: (i / 10) * 360 + Math.random() * 36,
-        distance: 26 + Math.random() * 20,
+        distance: 28 + Math.random() * 22,
       })),
     []
   );
@@ -38,7 +39,10 @@ function Burst({ x, y }: { x: number; y: number }) {
 
 export default function ClickBurst({ children }: { children: ReactNode }) {
   const [bursts, setBursts] = useState<BurstData[]>([]);
+  const [mounted, setMounted] = useState(false);
   const shouldReduce = useReducedMotion();
+
+  useEffect(() => setMounted(true), []);
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
@@ -53,11 +57,15 @@ export default function ClickBurst({ children }: { children: ReactNode }) {
   return (
     <div className="inline-block" onClick={handleClick}>
       {children}
-      <AnimatePresence>
-        {bursts.map((burst) => (
-          <Burst key={burst.id} x={burst.x} y={burst.y} />
-        ))}
-      </AnimatePresence>
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {bursts.map((burst) => (
+              <Burst key={burst.id} x={burst.x} y={burst.y} />
+            ))}
+          </AnimatePresence>,
+          document.body
+        )}
     </div>
   );
 }
