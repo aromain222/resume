@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useResume } from "./ResumeContext";
+import Magnetic from "./Magnetic";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -43,20 +44,24 @@ export default function Navbar() {
               {label}
             </a>
           ))}
+          <Magnetic>
+            <button
+              onClick={() => setOpen(true)}
+              className="text-[11px] tracking-[0.15em] uppercase px-4 py-2 bg-[#0f0f0f] text-white font-semibold hover:bg-accent transition-all duration-200 cursor-pointer"
+            >
+              Resume
+            </button>
+          </Magnetic>
+        </div>
+
+        <Magnetic>
           <button
             onClick={() => setOpen(true)}
-            className="text-[11px] tracking-[0.15em] uppercase px-4 py-2 bg-[#0f0f0f] text-white font-semibold hover:bg-accent transition-all duration-200 cursor-pointer"
+            className="md:hidden text-[11px] tracking-[0.15em] uppercase px-3 py-2 bg-[#0f0f0f] text-white font-semibold hover:bg-accent transition-all duration-200 cursor-pointer"
           >
             Resume
           </button>
-        </div>
-
-        <button
-          onClick={() => setOpen(true)}
-          className="md:hidden text-[11px] tracking-[0.15em] uppercase px-3 py-2 bg-[#0f0f0f] text-white font-semibold hover:bg-accent transition-all duration-200 cursor-pointer"
-        >
-          Resume
-        </button>
+        </Magnetic>
       </nav>
     </header>
   );

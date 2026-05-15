@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useResume } from "./ResumeContext";
+import Magnetic from "./Magnetic";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -39,7 +40,7 @@ export default function Hero() {
           Student-athlete at Amherst. I build the financial tools that should already exist.
         </p>
 
-        {/* Interest tags — uniform style */}
+        {/* Interest tags */}
         <div className="flex items-center gap-2 mb-10 flex-wrap">
           {interests.map((item) => (
             <span
@@ -52,21 +53,25 @@ export default function Hero() {
         </div>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#building"
-            className="group inline-flex items-center gap-2.5 px-6 py-3 bg-[#0a0a0a] text-white text-xs font-bold tracking-[0.06em] uppercase hover:bg-accent transition-colors duration-200 cursor-pointer"
-          >
-            View Work
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-200">
-              <path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-          <button
-            onClick={() => setOpen(true)}
-            className="text-[11px] tracking-[0.15em] uppercase px-6 py-3 border border-black/20 text-[#7a7068] font-semibold hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer"
-          >
-            Resume
-          </button>
+          <Magnetic>
+            <a
+              href="#building"
+              className="group inline-flex items-center gap-2.5 px-6 py-3 bg-[#0a0a0a] text-white text-xs font-bold tracking-[0.06em] uppercase hover:bg-accent transition-colors duration-200 cursor-pointer"
+            >
+              View Work
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-200">
+                <path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <button
+              onClick={() => setOpen(true)}
+              className="text-[11px] tracking-[0.15em] uppercase px-6 py-3 border border-black/20 text-[#7a7068] font-semibold hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer"
+            >
+              Resume
+            </button>
+          </Magnetic>
         </div>
       </motion.div>
     </section>
