@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import WhatImBuilding from "@/components/WhatImBuilding";
 import InProgress from "@/components/InProgress";
@@ -16,6 +17,7 @@ export default function Home() {
       <FootballAnimation />
       <Navbar />
       <Hero />
+      <Marquee />
       <About />
       <WhatImBuilding />
       <InProgress />

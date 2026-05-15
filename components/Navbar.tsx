@@ -1,18 +1,48 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useResume } from "./ResumeContext";
 import Magnetic from "./Magnetic";
 
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const ORIGINAL = "AR";
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [logoText, setLogoText] = useState(ORIGINAL);
   const { setOpen } = useResume();
+  const scrambleRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 48);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  function startScramble() {
+    let iterations = 0;
+    const maxIterations = 14;
+    scrambleRef.current = setInterval(() => {
+      setLogoText(
+        ORIGINAL.split("")
+          .map((char, i) =>
+            iterations > i * (maxIterations / ORIGINAL.length)
+              ? char
+              : CHARS[Math.floor(Math.random() * CHARS.length)]
+          )
+          .join("")
+      );
+      if (++iterations >= maxIterations) {
+        clearInterval(scrambleRef.current!);
+        setLogoText(ORIGINAL);
+      }
+    }, 40);
+  }
+
+  function stopScramble() {
+    if (scrambleRef.current) clearInterval(scrambleRef.current);
+    setLogoText(ORIGINAL);
+  }
 
   return (
     <header
@@ -25,9 +55,11 @@ export default function Navbar() {
       <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
         <a
           href="#"
-          className="text-[13px] font-black tracking-[0.15em] text-[#0f0f0f] uppercase hover:text-accent transition-colors duration-200"
+          onMouseEnter={startScramble}
+          onMouseLeave={stopScramble}
+          className="text-[13px] font-black tracking-[0.15em] text-[#0f0f0f] uppercase hover:text-accent transition-colors duration-200 font-mono"
         >
-          AR
+          {logoText}
         </a>
 
         <div className="hidden md:flex items-center gap-8">
