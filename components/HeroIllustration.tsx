@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -35,14 +34,20 @@ export default function HeroIllustration() {
           {/* Ground shadow */}
           <ellipse cx="140" cy="435" rx="90" ry="7" fill="#0a0a0a" opacity="0.07" />
 
-          {/* Pants */}
-          <rect x="91" y="307" width="42" height="80" rx="7" fill="#141414" />
-          <rect x="147" y="307" width="42" height="80" rx="7" fill="#141414" />
+          {/* Legs — tapered toward ankle */}
+          <path d="M 91 307 C 91 330 92 358 94 387 L 132 387 C 132 358 133 330 133 307 Z" fill="#141414" />
+          <path d="M 147 307 C 147 330 148 358 148 387 L 186 387 C 187 358 189 330 189 307 Z" fill="#141414" />
+
+          {/* Knee highlight */}
+          <ellipse cx="112" cy="348" rx="14" ry="9" fill="#1e1e1e" />
+          <ellipse cx="168" cy="348" rx="14" ry="9" fill="#1e1e1e" />
 
           {/* Cleats */}
-          <rect x="82" y="378" width="56" height="22" rx="6" fill="#0a0a0a" />
-          <rect x="142" y="378" width="56" height="22" rx="6" fill="#0a0a0a" />
-          <rect x="88" y="400" width="4" height="7" rx="2" fill="#222" />
+          <rect x="82" y="378" width="56" height="22" rx="10" fill="#0a0a0a" />
+          <rect x="142" y="378" width="56" height="22" rx="10" fill="#0a0a0a" />
+          <ellipse cx="96" cy="383" rx="10" ry="5" fill="#1a1a1a" opacity="0.45" />
+          <ellipse cx="156" cy="383" rx="10" ry="5" fill="#1a1a1a" opacity="0.45" />
+          <rect x="88"  y="400" width="4" height="7" rx="2" fill="#222" />
           <rect x="100" y="400" width="4" height="7" rx="2" fill="#222" />
           <rect x="112" y="400" width="4" height="7" rx="2" fill="#222" />
           <rect x="124" y="400" width="4" height="7" rx="2" fill="#222" />
@@ -51,17 +56,17 @@ export default function HeroIllustration() {
           <rect x="172" y="400" width="4" height="7" rx="2" fill="#222" />
           <rect x="184" y="400" width="4" height="7" rx="2" fill="#222" />
 
-          {/* Arms / sleeves */}
-          <rect x="22" y="222" width="69" height="78" rx="15" fill="#5B2D8E" />
-          <rect x="189" y="222" width="69" height="78" rx="15" fill="#5B2D8E" />
+          {/* Arms — tapered trapezoids, wide at shoulder narrow at wrist */}
+          <path d="M 16 224 L 91 224 L 91 298 L 20 298 Z" fill="#5B2D8E" />
+          <path d="M 264 224 L 189 224 L 189 298 L 260 298 Z" fill="#5B2D8E" />
 
-          {/* Jersey body */}
-          <rect x="91" y="215" width="98" height="98" rx="4" fill="#5B2D8E" />
+          {/* Jersey body — slight waist taper */}
+          <path d="M 91 254 C 91 272 93 296 95 313 L 185 313 C 187 296 189 272 189 254 Z" fill="#5B2D8E" />
 
           {/* Jersey number */}
           <text
             x="140"
-            y="296"
+            y="298"
             textAnchor="middle"
             fontSize="34"
             fontWeight="900"
@@ -73,31 +78,39 @@ export default function HeroIllustration() {
           </text>
 
           {/* Gloves */}
-          <rect x="14" y="288" width="79" height="26" rx="9" fill="#141414" />
-          <rect x="187" y="288" width="79" height="26" rx="9" fill="#141414" />
-          <rect x="14" y="292" width="79" height="3" rx="1.5" fill="#5B2D8E" />
-          <rect x="187" y="292" width="79" height="3" rx="1.5" fill="#5B2D8E" />
+          <rect x="12"  y="288" width="81" height="26" rx="10" fill="#141414" />
+          <rect x="187" y="288" width="81" height="26" rx="10" fill="#141414" />
+          <rect x="12"  y="292" width="81" height="3" rx="1.5" fill="#5B2D8E" />
+          <rect x="187" y="292" width="81" height="3" rx="1.5" fill="#5B2D8E" />
 
-          {/* Shoulder pad extensions */}
-          <path d="M 4 215 L 91 211 L 91 249 Q 50 261 4 246 Z" fill="#0d0d0d" />
-          <path d="M 276 215 L 189 211 L 189 249 Q 230 261 276 246 Z" fill="#0d0d0d" />
+          {/* Shoulder pads — organic dome curves */}
+          <path d="M 91 207 C 64 200 26 198 7 222 L 5 257 Q 50 270 91 254 Z" fill="#0d0d0d" />
+          <path d="M 91 207 C 64 200 26 198 7 222 L 10 230 C 30 212 66 208 91 213 Z" fill="#181818" />
 
-          {/* Chest plate */}
-          <rect x="91" y="200" width="98" height="53" fill="#0d0d0d" />
+          <path d="M 189 207 C 216 200 254 198 273 222 L 275 257 Q 230 270 189 254 Z" fill="#0d0d0d" />
+          <path d="M 189 207 C 216 200 254 198 273 222 L 270 230 C 250 212 214 208 189 213 Z" fill="#181818" />
 
-          {/* Neck */}
-          <rect x="124" y="166" width="32" height="50" rx="5" fill="#7D4E2D" />
+          {/* Chest plate — arched bottom edge */}
+          <path d="M 91 200 L 189 200 L 189 253 C 165 259 115 259 91 253 Z" fill="#0d0d0d" />
+          <rect x="91" y="200" width="98" height="5" rx="0" fill="#181818" />
+
+          {/* Neck — slightly tapered */}
+          <path d="M 127 168 C 125 182 125 200 127 216 L 153 216 C 155 200 155 182 153 168 Z" fill="#7D4E2D" />
 
           {/* Helmet shell */}
           <ellipse cx="140" cy="92" rx="80" ry="84" fill="#0a0a0a" />
 
+          {/* Helmet gloss highlight */}
+          <ellipse cx="107" cy="53" rx="32" ry="20" fill="white" opacity="0.05" />
+          <path d="M 86 42 Q 104 26 128 22" stroke="white" strokeWidth="7" strokeLinecap="round" opacity="0.06" />
+
           {/* Side air vents */}
-          <ellipse cx="62" cy="106" rx="11" ry="22" fill="#141414" />
+          <ellipse cx="62"  cy="106" rx="11" ry="22" fill="#141414" />
           <ellipse cx="218" cy="106" rx="11" ry="22" fill="#141414" />
-          <ellipse cx="62" cy="97" rx="5" ry="4" fill="#0a0a0a" />
-          <ellipse cx="62" cy="108" rx="5" ry="4" fill="#0a0a0a" />
-          <ellipse cx="62" cy="119" rx="5" ry="4" fill="#0a0a0a" />
-          <ellipse cx="218" cy="97" rx="5" ry="4" fill="#0a0a0a" />
+          <ellipse cx="62"  cy="97"  rx="5" ry="4" fill="#0a0a0a" />
+          <ellipse cx="62"  cy="108" rx="5" ry="4" fill="#0a0a0a" />
+          <ellipse cx="62"  cy="119" rx="5" ry="4" fill="#0a0a0a" />
+          <ellipse cx="218" cy="97"  rx="5" ry="4" fill="#0a0a0a" />
           <ellipse cx="218" cy="108" rx="5" ry="4" fill="#0a0a0a" />
           <ellipse cx="218" cy="119" rx="5" ry="4" fill="#0a0a0a" />
 
@@ -107,9 +120,13 @@ export default function HeroIllustration() {
           {/* Face opening background */}
           <path d="M 96 108 Q 140 98 184 108 L 180 172 Q 140 182 100 172 Z" fill="#5a3018" />
 
-          {/* Face (clipped) */}
+          {/* Face — clipped */}
           <g clipPath="url(#face-opening)">
             <ellipse cx="140" cy="136" rx="48" ry="44" fill="#7D4E2D" />
+
+            {/* Subtle cheek warmth */}
+            <ellipse cx="118" cy="142" rx="13" ry="10" fill="#8B5A35" opacity="0.35" />
+            <ellipse cx="162" cy="142" rx="13" ry="10" fill="#8B5A35" opacity="0.35" />
 
             {/* Eyebrows */}
             <path d="M 111 115 L 132 119" stroke="#3D1F08" strokeWidth="4" strokeLinecap="round" />
@@ -129,19 +146,16 @@ export default function HeroIllustration() {
           </g>
 
           {/* Face mask — vertical bars */}
-          <rect x="128" y="107" width="5.5" height="72" rx="2.75" fill="#282828" />
+          <rect x="128"  y="107" width="5.5" height="72" rx="2.75" fill="#282828" />
           <rect x="146.5" y="107" width="5.5" height="72" rx="2.75" fill="#282828" />
 
           {/* Face mask — horizontal bars */}
           <rect x="90" y="114" width="100" height="5.5" rx="2.75" fill="#282828" />
-          <rect x="92" y="136" width="96" height="5.5" rx="2.75" fill="#282828" />
-          <rect x="98" y="158" width="84" height="5.5" rx="2.75" fill="#282828" />
+          <rect x="92" y="136" width="96"  height="5.5" rx="2.75" fill="#282828" />
+          <rect x="98" y="158" width="84"  height="5.5" rx="2.75" fill="#282828" />
 
           {/* Chin strap */}
           <path d="M 87 173 Q 140 194 193 173" stroke="#1a1a1a" strokeWidth="8" strokeLinecap="round" fill="none" />
-
-          {/* Helmet top highlight */}
-          <ellipse cx="140" cy="48" rx="35" ry="16" fill="white" opacity="0.04" />
         </svg>
       </motion.div>
     </motion.div>
