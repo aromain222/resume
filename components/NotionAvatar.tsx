@@ -25,8 +25,8 @@ export default function NotionAvatar() {
         <Image
           src="/images/avatar-quarterzip.png"
           alt="Avery Romain"
-          width={340}
-          height={520}
+          width={420}
+          height={640}
           className="object-contain"
           priority
         />
