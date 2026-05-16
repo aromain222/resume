@@ -5,7 +5,7 @@ import { useResume } from "./ResumeContext";
 import Magnetic from "./Magnetic";
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-const ORIGINAL = "AR";
+const ORIGINAL = "AVERY ROMAIN";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
