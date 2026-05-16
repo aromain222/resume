@@ -16,11 +16,11 @@ const tags = [
   },
   {
     label: "Political Science",
-    bio: "I love seeing how systems are formed and changed.",
+    bio: "I love seeing how systems are formed and changed. Interested in neocolonialism and neofeminism.",
   },
   {
     label: "Black Studies",
-    bio: "Always been interested in Black philosophy.",
+    bio: "Marcus Garvey, CLR James, Malcolm X.",
   },
   {
     label: "Financial Literacy",
