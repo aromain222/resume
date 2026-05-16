@@ -52,11 +52,11 @@ export default function HeroIllustration() {
           <rect x="184" y="400" width="4" height="7" rx="2" fill="#222" />
 
           {/* Arms / sleeves */}
-          <rect x="22" y="222" width="69" height="78" rx="15" fill="#d4562a" />
-          <rect x="189" y="222" width="69" height="78" rx="15" fill="#d4562a" />
+          <rect x="22" y="222" width="69" height="78" rx="15" fill="#5B2D8E" />
+          <rect x="189" y="222" width="69" height="78" rx="15" fill="#5B2D8E" />
 
           {/* Jersey body */}
-          <rect x="91" y="215" width="98" height="98" rx="4" fill="#d4562a" />
+          <rect x="91" y="215" width="98" height="98" rx="4" fill="#5B2D8E" />
 
           {/* Jersey number */}
           <text
@@ -75,8 +75,8 @@ export default function HeroIllustration() {
           {/* Gloves */}
           <rect x="14" y="288" width="79" height="26" rx="9" fill="#141414" />
           <rect x="187" y="288" width="79" height="26" rx="9" fill="#141414" />
-          <rect x="14" y="292" width="79" height="3" rx="1.5" fill="#d4562a" />
-          <rect x="187" y="292" width="79" height="3" rx="1.5" fill="#d4562a" />
+          <rect x="14" y="292" width="79" height="3" rx="1.5" fill="#5B2D8E" />
+          <rect x="187" y="292" width="79" height="3" rx="1.5" fill="#5B2D8E" />
 
           {/* Shoulder pad extensions */}
           <path d="M 4 215 L 91 211 L 91 249 Q 50 261 4 246 Z" fill="#0d0d0d" />
@@ -102,7 +102,7 @@ export default function HeroIllustration() {
           <ellipse cx="218" cy="119" rx="5" ry="4" fill="#0a0a0a" />
 
           {/* Orange center stripe */}
-          <rect x="131" y="10" width="18" height="96" rx="5" fill="#d4562a" />
+          <rect x="131" y="10" width="18" height="96" rx="5" fill="#5B2D8E" />
 
           {/* Face opening background */}
           <path d="M 96 108 Q 140 98 184 108 L 180 172 Q 140 182 100 172 Z" fill="#5a3018" />
