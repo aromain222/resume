@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useResume } from "./ResumeContext";
 import Magnetic from "./Magnetic";
 import ClickBurst from "./ClickBurst";
+import HeroIllustration from "./HeroIllustration";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -13,7 +14,8 @@ export default function Hero() {
   const { setOpen } = useResume();
 
   return (
-    <section className="relative max-w-6xl mx-auto px-6 pt-36 pb-16 overflow-hidden">
+    <section className="relative max-w-6xl mx-auto px-6 pt-36 pb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] items-end gap-8">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -77,6 +79,10 @@ export default function Hero() {
           </Magnetic>
         </div>
       </motion.div>
+      <div className="hidden lg:flex items-end justify-center">
+        <HeroIllustration />
+      </div>
+      </div>
     </section>
   );
 }
