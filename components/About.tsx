@@ -8,7 +8,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 const tags = [
   {
     label: "Amherst College",
-    bio: "Class of '27. Small school, high standards.",
+    bio: "Class of '27. ~1,900 students. #2 liberal arts in the US.",
   },
   {
     label: "Student Athlete",
@@ -40,15 +40,15 @@ const tags = [
   },
   {
     label: "Builder",
-    bio: "If it doesn't exist yet, I'll make it.",
+    bio: "3 live products. More in progress.",
   },
   {
     label: "R&B",
-    bio: "Frank Ocean. SZA. Brent Faiyaz.",
+    bio: "Frank Ocean, SZA, Brent Faiyaz, Summer Walker.",
   },
   {
     label: "Jazz",
-    bio: "Miles Davis. Good for thinking.",
+    bio: "Miles Davis, John Coltrane, Thelonious Monk.",
   },
 ];
 
