@@ -12,7 +12,7 @@ const tags = [
   },
   {
     label: "Student Athlete",
-    bio: "D3 football. The discipline carries into everything else.",
+    bio: "Defensive lineman. Bench 315, squat 500. Playing since freshman year of high school.",
   },
   {
     label: "Political Science",
