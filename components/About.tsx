@@ -12,7 +12,7 @@ const tags = [
   },
   {
     label: "Student Athlete",
-    bio: "Defensive lineman. Bench 315, squat 500. Playing since freshman year of high school.",
+    bio: "Defensive lineman. Playing since freshman year of high school.",
   },
   {
     label: "Political Science",
@@ -32,11 +32,11 @@ const tags = [
   },
   {
     label: "Fitness",
-    bio: "In the gym before most people are up. Non-negotiable.",
+    bio: "Bench 315, squat 500. In the gym before most people are up.",
   },
   {
     label: "Bay Area",
-    bio: "From the Bay. Always repping it.",
+    bio: "From East Palo Alto.",
   },
   {
     label: "Builder",
