@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useResume } from "./ResumeContext";
 import Magnetic from "./Magnetic";
 import ClickBurst from "./ClickBurst";
-import HeroIllustration from "./HeroIllustration";
+import NotionAvatar from "./NotionAvatar";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -80,7 +80,7 @@ export default function Hero() {
         </div>
       </motion.div>
       <div className="hidden lg:flex items-end justify-center">
-        <HeroIllustration />
+        <NotionAvatar />
       </div>
       </div>
     </section>
