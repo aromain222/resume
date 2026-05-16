@@ -5,6 +5,7 @@ import { useResume } from "./ResumeContext";
 import Magnetic from "./Magnetic";
 import ClickBurst from "./ClickBurst";
 import NotionAvatar from "./NotionAvatar";
+import FunFact from "./FunFact";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -14,7 +15,7 @@ export default function Hero() {
   const { setOpen } = useResume();
 
   return (
-    <section className="relative max-w-6xl mx-auto px-6 pt-36 pb-16">
+    <section className="relative max-w-6xl mx-auto px-6 pt-12 sm:pt-14 pb-16">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] items-end gap-8">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -22,18 +23,6 @@ export default function Hero() {
         transition={{ duration: 0.55, ease }}
         className="relative"
       >
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, ease }}
-          className="flex items-center gap-3 mb-6"
-        >
-          <div className="w-6 h-[2px] bg-accent rounded-full" />
-          <p className="text-[11px] tracking-[0.22em] uppercase text-[#7a7068] font-semibold">
-            Avery Romain
-          </p>
-        </motion.div>
-
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0a0a0a] tracking-[-0.03em] leading-[1.05] mb-5 max-w-2xl">
           Building financial tools, AI systems, and sports intelligence.
         </h1>
@@ -79,8 +68,9 @@ export default function Hero() {
           </Magnetic>
         </div>
       </motion.div>
-      <div className="hidden lg:flex items-end justify-center">
+      <div className="hidden lg:flex flex-col items-center justify-end gap-4">
         <NotionAvatar />
+        <FunFact />
       </div>
       </div>
     </section>
