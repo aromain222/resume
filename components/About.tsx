@@ -36,7 +36,7 @@ const tags = [
   },
   {
     label: "Bay Area",
-    bio: "From East Palo Alto.",
+    bio: "From San Mateo. Lived there for 21 years.",
   },
   {
     label: "Builder",
