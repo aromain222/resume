@@ -24,7 +24,7 @@ const tags = [
   },
   {
     label: "Financial Literacy",
-    bio: "The gap is real. That's what I'm building toward.",
+    bio: "Most people were never taught how money actually works. That matters.",
   },
   {
     label: "Football",
