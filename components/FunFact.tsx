@@ -75,7 +75,7 @@ export default function FunFact() {
             className="relative w-full"
           >
             <div
-              className="absolute -top-2 left-1/2 -translate-x-1/2"
+              className="absolute -top-2 left-[30%] -translate-x-1/2"
               style={{
                 width: 0,
                 height: 0,
@@ -122,7 +122,7 @@ export default function FunFact() {
         whileTap={{ scale: 0.96 }}
         className="text-[11px] tracking-[0.15em] uppercase font-semibold px-4 py-2 border border-black/20 text-[#7a7068] hover:border-black/40 hover:text-[#3d3730] transition-all duration-200 cursor-pointer"
       >
-        {active ? "Next Fact →" : "Avery Lore ✦"}
+        {active ? "Next Fact →" : "Fun Fact"}
       </motion.button>
     </div>
   );
