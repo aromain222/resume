@@ -16,11 +16,11 @@ const tags = [
   },
   {
     label: "Political Science",
-    bio: "How power is built, distributed, and kept.",
+    bio: "I love seeing how systems are formed and changed.",
   },
   {
     label: "Black Studies",
-    bio: "History, culture, and why it all matters.",
+    bio: "Always been interested in Black philosophy.",
   },
   {
     label: "Financial Literacy",
