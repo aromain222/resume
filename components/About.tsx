@@ -1,23 +1,96 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const tags = [
-  "Amherst College",
-  "Student Athlete",
-  "Political Science",
-  "Black Studies",
-  "Financial Literacy",
-  "Football",
-  "Fitness",
-  "Bay Area",
-  "Builder",
-  "R&B",
-  "Jazz",
+  {
+    label: "Amherst College",
+    bio: "Class of '27. Small school, high standards.",
+  },
+  {
+    label: "Student Athlete",
+    bio: "D3 football. The discipline carries into everything else.",
+  },
+  {
+    label: "Political Science",
+    bio: "How power is built, distributed, and kept.",
+  },
+  {
+    label: "Black Studies",
+    bio: "History, culture, and why it all matters.",
+  },
+  {
+    label: "Financial Literacy",
+    bio: "The gap is real. That's what I'm building toward.",
+  },
+  {
+    label: "Football",
+    bio: "Defensive lineman. The game teaches you how to compete.",
+  },
+  {
+    label: "Fitness",
+    bio: "In the gym before most people are up. Non-negotiable.",
+  },
+  {
+    label: "Bay Area",
+    bio: "From the Bay. Always repping it.",
+  },
+  {
+    label: "Builder",
+    bio: "If it doesn't exist yet, I'll make it.",
+  },
+  {
+    label: "R&B",
+    bio: "Frank Ocean. SZA. Brent Faiyaz.",
+  },
+  {
+    label: "Jazz",
+    bio: "Miles Davis. Good for thinking.",
+  },
 ];
+
+function Tag({ tag, index, inView }: { tag: typeof tags[0]; index: number; inView: boolean }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      className="relative inline-block"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={inView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.35, ease, delay: 0.25 + index * 0.04 }}
+    >
+      <span
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="block text-[11px] tracking-[0.12em] uppercase font-medium px-3 py-1.5 border border-black/20 text-[#3d3730] hover:border-accent hover:text-accent transition-colors duration-200 cursor-default"
+      >
+        {tag.label}
+      </span>
+
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 6, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 4, scale: 0.97 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 w-44 bg-white border border-black/[0.1] px-3 py-2.5 shadow-md z-50 pointer-events-none"
+          >
+            <p className="text-[12px] text-[#3d3730] leading-relaxed">
+              {tag.bio}
+            </p>
+            {/* Arrow */}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-white" />
+            <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[7px] border-r-[7px] border-t-[7px] border-l-transparent border-r-transparent border-t-black/10 -mt-px" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
 
 export default function About() {
   const ref = useRef(null);
@@ -76,7 +149,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          {/* Tags — uniform style */}
+          {/* Tags */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -84,15 +157,7 @@ export default function About() {
             className="flex flex-wrap gap-2 content-start"
           >
             {tags.map((tag, i) => (
-              <motion.span
-                key={tag}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.35, ease, delay: 0.25 + i * 0.04 }}
-                className="text-[11px] tracking-[0.12em] uppercase font-medium px-3 py-1.5 border border-black/20 text-[#3d3730] hover:border-accent hover:text-accent transition-colors duration-200"
-              >
-                {tag}
-              </motion.span>
+              <Tag key={tag.label} tag={tag} index={i} inView={inView} />
             ))}
           </motion.div>
         </div>
