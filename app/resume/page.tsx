@@ -50,10 +50,10 @@ export default function ResumePage() {
             location="Remote"
             period="August 2025 – Present"
             bullets={[
-              "Built an AI platform that generates full financial models (DCF, LBO, Comps) in under 10 seconds, reducing modeling time by 20×",
-              "Conducted product demos and outreach with early users to validate product-market fit and refine enterprise messaging",
-              "Researched potential enterprise customers and built targeted messaging around financial workflow automation",
-              "Designed a web interface enabling users to generate and export financial models from a simple prompt",
+              "Architected a multi-agent system of 27 AI trading agents — macro, quant, risk, sentiment, and more — that debate and converge on every trade decision",
+              "Designed a consensus layer where agents with conflicting views negotiate positions, replacing single-model outputs with collective reasoning",
+              "Built core infrastructure for agent communication, role specialization, and trade execution across live market conditions",
+              "Conducted research and outreach with early users to validate the AI-native fund thesis and refine the agent coordination model",
             ]}
           />
           <Job

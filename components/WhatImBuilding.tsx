@@ -29,9 +29,9 @@ const projects: Project[] = [
   {
     num: "02",
     title: "CapitalBase",
-    tagline: "AI financial modeling in under 10 seconds.",
+    tagline: "An AI-native hedge fund run by 27 trading agents.",
     description:
-      "Generates full financial models (DCF, LBO, Comps) from a simple prompt. Designed for analysts and founders who need structured outputs fast.",
+      "27 specialized AI agents with distinct roles — macro, quant, risk, sentiment, and more — debate and converge on every trade decision. No single model calls the shot.",
     url: "https://www.capital-base.com/app",
     thumbnail: "capitalbase",
     status: "Live",
