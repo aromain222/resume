@@ -141,7 +141,7 @@ export default function Hero() {
                   exit={{ opacity: 0, scale: 0.85 }}
                   transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
                   style={{ transformOrigin: "left center" }}
-                  className="absolute top-[19%] left-[52%] w-48 z-20 pointer-events-none"
+                  className="absolute top-[19%] left-[60%] w-48 z-20 pointer-events-none"
                 >
                   {/* tail pointing left toward mouth */}
                   <div
