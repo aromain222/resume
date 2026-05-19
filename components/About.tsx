@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useTextScramble } from "@/lib/animations";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -95,6 +96,8 @@ function Tag({ tag, index, inView }: { tag: typeof tags[0]; index: number; inVie
 export default function About() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [labelHover, setLabelHover] = useState(false);
+  const sectionLabel = useTextScramble("About", labelHover);
 
   return (
     <section className="border-t border-black/[0.07] py-20 lg:py-28">
@@ -107,8 +110,12 @@ export default function About() {
           className="flex items-center gap-3 mb-12"
         >
           <div className="w-6 h-[2px] bg-accent rounded-full" />
-          <span className="text-[11px] tracking-[0.22em] uppercase text-[#7a7068] font-semibold">
-            About
+          <span
+            className="text-[11px] tracking-[0.22em] uppercase text-[#7a7068] font-semibold cursor-default select-none"
+            onMouseEnter={() => { setLabelHover(false); setTimeout(() => setLabelHover(true), 0); }}
+            onMouseLeave={() => setLabelHover(false)}
+          >
+            {sectionLabel}
           </span>
         </motion.div>
 

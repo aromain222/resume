@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView, useSpring, useReducedMotion } from "framer-motion";
+import { useCountUp, useTextScramble } from "@/lib/animations";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -280,6 +281,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export default function WhatImBuilding() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const productCount = useCountUp(4, inView);
+  const [labelHover, setLabelHover] = useState(false);
+  const sectionLabel = useTextScramble("What I'm Building", labelHover);
 
   return (
     <section id="building" className="border-t border-black/[0.07] py-10 lg:py-14">
@@ -293,12 +297,16 @@ export default function WhatImBuilding() {
         >
           <div className="flex items-center gap-3">
             <div className="w-6 h-[2px] bg-accent rounded-full" />
-            <span className="text-[11px] tracking-[0.22em] uppercase text-[#7a7068] font-semibold">
-              What I&apos;m Building
+            <span
+              className="text-[11px] tracking-[0.22em] uppercase text-[#7a7068] font-semibold cursor-default select-none"
+              onMouseEnter={() => { setLabelHover(false); setTimeout(() => setLabelHover(true), 0); }}
+              onMouseLeave={() => setLabelHover(false)}
+            >
+              {sectionLabel}
             </span>
           </div>
           <span className="hidden sm:block text-[11px] text-[#b0a898] tracking-[0.12em] uppercase font-medium">
-            4 live products
+            {productCount} live products
           </span>
         </motion.div>
 

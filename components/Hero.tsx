@@ -1,11 +1,12 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useResume } from "./ResumeContext";
 import Magnetic from "./Magnetic";
 import ClickBurst from "./ClickBurst";
 import NotionAvatar from "./NotionAvatar";
+import { useTextScramble } from "@/lib/animations";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -41,8 +42,18 @@ function buildQueue(): string[] {
   return a;
 }
 
+const HEADLINE = "Building financial tools, AI systems, and sports intelligence.";
+
 export default function Hero() {
   const { setOpen } = useResume();
+
+  const [scrambleTrigger, setScrambleTrigger] = useState(false);
+  const headline = useTextScramble(HEADLINE, scrambleTrigger);
+
+  useEffect(() => {
+    const t = setTimeout(() => setScrambleTrigger(true), 300);
+    return () => clearTimeout(t);
+  }, []);
 
   const [factActive, setFactActive] = useState(false);
   const [queue, setQueue] = useState<string[]>([]);
@@ -81,8 +92,11 @@ export default function Hero() {
           transition={{ duration: 0.55, ease }}
           className="relative"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0a0a0a] tracking-[-0.03em] leading-[1.05] mb-5 max-w-2xl">
-            Building financial tools, AI systems, and sports intelligence.
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0a0a0a] tracking-[-0.03em] leading-[1.05] mb-5 max-w-2xl font-mono cursor-pointer select-none"
+            onClick={() => { setScrambleTrigger(false); setTimeout(() => setScrambleTrigger(true), 10); }}
+          >
+            {headline}
           </h1>
 
           <p className="text-[15px] text-[#7a7068] leading-relaxed mb-9 max-w-md">
