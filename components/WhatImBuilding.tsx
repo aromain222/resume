@@ -11,7 +11,7 @@ type Project = {
   tagline: string;
   description: string;
   url: string;
-  thumbnail: "stackwise" | "capitalbase" | "portal";
+  thumbnail: "stackwise" | "capitalbase" | "portal" | "datachat";
   status: string;
 };
 
@@ -44,6 +44,16 @@ const projects: Project[] = [
       "AI-powered search and fit scoring for the college football transfer market. Built for personnel directors who recruit by data, not reputation.",
     url: "https://jal-football.vercel.app",
     thumbnail: "portal",
+    status: "Live",
+  },
+  {
+    num: "04",
+    title: "DataChat",
+    tagline: "Ask your spreadsheet anything.",
+    description:
+      "Upload a CSV, ask questions in plain English, get SQL-powered answers with charts. No dashboards. No setup. Just data and questions.",
+    url: "https://sql-oxm5mfre5-aromain222s-projects.vercel.app",
+    thumbnail: "datachat",
     status: "Live",
   },
 ];
@@ -160,10 +170,42 @@ function PortalThumbnail() {
   );
 }
 
+function DataChatThumbnail() {
+  return (
+    <div className="absolute inset-0 bg-[#F5F0E8] flex flex-col justify-center px-5 py-4 gap-3">
+      <div className="bg-white border border-black/[0.08] px-3 py-2 flex items-center gap-2">
+        <span className="text-[7px] text-[#7a7068] flex-1 truncate">What is the total revenue by region?</span>
+        <div className="w-4 h-4 rounded-sm bg-[#d4562a] flex items-center justify-center shrink-0">
+          <svg width="7" height="7" viewBox="0 0 7 7" fill="none">
+            <path d="M1 6L6 1M6 1H2.5M6 1v3.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </div>
+      <div className="bg-white border border-black/[0.08] overflow-hidden">
+        <div className="grid grid-cols-2 border-b border-black/[0.06]">
+          <div className="px-3 py-1.5 text-[5px] font-bold text-[#7a7068] uppercase tracking-wider border-r border-black/[0.06]">Region</div>
+          <div className="px-3 py-1.5 text-[5px] font-bold text-[#7a7068] uppercase tracking-wider">Revenue</div>
+        </div>
+        {[["West", "$482,310"], ["Northeast", "$371,640"], ["South", "$298,900"], ["Midwest", "$214,780"]].map(([region, rev]) => (
+          <div key={region} className="grid grid-cols-2 border-b border-black/[0.04] last:border-0">
+            <div className="px-3 py-1 text-[6px] text-[#0a0a0a] font-medium border-r border-black/[0.04]">{region}</div>
+            <div className="px-3 py-1 text-[6px] text-[#d4562a] font-bold">{rev}</div>
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center gap-1.5">
+        <div className="w-1.5 h-1.5 rounded-full bg-[#d4562a]" />
+        <span className="text-[6px] text-[#7a7068]">West leads by 30% — driven by Q3 product launch</span>
+      </div>
+    </div>
+  );
+}
+
 const thumbnails = {
   stackwise: StackwiseThumbnail,
   capitalbase: CapitalBaseThumbnail,
   portal: PortalThumbnail,
+  datachat: DataChatThumbnail,
 };
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -256,11 +298,11 @@ export default function WhatImBuilding() {
             </span>
           </div>
           <span className="hidden sm:block text-[11px] text-[#b0a898] tracking-[0.12em] uppercase font-medium">
-            3 live products
+            4 live products
           </span>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {projects.map((project, i) => (
             <ProjectCard key={project.title} project={project} index={i} />
           ))}
