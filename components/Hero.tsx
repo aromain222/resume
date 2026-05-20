@@ -100,7 +100,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-[15px] text-[#7a7068] leading-relaxed mb-9 max-w-md">
-            Student-athlete at Amherst. I build the financial tools that should already exist.
+            Student-athlete at Amherst.
           </p>
 
           <div className="flex items-center gap-2 mb-10 flex-wrap">
