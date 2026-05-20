@@ -4,46 +4,57 @@ import { motion, useReducedMotion } from "framer-motion";
 
 function FootballSVG() {
   return (
-    <svg width="88" height="50" viewBox="0 0 88 50" fill="none" aria-hidden="true">
+    <svg width="104" height="48" viewBox="0 0 104 48" fill="none" aria-hidden="true">
       {/* Body */}
-      <ellipse cx="44" cy="25" rx="42" ry="23" fill="#c4521e" />
-      {/* Lace panel */}
-      <rect x="32" y="14" width="24" height="22" rx="2" fill="white" opacity="0.92" />
-      {/* Center seam */}
-      <line x1="44" y1="14" x2="44" y2="36" stroke="#c4521e" strokeWidth="1.5" />
+      <ellipse cx="52" cy="24" rx="50" ry="22" fill="#7B3200" />
+      {/* Highlight */}
+      <ellipse cx="44" cy="15" rx="24" ry="9" fill="#A0450A" opacity="0.55" />
+      {/* Seam curves */}
+      <path d="M4 24 Q26 5 52 24 Q78 43 100 24" stroke="#4A1E00" strokeWidth="1.4" fill="none" />
+      <path d="M4 24 Q26 43 52 24 Q78 5 100 24" stroke="#4A1E00" strokeWidth="1.4" fill="none" />
+      {/* Left tip stripes */}
+      <path d="M7 16 Q3 24 7 32" stroke="white" strokeWidth="2.8" fill="none" strokeLinecap="round" opacity="0.88" />
+      <path d="M13 12 Q8 24 13 36" stroke="white" strokeWidth="2.8" fill="none" strokeLinecap="round" opacity="0.88" />
+      {/* Right tip stripes */}
+      <path d="M97 16 Q101 24 97 32" stroke="white" strokeWidth="2.8" fill="none" strokeLinecap="round" opacity="0.88" />
+      <path d="M91 12 Q96 24 91 36" stroke="white" strokeWidth="2.8" fill="none" strokeLinecap="round" opacity="0.88" />
+      {/* Lace verticals */}
+      <line x1="46" y1="15" x2="46" y2="33" stroke="white" strokeWidth="1" opacity="0.6" />
+      <line x1="52" y1="15" x2="52" y2="33" stroke="white" strokeWidth="1" opacity="0.6" />
+      <line x1="58" y1="15" x2="58" y2="33" stroke="white" strokeWidth="1" opacity="0.6" />
       {/* Laces */}
-      {[18, 23, 28, 33].map((y) => (
-        <line key={y} x1="36" y1={y} x2="52" y2={y} stroke="#c4521e" strokeWidth="1.5" />
-      ))}
-      {/* Side seam curves */}
-      <path d="M5 25 Q24 8 44 25 Q64 42 83 25" stroke="white" strokeWidth="1.2" fill="none" opacity="0.25" />
-      <path d="M5 25 Q24 42 44 25 Q64 8 83 25" stroke="white" strokeWidth="1.2" fill="none" opacity="0.25" />
+      <line x1="43" y1="17" x2="61" y2="17" stroke="white" strokeWidth="2" strokeLinecap="round" />
+      <line x1="43" y1="21" x2="61" y2="21" stroke="white" strokeWidth="2" strokeLinecap="round" />
+      <line x1="43" y1="25" x2="61" y2="25" stroke="white" strokeWidth="2" strokeLinecap="round" />
+      <line x1="43" y1="29" x2="61" y2="29" stroke="white" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
 
 export default function FootballAnimation() {
   const shouldReduce = useReducedMotion();
-
   if (shouldReduce) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
       <motion.div
         className="absolute"
-        style={{ top: "18%" }}
-        initial={{ x: "-10vw", y: 0, rotate: 20, opacity: 0 }}
+        style={{
+          top: "18%",
+          filter: "drop-shadow(0 8px 14px rgba(0,0,0,0.28))",
+        }}
+        initial={{ x: "-12vw", y: 0, rotate: -16, opacity: 0 }}
         animate={{
-          x: ["-10vw", "25vw", "65vw", "110vw"],
-          y: [0, -90, -45, 50],
-          rotate: [20, -100, -280, -420],
+          x: ["-12vw", "22vw", "63vw", "112vw"],
+          y: [0, -115, -52, 72],
+          rotate: [-16, -6, 3, 12],
           opacity: [0, 1, 1, 0],
         }}
         transition={{
-          duration: 2.6,
-          times: [0, 0.3, 0.72, 1],
-          ease: "easeInOut",
-          delay: 1.1,
+          duration: 2.8,
+          times: [0, 0.32, 0.70, 1],
+          ease: [0.22, 1, 0.36, 1],
+          delay: 1.0,
         }}
       >
         <FootballSVG />
