@@ -55,8 +55,6 @@ export default function FootballAnimation() {
           times: [0, 0.32, 0.70, 1],
           ease: [0.22, 1, 0.36, 1],
           delay: 1.0,
-          repeat: Infinity,
-          repeatDelay: 5,
         }}
       >
         <FootballSVG />
