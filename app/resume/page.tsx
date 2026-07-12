@@ -45,15 +45,40 @@ export default function ResumePage() {
         {/* Experience */}
         <Section title="Experience">
           <Job
-            org="CapitalBase"
-            role="Founder – Lead Developer"
+            org="Murj"
+            role="AI Implementation Engineer"
             location="Remote"
-            period="August 2025 – Present"
+            period="June 2026 – Present"
             bullets={[
-              "Architected a multi-agent system of 27 AI trading agents — macro, quant, risk, sentiment, and more — that debate and converge on every trade decision",
-              "Designed a consensus layer where agents with conflicting views negotiate positions, replacing single-model outputs with collective reasoning",
-              "Built core infrastructure for agent communication, role specialization, and trade execution across live market conditions",
-              "Conducted research and outreach with early users to validate the AI-native fund thesis and refine the agent coordination model",
+              "Built internal automations that replace manual finance workflows, freeing the team from repetitive data handling",
+              "Automated AR reporting and the monthly rollover by extracting and structuring Sage 50 data into a scheduled Python job",
+              "Partnered with the finance team to map the existing AR workflow, then automated the manual steps end-to-end",
+            ]}
+          />
+          <Job
+            org="Sankofa"
+            role="Co-Founder – Lead Engineer"
+            location="Remote"
+            period="May 2026 – Present"
+            bullets={[
+              "Built a 19-agent platform for autonomous investment research and real-time portfolio monitoring",
+              "Engineered analyst agents for news, sentiment, quant, and fundamentals, each creating a bullish or bearish signal with reasoning",
+              "Orchestrated 13 manager-persona agents that debate analyst signals into a single buy/sell/hold verdict",
+              "Designed a monitoring loop that re-scans holdings continuously and re-triggers agent deliberation on material change",
+              "Wired Slack alerts that fire only when re-analysis flips a thesis, with a written rationale for the change",
+            ]}
+          />
+          <Job
+            org="CapitalBase"
+            role="Founder"
+            location="Remote"
+            period="August 2025 – May 2026"
+            bullets={[
+              "Architected a multi-agent pipeline ingesting SEC filings, earnings reports, and market data into structured analysis inputs",
+              "Built valuation and diligence workflows into a production app, orchestrating agent calls into auditable financial outputs",
+              "Integrated live news and sentiment signals into the modeling engine, grounding valuations in current market conditions",
+              "Designed an agentic system automating DCF, LBO, comps, and M&A end-to-end, replacing Excel with reproducible models",
+              "Cut modeling time from hours to minutes by parallelizing agent tasks and caching data fetches",
             ]}
           />
           <Job
@@ -66,28 +91,6 @@ export default function ResumePage() {
               "Supported due diligence on $25M+ deals by preparing models and investment materials used in partner evaluations",
               "Analyzed 30+ comparable transactions to benchmark valuation multiples and refine sourcing strategy",
               "Applied unit economics, cash flow durability, and multiple expansion analysis to screen 80+ acquisition targets",
-            ]}
-          />
-          <Job
-            org="Weel (YC S24)"
-            role="Marketing Intern"
-            location="Remote"
-            period="June 2025 – July 2025"
-            bullets={[
-              "Executed campus marketing campaigns for a YC-backed fintech startup to drive Gen-Z user acquisition",
-              "Produced video and social content that increased product awareness and downloads",
-              "Collaborated with founders to refine growth messaging using user feedback and engagement metrics",
-            ]}
-          />
-          <Job
-            org="Robertson Stephens"
-            role="Private Wealth Management Intern"
-            location="San Francisco, CA"
-            period="July 2025"
-            bullets={[
-              "Supported advisors managing $500M+ in AUM through portfolio reports and client deliverables",
-              "Researched 50+ securities to inform allocation changes for high-net-worth portfolios",
-              "Built Excel tools, reducing report preparation time by 25%, improving operational efficiency",
             ]}
           />
           <Job
@@ -107,27 +110,18 @@ export default function ResumePage() {
         <Section title="Relevant Coursework / Projects">
           <Project
             title="Transfer Portal + PFF Tool (Data + Workflow System)"
-            note="In Progress"
             bullets={[
-              "Building a system to ingest, filter, and surface player data into actionable decision workflows",
-              "Designing interfaces that allow users to query and refine results based on specific constraints (measurables, usage, fit)",
-              "Focused on turning messy datasets into structured outputs that support faster decision-making",
+              "Built a system that ingests, filters, and surfaces player data into actionable decision workflows",
+              "Designed interfaces that let users query and refine results based on specific constraints (measurables, usage, fit)",
+              "Turned messy datasets into structured outputs that support faster decision-making",
             ]}
           />
           <Project
             title="Financial Stack (AI-Driven Financial Workflow Tool)"
             bullets={[
-              "Building a system that helps users understand and set up their financial stack through guided, agent-like workflows",
-              "Focused on turning fragmented financial decisions into a structured, interactive process rather than static recommendations",
-              "Designing flows that adapt based on user inputs, simulating how a financial advisor would guide decisions step-by-step",
-              "Exploring how automation and AI can simplify onboarding into financial tools and improve long-term engagement",
-            ]}
-          />
-          <Project
-            title="Bitcoin VC & Grant Tracker"
-            bullets={[
-              "Cataloged 20+ Bitcoin VC firms and 500+ grants by creating and using a custom web crawler to automate data collection",
-              "Created a searchable database of startup deals and developer grants by round size, sector, and funder",
+              "Built a system that helps users set up their financial stack through guided, agent-like workflows",
+              "Turned fragmented financial decisions into a structured, interactive process rather than static recommendations",
+              "Designed flows that adapt to user inputs, simulating how a financial advisor guides decisions step-by-step",
             ]}
           />
         </Section>
@@ -150,8 +144,7 @@ export default function ResumePage() {
             location=""
             period=""
             bullets={[
-              "NCAA Football Student-Athlete competing at a high level while managing 20+ hours per week of training, film study, and competition",
-              "Demonstrated discipline, resilience, and leadership by balancing athletics with a full academic course load and campus commitments",
+              "Compete at the NCAA level while managing 20+ hours/week of training and film study alongside a full course load",
             ]}
           />
           <Job
@@ -160,8 +153,7 @@ export default function ResumePage() {
             location=""
             period=""
             bullets={[
-              "Led Black alumni business outreach for the Amherst Black Business Club, focused on entrepreneurship and mentorship",
-              "Developed a Black alumni founder outreach strategy for the Amherst Black Business Club",
+              "Led founder alumni outreach for the Amherst Black Business Club, building a mentorship pipeline connecting students with Black alumni",
             ]}
           />
         </Section>
@@ -179,14 +171,30 @@ export default function ResumePage() {
 
         {/* Skills */}
         <Section title="Skills">
-          <p className="text-[12.5px] leading-relaxed">
-            Python | JavaScript | Next.js | React | Tailwind | API Integration
-            | Excel (Advanced Financial Modeling) | Financial Analysis | Figma |
-            Supabase | SQL | Version Control (Git/GitHub) | Prompt Engineering |
-            CRM Systems | Leadership | Collaboration | Strategic Execution |
-            Pipeline Building | Lead Research | Outreach Strategy | Product
-            Positioning | CRM | Sales | AI Agents
-          </p>
+          <div className="text-[12.5px] leading-relaxed space-y-1">
+            <p>
+              <span className="font-bold">Languages &amp; Frameworks:</span>{" "}
+              Python | JavaScript | TypeScript | React | Next.js | Tailwind | SQL
+            </p>
+            <p>
+              <span className="font-bold">Tools &amp; Infrastructure:</span>{" "}
+              Supabase | Git/GitHub | API Integration | Figma | Excel (Advanced
+              Financial Modeling)
+            </p>
+            <p>
+              <span className="font-bold">AI &amp; Automation:</span> AI Agents |
+              Multi-Agent Systems | Workflow Automation | Prompt Engineering
+            </p>
+            <p>
+              <span className="font-bold">Finance:</span> Financial Modeling |
+              Financial Analysis | Valuation | Due Diligence
+            </p>
+            <p>
+              <span className="font-bold">Client-Facing:</span> Stakeholder
+              Discovery | Technical Communication | Cross-Functional Collaboration
+              | Client Onboarding
+            </p>
+          </div>
         </Section>
       </div>
     </>

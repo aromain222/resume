@@ -1,197 +1,138 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useCallback, useEffect } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { useResume } from "./ResumeContext";
-import Magnetic from "./Magnetic";
-import ClickBurst from "./ClickBurst";
-import NotionAvatar from "./NotionAvatar";
-import { useTextScramble } from "@/lib/animations";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const interests = ["Football", "Fitness", "Coding", "Networking", "Sports", "Gaming"];
-
-const FACTS = [
-  "I love cooking. My favorite dishes to make are curry chicken, jerk chicken, and steak.",
-  "I'm a quarter-zip enthusiast.",
-  "I am the world's biggest LeBron fan.",
-  "I'm top 1,000 in the world in CFB26.",
-  "I started college planning on pre-law, went down the finance rabbit hole, and somehow ended up in tech.",
-  "I was born in Washington, D.C. but grew up in the Bay Area.",
-  "I'm big into lifting. My PRs are 315 on bench and 500 on squat.",
-  "I like building tools that make opportunities more accessible.",
-  "I'm an Ohio State, Cleveland Cavaliers, Cleveland Browns, and Washington Commanders fan.",
-  "I love building Legos.",
-  "I love meeting new people and talking about pretty much anything. Feel free to reach out.",
-];
-
-const SOCIAL_FACT = FACTS[FACTS.length - 1];
-
-function buildQueue(): string[] {
-  const a = [...FACTS];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  const idx = a.indexOf(SOCIAL_FACT);
-  if (idx < 2) {
-    const swap = 2 + Math.floor(Math.random() * (a.length - 2));
-    [a[idx], a[swap]] = [a[swap], a[idx]];
-  }
-  return a;
-}
-
-const HEADLINE = "Building financial tools, AI systems, and sports intelligence.";
-
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
   const { setOpen } = useResume();
-
-  const [scrambleTrigger, setScrambleTrigger] = useState(false);
-  const headline = useTextScramble(HEADLINE, scrambleTrigger);
-
-  useEffect(() => {
-    const t = setTimeout(() => setScrambleTrigger(true), 300);
-    return () => clearTimeout(t);
-  }, []);
-
-  const [factActive, setFactActive] = useState(false);
-  const [queue, setQueue] = useState<string[]>([]);
-  const [fact, setFact] = useState("");
-  const [factKey, setFactKey] = useState(0);
-
-  const advance = useCallback(() => {
-    if (!factActive) {
-      const q = buildQueue();
-      setFact(q[0]);
-      setQueue(q.slice(1));
-      setFactActive(true);
-      setFactKey((k) => k + 1);
-      return;
-    }
-    const nextQueue = queue.length === 0 ? buildQueue() : null;
-    if (nextQueue) {
-      setFact(nextQueue[0]);
-      setQueue(nextQueue.slice(1));
-    } else {
-      const [next, ...rest] = queue;
-      setFact(next);
-      setQueue(rest);
-    }
-    setFactKey((k) => k + 1);
-  }, [factActive, queue]);
-
-  const isSocial = fact === SOCIAL_FACT;
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 80]);
+  const portraitScale = useTransform(scrollYProgress, [0, 1], [1, reduceMotion ? 1 : 0.94]);
+  const copyY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -24]);
 
   return (
-    <section className="relative max-w-6xl mx-auto px-6 pt-12 sm:pt-14 pb-16">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] items-end gap-8">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, ease }}
-          className="relative"
-        >
-          <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0a0a0a] tracking-[-0.03em] leading-[1.05] mb-5 max-w-2xl font-mono cursor-pointer select-none"
-            onClick={() => { setScrambleTrigger(false); setTimeout(() => setScrambleTrigger(true), 10); }}
+    <section
+      ref={ref}
+      className="editorial-grid relative isolate min-h-[calc(100svh-42px)] overflow-hidden border-b border-black/[0.08] pt-20 lg:pt-24"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease, delay: 0.22 }}
+        className="absolute right-2 top-16 flex h-64 w-48 items-end justify-center lg:hidden"
+      >
+        <div className="absolute bottom-2 h-44 w-44 rounded-full border border-accent/30 bg-accent/[0.055]" />
+        <Image
+          src="/images/avatar-quarterzip.png"
+          alt=""
+          width={210}
+          height={320}
+          draggable={false}
+          className="relative z-10 h-56 w-auto object-contain object-bottom drop-shadow-[0_14px_18px_rgba(29,22,16,0.1)]"
+        />
+      </motion.div>
+      <div className="relative mx-auto flex min-h-[calc(100svh-122px)] max-w-[1440px] items-end px-6 sm:px-10 lg:px-14">
+        <div className="grid w-full grid-cols-1 items-end gap-12 lg:grid-cols-[minmax(0,1.22fr)_minmax(330px,0.78fr)] lg:gap-4">
+          <motion.div
+            style={{ y: copyY }}
+            className="relative z-10 pb-12 lg:pb-16"
           >
-            {headline}
-          </h1>
-
-          <p className="text-[15px] text-[#7a7068] leading-relaxed mb-9 max-w-md">
-            Student-athlete at Amherst.
-          </p>
-
-          <div className="flex items-center gap-2 mb-10 flex-wrap">
-            {interests.map((item) => (
-              <span
-                key={item}
-                className="text-[11px] tracking-[0.1em] uppercase font-medium px-3 py-1.5 border border-black/20 text-[#3d3730] hover:border-accent hover:text-accent transition-colors duration-200"
-              >
-                {item}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease }}
+              className="mb-7 flex items-center gap-3"
+            >
+              <span className="h-px w-8 bg-accent" />
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
+                Amherst ’27 · Student-athlete · Builder
               </span>
-            ))}
-          </div>
+            </motion.div>
 
-          <div className="flex items-center gap-3">
-            <Magnetic>
-              <ClickBurst>
+            <h1 className="max-w-[960px] font-black leading-[0.78] tracking-[-0.075em] text-[#0a0a0a]">
+              <span className="block overflow-hidden pb-[0.08em] text-[clamp(5rem,12vw,11rem)]">
+                <motion.span
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, ease, delay: 0.05 }}
+                  className="block"
+                >
+                  Avery
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden pb-[0.1em] text-[clamp(5rem,12vw,11rem)] text-accent">
+                <motion.span
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, ease, delay: 0.13 }}
+                  className="block"
+                >
+                  Romain.
+                </motion.span>
+              </span>
+            </h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease, delay: 0.42 }}
+              className="mt-8 grid max-w-3xl gap-7 border-t border-black/[0.14] pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end"
+            >
+              <p className="max-w-xl text-[clamp(1.05rem,1.7vw,1.35rem)] font-medium leading-[1.45] tracking-[-0.02em] text-[#302c28]">
+                I build decision systems for finance, data, and college sports—then make them useful enough for people to trust.
+              </p>
+              <div className="flex items-center gap-4">
                 <a
                   href="#building"
-                  className="group inline-flex items-center gap-2.5 px-6 py-3 bg-[#0a0a0a] text-white text-xs font-bold tracking-[0.06em] uppercase hover:bg-accent transition-colors duration-200 cursor-pointer"
+                  className="group inline-flex items-center gap-3 bg-[#0a0a0a] px-5 py-3 text-[11px] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-accent"
                 >
-                  View Work
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-200">
-                    <path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  Selected work
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
-              </ClickBurst>
-            </Magnetic>
-            <Magnetic>
-              <ClickBurst>
                 <button
                   onClick={() => setOpen(true)}
-                  className="text-[11px] tracking-[0.15em] uppercase px-6 py-3 border border-black/20 text-[#7a7068] font-semibold hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer"
+                  className="border-b border-black/25 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5f5851] transition-colors hover:border-accent hover:text-accent"
                 >
                   Resume
                 </button>
-              </ClickBurst>
-            </Magnetic>
-          </div>
-        </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
 
-        <div className="hidden lg:flex flex-col items-center justify-end gap-4">
-          {/* Avatar + speech bubble overlaid at mouth level */}
-          <div className="relative flex justify-center w-full">
-            <NotionAvatar />
-
-            <AnimatePresence mode="wait">
-              {factActive && (
-                <motion.div
-                  key={factKey}
-                  initial={{ opacity: 0, scale: 0.85 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.85 }}
-                  transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  style={{ transformOrigin: "left center" }}
-                  className="absolute top-[19%] left-[60%] w-48 z-20 pointer-events-none"
-                >
-                  {/* tail pointing left toward mouth */}
-                  <div
-                    className="absolute left-[-8px] top-4"
-                    style={{
-                      width: 0,
-                      height: 0,
-                      borderTop: "7px solid transparent",
-                      borderBottom: "7px solid transparent",
-                      borderRight: "8px solid white",
-                    }}
-                  />
-                  <div className="bg-white border border-black/[0.08] rounded-xl px-3.5 py-3 shadow-md pointer-events-auto">
-                    <p className="text-[12px] text-[#3d3730] leading-relaxed">{fact}</p>
-                    {isSocial && (
-                      <div className="flex items-center gap-2 mt-2.5 pt-2.5 border-t border-black/[0.06] flex-wrap">
-                        <a href="https://linkedin.com/in/averyromain" target="_blank" rel="noreferrer" className="text-[10px] tracking-[0.08em] uppercase font-semibold text-[#7a7068] hover:text-[#0a0a0a] transition-colors duration-200">LinkedIn</a>
-                        <span className="text-black/20">·</span>
-                        <a href="mailto:aromain27@amherst.edu" className="text-[10px] tracking-[0.08em] uppercase font-semibold text-[#7a7068] hover:text-[#0a0a0a] transition-colors duration-200">Email</a>
-                        <span className="text-black/20">·</span>
-                        <a href="#contact" className="text-[10px] tracking-[0.08em] uppercase font-semibold text-[#7a7068] hover:text-[#0a0a0a] transition-colors duration-200">Contact</a>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <motion.button
-            onClick={advance}
-            whileTap={{ scale: 0.96 }}
-            className="text-[11px] tracking-[0.15em] uppercase font-semibold px-4 py-2 border border-black/20 text-[#7a7068] hover:border-black/40 hover:text-[#3d3730] transition-all duration-200 cursor-pointer"
+          <motion.div
+            initial={{ opacity: 0, clipPath: "inset(18% 0 0 0)" }}
+            animate={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }}
+            transition={{ duration: 1, ease, delay: 0.25 }}
+            style={{ y: portraitY, scale: portraitScale }}
+            className="relative hidden h-[72vh] min-h-[560px] items-end justify-center lg:flex"
           >
-            {factActive ? "Next Fact →" : "Fun Fact"}
-          </motion.button>
+            <motion.div
+              animate={reduceMotion ? undefined : { scale: [1, 1.025, 1] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-[8%] left-1/2 h-[68%] aspect-square -translate-x-1/2 rounded-full border border-accent/30 bg-accent/[0.055]"
+            />
+            <span className="absolute right-0 top-[22%] origin-top-right rotate-90 font-mono text-[10px] uppercase tracking-[0.25em] text-[#91877e]">
+              San Mateo → Amherst → Building what’s next
+            </span>
+            <Image
+              src="/images/avatar-quarterzip.png"
+              alt="Illustrated portrait of Avery Romain"
+              width={520}
+              height={760}
+              priority
+              draggable={false}
+              className="relative z-10 h-[78%] w-auto object-contain object-bottom drop-shadow-[0_28px_30px_rgba(29,22,16,0.12)]"
+            />
+          </motion.div>
         </div>
       </div>
     </section>

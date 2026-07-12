@@ -41,7 +41,7 @@ const ideas: Idea[] = [
   },
 ];
 
-function IdeaCard({ idea, index }: { idea: Idea; index: number }) {
+function IdeaRow({ idea, index }: { idea: Idea; index: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const [expanded, setExpanded] = useState(false);
@@ -52,64 +52,55 @@ function IdeaCard({ idea, index }: { idea: Idea; index: number }) {
       initial={{ opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, ease, delay: index * 0.12 }}
-      className="border border-black/[0.08] bg-white hover:border-black/[0.18] transition-colors duration-300"
+      className="border-t border-black/[0.14] py-8 lg:py-10"
     >
-      <div className="p-8 sm:p-10">
-        <span className="inline-block text-[11px] tracking-[0.14em] uppercase font-bold px-3 py-1.5 border border-black/20 text-[#3d3730] mb-5">
-          {idea.tag}
-        </span>
+      <div className="grid gap-6 lg:grid-cols-[76px_minmax(230px,0.72fr)_minmax(0,1.28fr)] lg:gap-10">
+        <span className="font-mono text-xs tracking-[0.15em] text-[#a0978d]">0{index + 1}</span>
+        <div>
+          <span className="mb-4 block font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+            {idea.tag}
+          </span>
+          <h3 className="text-balance text-2xl font-black leading-[1.15] tracking-[-0.035em] text-[#0a0a0a] sm:text-3xl">
+            {idea.title}
+          </h3>
+        </div>
 
-        <h3 className="text-lg sm:text-xl font-bold text-[#0a0a0a] tracking-[-0.02em] leading-[1.3] mb-6">
-          {idea.title}
-        </h3>
+        <div>
+          <p className="max-w-2xl text-[15px] leading-[1.8] text-[#4e4842]">
+            {idea.paragraphs[0]}
+          </p>
 
-        <p className="text-[14px] text-[#5a5450] leading-[1.85]">
-          {idea.paragraphs[0]}
-        </p>
+          <AnimatePresence initial={false}>
+            {expanded && (
+              <motion.div
+                key="body"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.45, ease }}
+                className="overflow-hidden"
+              >
+                <div className="space-y-5 pt-5">
+                  {idea.paragraphs.slice(1).map((p, i) => (
+                    <p key={i} className="max-w-2xl text-[14px] leading-[1.85] text-[#756d65]">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-        <AnimatePresence initial={false}>
-          {expanded && (
-            <motion.div
-              key="body"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.45, ease }}
-              className="overflow-hidden"
-            >
-              <div className="pt-5 space-y-5">
-                {idea.paragraphs.slice(1).map((p, i) => (
-                  <p key={i} className="text-[14px] text-[#7a7068] leading-[1.85]">
-                    {p}
-                  </p>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <button
-          onClick={() => setExpanded((v) => !v)}
-          className="mt-7 flex items-center gap-2 text-[11px] tracking-[0.12em] uppercase text-[#b0a898] hover:text-accent transition-colors duration-200 font-semibold cursor-pointer"
-        >
-          {expanded ? "Collapse" : "Read more"}
-          <motion.svg
-            width="9"
-            height="9"
-            viewBox="0 0 9 9"
-            fill="none"
-            animate={{ rotate: expanded ? 180 : 0 }}
-            transition={{ duration: 0.3, ease }}
+          <button
+            onClick={() => setExpanded((v) => !v)}
+            className="mt-7 flex cursor-pointer items-center gap-3 border-b border-black/20 pb-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#70675f] transition-colors hover:border-accent hover:text-accent"
           >
-            <path
-              d="M1 3L4.5 6.5L8 3"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </motion.svg>
-        </button>
+            {expanded ? "Close essay" : "Read full essay"}
+            <motion.span animate={{ rotate: expanded ? 45 : 0 }} transition={{ duration: 0.25, ease }}>
+              +
+            </motion.span>
+          </button>
+        </div>
       </div>
     </motion.div>
   );
@@ -120,25 +111,32 @@ export default function Ideas() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="ideas" className="border-t border-black/[0.07] py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="ideas" className="border-t border-black/[0.08] bg-[#f3eee6] py-20 lg:py-28">
+      <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease }}
-          className="flex items-center gap-3 mb-12"
+          className="mb-14 grid gap-5 md:grid-cols-[1fr_0.55fr] md:items-end lg:mb-16"
         >
-          <div className="w-6 h-[2px] bg-accent rounded-full" />
-          <span className="text-[11px] tracking-[0.22em] uppercase text-[#7a7068] font-semibold">
-            Ideas
-          </span>
+          <div>
+            <p className="mb-5 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
+              <span className="h-px w-8 bg-accent" />
+              Field notes
+            </p>
+            <h2 className="text-5xl font-black tracking-[-0.055em] text-[#0a0a0a] sm:text-6xl">What I’m thinking about.</h2>
+          </div>
+          <p className="max-w-sm text-sm leading-[1.75] text-[#756d65] md:justify-self-end">
+            Notes on access, work, and what changes when AI compresses the mechanical layer.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
           {ideas.map((idea, i) => (
-            <IdeaCard key={idea.title} idea={idea} index={i} />
+            <IdeaRow key={idea.title} idea={idea} index={i} />
           ))}
+          <div className="border-t border-black/[0.14]" />
         </div>
       </div>
     </section>

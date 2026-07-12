@@ -52,7 +52,7 @@ export default function Navbar() {
           : ""
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-6 py-1 flex items-center justify-between">
         <a
           href="#"
           onMouseEnter={startScramble}

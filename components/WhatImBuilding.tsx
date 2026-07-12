@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useInView, useSpring, useReducedMotion } from "framer-motion";
-import { useCountUp, useTextScramble } from "@/lib/animations";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -14,6 +13,7 @@ type Project = {
   url: string;
   thumbnail: "stackwise" | "capitalbase" | "portal" | "datachat";
   status: string;
+  category: string;
 };
 
 const projects: Project[] = [
@@ -26,6 +26,7 @@ const projects: Project[] = [
     url: "https://stackr-silk.vercel.app",
     thumbnail: "stackwise",
     status: "Live",
+    category: "Personal finance",
   },
   {
     num: "02",
@@ -36,6 +37,7 @@ const projects: Project[] = [
     url: "https://www.capital-base.com/app",
     thumbnail: "capitalbase",
     status: "Live",
+    category: "Multi-agent investing",
   },
   {
     num: "03",
@@ -46,6 +48,7 @@ const projects: Project[] = [
     url: "https://jal-football.vercel.app",
     thumbnail: "portal",
     status: "Live",
+    category: "Sports intelligence",
   },
   {
     num: "04",
@@ -56,6 +59,7 @@ const projects: Project[] = [
     url: "https://sql-oxm5mfre5-aromain222s-projects.vercel.app",
     thumbnail: "datachat",
     status: "Live",
+    category: "Data tooling",
   },
 ];
 
@@ -209,27 +213,9 @@ const thumbnails = {
   datachat: DataChatThumbnail,
 };
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectFeature({ project, index }: { project: Project; index: number }) {
   const ref = useRef<HTMLAnchorElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const shouldReduce = useReducedMotion();
-
-  const rotateX = useSpring(0, { stiffness: 200, damping: 22 });
-  const rotateY = useSpring(0, { stiffness: 200, damping: 22 });
-
-  function handleMouseMove(e: React.MouseEvent<HTMLAnchorElement>) {
-    if (shouldReduce || !ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const cx = (e.clientX - rect.left) / rect.width - 0.5;
-    const cy = (e.clientY - rect.top) / rect.height - 0.5;
-    rotateY.set(cx * 14);
-    rotateX.set(-cy * 9);
-  }
-
-  function resetTilt() {
-    rotateX.set(0);
-    rotateY.set(0);
-  }
+  const inView = useInView(ref, { once: true, margin: "-12% 0px -12% 0px" });
 
   const Thumb = thumbnails[project.thumbnail];
 
@@ -239,40 +225,44 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 44 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, ease, delay: index * 0.1 }}
-      style={{ rotateX, rotateY, transformPerspective: 900 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={resetTilt}
-      className="group block border border-black/[0.08] hover:border-black/[0.2] hover:shadow-xl transition-all duration-300 bg-white cursor-pointer"
+      transition={{ duration: 0.75, ease, delay: Math.min(index * 0.06, 0.18) }}
+      className="group grid cursor-pointer border-t border-black/[0.13] py-9 lg:grid-cols-[88px_minmax(250px,0.72fr)_minmax(0,1.28fr)] lg:items-center lg:gap-10 lg:py-12"
     >
-      <div className="relative w-full aspect-video overflow-hidden bg-[#f5f0e8]">
-        <Thumb />
+      <div className="mb-5 flex items-center justify-between lg:mb-0 lg:h-full lg:flex-col lg:items-start">
+        <span className="font-mono text-xs tracking-[0.18em] text-[#a0978d]">{project.num}</span>
+        <span className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#70675f]">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          {project.status}
+        </span>
       </div>
 
-      <div className="p-6 border-t border-black/[0.06]">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-mono text-[#b0a898] tracking-widest">{project.num}</span>
-          <span className="text-[10px] tracking-wider uppercase font-bold px-2.5 py-1 bg-[#f5f0e8] text-[#d4562a]">
-            {project.status}
-          </span>
+      <div className="mb-8 pr-4 lg:mb-0">
+        <p className="mb-4 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+          {project.category}
+        </p>
+        <h3 className="mb-3 text-3xl font-black tracking-[-0.04em] text-[#0a0a0a] sm:text-4xl">
+          {project.title}
+        </h3>
+        <p className="mb-5 text-[15px] font-semibold leading-snug text-[#302c28]">{project.tagline}</p>
+        <p className="max-w-md text-sm leading-[1.75] text-[#756d65]">{project.description}</p>
+        <div className="mt-7 inline-flex items-center gap-3 border-b border-black/20 pb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#26221f] transition-colors group-hover:border-accent group-hover:text-accent">
+          Open product
+          <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
         </div>
-        <h3 className="text-base font-bold text-[#0a0a0a] tracking-[-0.01em] mb-1">{project.title}</h3>
-        <p className="text-xs font-semibold text-[#d4562a] mb-3">{project.tagline}</p>
-        <p className="text-xs text-[#7a7068] leading-[1.75]">{project.description}</p>
-        <div className="flex items-center gap-1.5 mt-5 text-xs text-[#b0a898] group-hover:text-[#0a0a0a] transition-colors duration-200 font-medium">
-          <span>View live</span>
-          <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-            <path
-              d="M1 8L8 1M8 1H2.5M8 1v5.5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
+      </div>
+
+      <div className="relative aspect-[16/9] overflow-hidden bg-[#efe9df]">
+        <motion.div
+          initial={{ clipPath: "inset(0 100% 0 0)" }}
+          animate={inView ? { clipPath: "inset(0 0% 0 0)" } : {}}
+          transition={{ duration: 0.9, ease, delay: 0.12 }}
+          className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+        >
+          <Thumb />
+        </motion.div>
+        <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/[0.07]" />
       </div>
     </motion.a>
   );
@@ -281,39 +271,36 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export default function WhatImBuilding() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const productCount = useCountUp(4, inView);
-  const [labelHover, setLabelHover] = useState(false);
-  const sectionLabel = useTextScramble("What I'm Building", labelHover);
 
   return (
-    <section id="building" className="border-t border-black/[0.07] py-10 lg:py-14">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="building" className="bg-[#f9f7f4] py-20 lg:py-28">
+      <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease }}
-          className="flex items-center justify-between mb-10"
+          className="mb-16 grid gap-6 md:grid-cols-[minmax(0,0.9fr)_minmax(280px,0.45fr)] md:items-end md:justify-between lg:mb-20"
         >
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-[2px] bg-accent rounded-full" />
-            <span
-              className="text-[11px] tracking-[0.22em] uppercase text-[#7a7068] font-semibold cursor-default select-none"
-              onMouseEnter={() => { setLabelHover(false); setTimeout(() => setLabelHover(true), 0); }}
-              onMouseLeave={() => setLabelHover(false)}
-            >
-              {sectionLabel}
-            </span>
+          <div>
+            <p className="mb-5 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
+              <span className="h-px w-8 bg-accent" />
+              Selected work
+            </p>
+            <h2 className="max-w-3xl text-balance text-5xl font-black leading-[0.95] tracking-[-0.055em] text-[#0a0a0a] sm:text-6xl lg:text-7xl">
+              Products built around real decisions.
+            </h2>
           </div>
-          <span className="hidden sm:block text-[11px] text-[#b0a898] tracking-[0.12em] uppercase font-medium">
-            {productCount} live products
-          </span>
+          <p className="max-w-sm text-sm leading-[1.75] text-[#756d65] md:justify-self-end">
+            Four live products across personal finance, investing, recruiting, and data—each started from a workflow that felt harder than it should.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div>
           {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
+            <ProjectFeature key={project.title} project={project} index={i} />
           ))}
+          <div className="border-t border-black/[0.13]" />
         </div>
       </div>
     </section>

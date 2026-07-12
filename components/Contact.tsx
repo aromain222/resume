@@ -1,79 +1,50 @@
 "use client";
 
-import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Magnetic from "./Magnetic";
-import ClickBurst from "./ClickBurst";
+import { useRef } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Contact() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-15% 0px" });
 
   return (
-    <section id="contact" className="relative py-28 lg:py-36 border-t border-black/[0.07]">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="max-w-xl">
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease }}
-            className="flex items-center gap-3 mb-12"
-          >
-            <div className="w-6 h-[2px] bg-accent rounded-full" />
-            <span className="text-[11px] tracking-[0.22em] uppercase text-[#7a7068] font-semibold">
-              Contact
-            </span>
-          </motion.div>
+    <section ref={ref} id="contact" className="bg-[#f9f7f4] py-24 lg:py-36">
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.75, ease }}
+        className="mx-auto max-w-[1320px] px-6 sm:px-10"
+      >
+        <p className="mb-8 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
+          <span className="h-px w-8 bg-accent" />
+          Say hello
+        </p>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease, delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-black text-[#0a0a0a] tracking-[-0.025em] leading-[1.1] mb-10"
-          >
-            Football, fitness, gaming, and everything in between.
-          </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease, delay: 0.26 }}
-            className="flex items-center gap-3 flex-wrap"
-          >
-            <Magnetic>
-              <ClickBurst>
-                <a
-                  href="https://linkedin.com/in/avery-romain"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 px-6 py-3 bg-[#0a0a0a] text-white text-xs font-bold tracking-[0.06em] uppercase hover:bg-accent transition-colors duration-200 cursor-pointer"
-                >
-                  LinkedIn
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">
-                    <path d="M1 9L9 1M9 1H3.5M9 1v5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
-              </ClickBurst>
-            </Magnetic>
-            <Magnetic>
-              <ClickBurst>
-                <a
-                  href="mailto:averyromain5@gmail.com"
-                  className="group inline-flex items-center gap-3 px-6 py-3 border border-black/20 text-[#5a5450] text-xs font-bold tracking-[0.06em] uppercase hover:border-accent hover:text-accent transition-all duration-200 cursor-pointer"
-                >
-                  Email
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-200">
-                    <path d="M1 9L9 1M9 1H3.5M9 1v5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
-              </ClickBurst>
-            </Magnetic>
-          </motion.div>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+          <h2 className="text-balance max-w-5xl text-[clamp(3.5rem,8vw,8rem)] font-black leading-[0.88] tracking-[-0.065em] text-[#0a0a0a]">
+            Have a hard problem worth simplifying?
+          </h2>
+          <div className="flex items-center gap-5 pb-2">
+            <a
+              href="mailto:averyromain5@gmail.com"
+              className="group inline-flex items-center gap-4 bg-[#0a0a0a] px-6 py-4 text-[11px] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-accent"
+            >
+              Email me
+              <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+            </a>
+            <a
+              href="https://linkedin.com/in/avery-romain"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-b border-black/25 pb-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5f5851] transition-colors hover:border-accent hover:text-accent"
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

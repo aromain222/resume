@@ -1,30 +1,25 @@
 const items = [
-  "Financial Literacy",
-  "Football",
-  "Amherst '27",
-  "Builder",
-  "Bay Area",
-  "AI",
-  "Fintech",
-  "Sports Intelligence",
-  "Student Athlete",
+  "CapitalBase — multi-agent investing",
+  "Stackwise — personal finance",
+  "Transfer Portal — sports intelligence",
+  "DataChat — natural-language analytics",
 ];
 
 export default function Marquee() {
   const doubled = [...items, ...items];
 
   return (
-    <div className="border-y border-black/[0.07] bg-[#0a0a0a] overflow-hidden py-3.5">
+    <div className="overflow-hidden bg-[#0a0a0a] py-4">
       <div
         className="marquee-track flex whitespace-nowrap"
-        style={{ animation: "marquee 24s linear infinite" }}
+        style={{ animation: "marquee 34s linear infinite" }}
       >
         {doubled.map((item, i) => (
-          <span key={i} className="inline-flex items-center gap-4 mx-5">
-            <span className="text-[11px] tracking-[0.22em] uppercase font-semibold text-white/70">
+          <span key={i} className="mx-7 inline-flex items-center gap-7">
+            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/64">
               {item}
             </span>
-            <span className="text-accent text-base leading-none">·</span>
+            <span className="h-px w-10 bg-accent" />
           </span>
         ))}
       </div>
