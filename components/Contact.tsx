@@ -24,7 +24,7 @@ export default function Contact() {
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <h2 className="text-balance max-w-5xl text-[clamp(3.5rem,8vw,8rem)] font-black leading-[0.88] tracking-[-0.065em] text-[#0a0a0a]">
-            Want to work together?
+            I love meeting new people. Open to chatting.
           </h2>
           <div className="flex items-center gap-5 pb-2">
             <a
