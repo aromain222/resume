@@ -8,49 +8,49 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const experience = [
   {
-    title: "CapitalBase",
-    role: "Founder · Lead Developer",
-    period: "Aug 2025 – Present",
-    summary: "AI-native hedge fund powered by 27 specialized trading agents.",
+    title: "Murj",
+    role: "AI Implementation Engineer",
+    period: "June 2026 – Present",
+    summary: "Finance workflow automation.",
     bullets: [
-      "Architected a multi-agent system of 27 AI trading agents — macro, quant, risk, sentiment, and more — that debate and converge on every trade decision",
-      "Designed a consensus layer where agents with conflicting views negotiate positions, replacing single-model outputs with collective reasoning",
-      "Built the core infrastructure for agent communication, role specialization, and trade execution across live market conditions",
-      "Conducted research and outreach with early users to validate the AI-native fund thesis and refine the agent coordination model",
+      "Built internal automations that replace manual finance workflows",
+      "Automated AR reporting and monthly rollover from Sage 50 data",
+      "Worked with the finance team to map and automate the workflow end-to-end",
+    ],
+  },
+  {
+    title: "Sankofa",
+    role: "Co-Founder · Lead Engineer",
+    period: "May 2026 – Present",
+    summary: "Multi-agent investment research and portfolio monitoring.",
+    bullets: [
+      "Built a 19-agent platform for autonomous investment research and real-time portfolio monitoring",
+      "Engineered analyst agents for news, sentiment, quant, and fundamentals",
+      "Orchestrated manager-persona agents that debate signals into buy, sell, or hold verdicts",
+      "Built monitoring and Slack alerts for material thesis changes",
+    ],
+  },
+  {
+    title: "CapitalBase",
+    role: "Founder",
+    period: "Aug 2025 – May 2026",
+    summary: "Agent-based financial research and modeling.",
+    bullets: [
+      "Built a multi-agent pipeline for SEC filings, earnings reports, and market data",
+      "Built valuation and diligence workflows for DCF, LBO, comps, and M&A",
+      "Integrated live news and sentiment signals into financial analysis",
+      "Cut modeling time from hours to minutes with parallel agents and cached data",
     ],
   },
   {
     title: "Caprae Capital",
     role: "Private Equity Intern",
     period: "June 2025 – Aug 2025",
-    summary: "Lower-middle market M&A.",
+    summary: "Lower-middle-market M&A.",
     bullets: [
-      "Researched 50+ founder-owned firms under $10M in revenue and built acquisition pipelines through market mapping",
-      "Supported due diligence on $25M+ deals by preparing models and investment materials used in partner evaluations",
-      "Analyzed 30+ comparable transactions to benchmark valuation multiples and refine sourcing strategy",
-      "Applied unit economics, cash flow durability, and multiple expansion analysis to screen 80+ acquisition targets",
-    ],
-  },
-  {
-    title: "Weel (YC S24)",
-    role: "Marketing Intern",
-    period: "June 2025 – July 2025",
-    summary: "Gen-Z fintech user acquisition.",
-    bullets: [
-      "Executed campus marketing campaigns for a YC-backed fintech startup to drive Gen-Z user acquisition",
-      "Produced video and social content that increased product awareness and downloads",
-      "Collaborated with founders to refine growth messaging using user feedback and engagement metrics",
-    ],
-  },
-  {
-    title: "Robertson Stephens",
-    role: "Private Wealth Management Intern",
-    period: "July 2025",
-    summary: "$500M+ AUM wealth management.",
-    bullets: [
-      "Supported advisors managing $500M+ in AUM through portfolio reports and client deliverables",
-      "Researched 50+ securities to inform allocation changes for high-net-worth portfolios",
-      "Built Excel tools, reducing report preparation time by 25%",
+      "Researched 50+ founder-owned firms and built acquisition pipelines",
+      "Supported due diligence on $25M+ deals with models and investment materials",
+      "Analyzed comparable transactions and screened acquisition targets",
     ],
   },
   {
@@ -165,7 +165,7 @@ export default function ResumeModal() {
                     Avery Romain
                   </h1>
                   <p className="text-base text-accent font-semibold mb-5">
-                    Founder building financial infrastructure, AI tooling, and sports intelligence.
+                    Student-athlete building software across finance, data, and college sports.
                   </p>
                   <p className="text-xs text-[#7a7068] mb-3 tracking-wide">
                     Amherst College · Class of 2027 · Political Science & Black Studies
