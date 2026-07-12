@@ -123,12 +123,12 @@ export default function Ideas() {
           <div>
             <p className="mb-5 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
               <span className="h-px w-8 bg-accent" />
-              Field notes
+              Writing
             </p>
-            <h2 className="text-5xl font-black tracking-[-0.055em] text-[#0a0a0a] sm:text-6xl">What I’m thinking about.</h2>
+            <h2 className="text-5xl font-black tracking-[-0.055em] text-[#0a0a0a] sm:text-6xl">A few things I’ve written.</h2>
           </div>
           <p className="max-w-sm text-sm leading-[1.75] text-[#756d65] md:justify-self-end">
-            Notes on access, work, and what changes when AI compresses the mechanical layer.
+            Essays about AI, finance, access, and how entry-level work is changing.
           </p>
         </motion.div>
 

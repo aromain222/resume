@@ -54,7 +54,7 @@ export default function Hero() {
             >
               <span className="h-px w-8 bg-accent" />
               <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
-                Amherst ’27 · Student-athlete · Builder
+                Amherst ’27 · Defensive line · Building software
               </span>
             </motion.div>
 
@@ -88,7 +88,7 @@ export default function Hero() {
               className="mt-8 grid max-w-3xl gap-7 border-t border-black/[0.14] pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end"
             >
               <p className="max-w-xl text-[clamp(1.05rem,1.7vw,1.35rem)] font-medium leading-[1.45] tracking-[-0.02em] text-[#302c28]">
-                I build decision systems for finance, data, and college sports—then make them useful enough for people to trust.
+                Student-athlete at Amherst building software for investing, personal finance, and college football.
               </p>
               <div className="flex items-center gap-4">
                 <a
@@ -121,7 +121,7 @@ export default function Hero() {
               className="absolute bottom-[8%] left-1/2 h-[68%] aspect-square -translate-x-1/2 rounded-full border border-accent/30 bg-accent/[0.055]"
             />
             <span className="absolute right-0 top-[22%] origin-top-right rotate-90 font-mono text-[10px] uppercase tracking-[0.25em] text-[#91877e]">
-              San Mateo → Amherst → Building what’s next
+              San Mateo, CA → Amherst, MA
             </span>
             <Image
               src="/images/avatar-quarterzip.png"

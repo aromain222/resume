@@ -8,18 +8,18 @@ const ease = [0.22, 1, 0.36, 1] as const;
 const coordinates = [
   {
     number: "01",
-    label: "Student-athlete",
-    detail: "Defensive lineman at Amherst. The discipline and repetition shape how I work.",
+    label: "Amherst College",
+    detail: "Political Science and Black Studies, class of 2027.",
   },
   {
     number: "02",
-    label: "Systems builder",
-    detail: "I notice slow, confusing workflows and turn them into products people can actually use.",
+    label: "Football",
+    detail: "Defensive lineman. I have played since freshman year of high school.",
   },
   {
     number: "03",
-    label: "Access focused",
-    detail: "Financial literacy matters because information changes which opportunities people can see.",
+    label: "Projects",
+    detail: "Four live apps across finance, data, and college football recruiting.",
   },
 ];
 
@@ -39,17 +39,17 @@ export default function About() {
           <div>
             <p className="mb-8 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
               <span className="h-px w-8 bg-accent" />
-              The through line
+              About
             </p>
             <h2 className="text-balance max-w-3xl text-[clamp(2.75rem,6vw,5.7rem)] font-black leading-[0.98] tracking-[-0.055em]">
-              I like difficult systems. I like making them feel obvious.
+              I study politics, play football, and build software.
             </h2>
             <div className="mt-10 grid max-w-2xl gap-6 border-t border-white/15 pt-7 text-sm leading-[1.8] text-white/62 sm:grid-cols-2">
               <p>
-                I study Political Science and Black Studies at Amherst, build technology across finance and sports, and spend a lot of time thinking about who gets access to useful information.
+                I’m a student at Amherst College and a defensive lineman on the football team. Outside class and football, I build products in finance, data, and recruiting.
               </p>
               <p>
-                Off-screen: football, lifting, R&amp;B, jazz, cooking, quarter-zips, and probably an argument about LeBron.
+                When I’m not doing that, I’m usually lifting, cooking, listening to R&amp;B or jazz, or arguing about LeBron.
               </p>
             </div>
           </div>

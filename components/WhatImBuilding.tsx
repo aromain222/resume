@@ -20,9 +20,9 @@ const projects: Project[] = [
   {
     num: "01",
     title: "Stackwise",
-    tagline: "Build your financial stack.",
+    tagline: "Personalized account recommendations.",
     description:
-      "Personal finance infrastructure. Answer 8 questions, get your exact checking, savings, credit, and investing accounts — each with a specific explanation of why it fits.",
+      "A guided tool that recommends checking, savings, credit, and investing accounts based on eight questions.",
     url: "https://stackr-silk.vercel.app",
     thumbnail: "stackwise",
     status: "Live",
@@ -31,9 +31,9 @@ const projects: Project[] = [
   {
     num: "02",
     title: "CapitalBase",
-    tagline: "An AI-native hedge fund run by 27 trading agents.",
+    tagline: "Agent-based investment research and portfolio monitoring.",
     description:
-      "27 specialized AI agents with distinct roles — macro, quant, risk, sentiment, and more — debate and converge on every trade decision. No single model calls the shot.",
+      "Specialized agents analyze markets, debate trade ideas, and monitor a portfolio. I built the agent coordination, data, and execution layers.",
     url: "https://www.capital-base.com/app",
     thumbnail: "capitalbase",
     status: "Live",
@@ -42,9 +42,9 @@ const projects: Project[] = [
   {
     num: "03",
     title: "Transfer Portal",
-    tagline: "Find the right player. Close the edge.",
+    tagline: "Search and fit scoring for transfer recruiting.",
     description:
-      "AI-powered search and fit scoring for the college football transfer market. Built for personnel directors who recruit by data, not reputation.",
+      "A search and fit-scoring tool for college football personnel staffs evaluating players in the transfer portal.",
     url: "https://jal-football.vercel.app",
     thumbnail: "portal",
     status: "Live",
@@ -53,9 +53,9 @@ const projects: Project[] = [
   {
     num: "04",
     title: "DataChat",
-    tagline: "Ask your spreadsheet anything.",
+    tagline: "Natural-language analysis for spreadsheets.",
     description:
-      "Upload a CSV, ask questions in plain English, get SQL-powered answers with charts. No dashboards. No setup. Just data and questions.",
+      "Upload a CSV and ask questions in plain English. The app writes the SQL and returns an answer, table, and chart.",
     url: "https://sql-oxm5mfre5-aromain222s-projects.vercel.app",
     thumbnail: "datachat",
     status: "Live",
@@ -288,11 +288,11 @@ export default function WhatImBuilding() {
               Selected work
             </p>
             <h2 className="max-w-3xl text-balance text-5xl font-black leading-[0.95] tracking-[-0.055em] text-[#0a0a0a] sm:text-6xl lg:text-7xl">
-              Products built around real decisions.
+              Things I’ve built.
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-[1.75] text-[#756d65] md:justify-self-end">
-            Four live products across personal finance, investing, recruiting, and data—each started from a workflow that felt harder than it should.
+            Four live products covering personal finance, investment research, college football recruiting, and data analysis.
           </p>
         </motion.div>
 
