@@ -83,29 +83,31 @@ export default function Experience() {
           </button>
         </motion.div>
 
-        <div className="relative ml-1 border-l border-black/[0.16] pl-7 sm:ml-2 sm:pl-10">
+        <div className="relative mx-auto max-w-5xl">
+          <div className="absolute bottom-0 left-3 top-0 w-px bg-black/[0.14] lg:left-1/2 lg:-translate-x-1/2" />
           {timeline.map((item, index) => (
             <motion.div
               key={`${item.company}-${item.role}`}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, ease, delay: 0.12 + index * 0.08 }}
-              className="group relative grid gap-3 border-t border-black/[0.13] py-7 first:border-t-0 sm:grid-cols-[140px_0.75fr_1fr] sm:gap-8 lg:py-8"
+              className="group relative grid grid-cols-[28px_1fr] gap-5 py-5 lg:grid-cols-[1fr_72px_1fr] lg:gap-8 lg:py-7"
             >
-              <span className="absolute -left-[calc(1.75rem+5px)] top-8 h-2.5 w-2.5 rounded-full border-2 border-white bg-accent sm:-left-[calc(2.5rem+5px)]" />
-              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#9a9086]">
-                {item.period}
-              </span>
-              <div>
-                <h3 className="text-2xl font-black tracking-[-0.035em] text-[#0a0a0a] transition-colors group-hover:text-accent">
-                  {item.company}
-                </h3>
-                <p className="mt-1 text-sm font-semibold text-[#4f4943]">{item.role}</p>
+              <div className={`col-start-2 lg:row-start-1 ${index % 2 === 0 ? "lg:col-start-1 lg:text-right" : "lg:col-start-3"}`}>
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent">{item.period}</p>
+                <div className="mt-2 border border-black/[0.1] bg-[#f9f7f4] p-5 transition-colors group-hover:border-accent/50">
+                  <h3 className="text-xl font-black tracking-[-0.035em] text-[#0a0a0a] transition-colors group-hover:text-accent sm:text-2xl">
+                    {item.company}
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-[#4f4943]">{item.role}</p>
+                  <p className={`mt-3 text-sm leading-[1.7] text-[#756d65] ${index % 2 === 0 ? "lg:ml-auto lg:max-w-sm" : "lg:max-w-sm"}`}>{item.detail}</p>
+                </div>
               </div>
-              <p className="max-w-xl text-sm leading-[1.75] text-[#756d65]">{item.detail}</p>
+              <div className="col-start-1 row-start-1 flex justify-center pt-1 lg:col-start-2 lg:pt-8">
+                <span className="relative z-10 h-3.5 w-3.5 rounded-full border-[3px] border-white bg-accent shadow-[0_0_0_1px_rgba(212,86,42,0.35)]" />
+              </div>
             </motion.div>
           ))}
-          <div className="border-t border-black/[0.13]" />
         </div>
       </div>
     </section>
