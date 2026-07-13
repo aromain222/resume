@@ -5,71 +5,83 @@ import { useRef } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const coordinates = [
+const details = [
   {
-    number: "01",
-    label: "Amherst College",
-    detail: "Political Science and Black Studies, class of 2027.",
+    label: "School",
+    value: "Amherst College",
+    detail: "Political Science and Black Studies · Class of 2027",
   },
   {
-    number: "02",
     label: "Football",
-    detail: "Defensive lineman. I have played since freshman year of high school.",
+    value: "Defensive line",
+    detail: "I’ve played since my freshman year of high school.",
   },
   {
-    number: "03",
     label: "Projects",
-        detail: "Four live projects, mostly for finance, data, and college football recruiting.",
+    value: "Four live apps",
+    detail: "Finance, data, and college football recruiting.",
   },
 ];
+
+const outside = ["Cooking", "R&B and jazz", "Gaming", "Legos", "Good views and long hikes"];
 
 export default function About() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-15% 0px" });
 
   return (
-    <section ref={ref} className="border-b border-black/[0.08] bg-[#0d0d0d] py-20 text-white lg:py-28">
+    <section ref={ref} className="border-b border-black/[0.08] bg-[#0d0d0d] py-20 text-white lg:py-24">
       <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease }}
-          className="grid gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] lg:gap-24"
+          className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,1.05fr)] lg:gap-24"
         >
           <div>
-            <p className="mb-8 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
+            <p className="mb-6 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
               <span className="h-px w-8 bg-accent" />
-              About
+              A little about me
             </p>
-            <h2 className="text-balance max-w-3xl text-[clamp(2.75rem,6vw,5.7rem)] font-black leading-[0.98] tracking-[-0.055em]">
-              I study politics, play football, and build software.
+            <h2 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl">
+              I’m a student, a football player, and a builder.
             </h2>
-            <div className="mt-10 grid max-w-2xl gap-6 border-t border-white/15 pt-7 text-sm leading-[1.8] text-white/62 sm:grid-cols-2">
+            <div className="mt-7 max-w-xl space-y-5 text-[15px] leading-[1.8] text-white/65">
               <p>
-                I’m a student at Amherst College and a defensive lineman on the football team. Outside class and football, I build products in finance, data, and recruiting.
+                I’m at Amherst College studying Political Science and Black Studies, and I play defensive line for the football team. Most of my projects start with a question I keep running into—usually about money, data, or how a team makes a decision.
               </p>
               <p>
-                When I’m not doing that, I’m usually lifting, cooking, listening to R&amp;B or jazz, or arguing about LeBron.
+                I like taking those questions seriously, then making something people can actually use. Outside of school and work, I’m usually cooking, listening to R&amp;B or jazz, playing games, or looking for a good view.
               </p>
             </div>
           </div>
 
-          <div className="self-end">
-            {coordinates.map((item, index) => (
-              <motion.div
-                key={item.number}
-                initial={{ opacity: 0, x: 20 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.55, ease, delay: 0.18 + index * 0.1 }}
-                className="grid grid-cols-[44px_1fr] gap-5 border-t border-white/15 py-6 first:border-t-white/35"
-              >
-                <span className="font-mono text-[11px] tracking-[0.15em] text-accent">{item.number}</span>
-                <div>
-                  <h3 className="mb-2 text-lg font-semibold tracking-[-0.02em]">{item.label}</h3>
-                  <p className="max-w-md text-sm leading-[1.7] text-white/55">{item.detail}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="lg:pt-9">
+            <div className="border-t border-white/20">
+              {details.map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, x: 14 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, ease, delay: 0.12 + index * 0.08 }}
+                  className="grid gap-2 border-b border-white/15 py-5 sm:grid-cols-[100px_1fr] sm:gap-6"
+                >
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-accent">{item.label}</span>
+                  <div>
+                    <h3 className="text-base font-semibold text-white">{item.value}</h3>
+                    <p className="mt-1 text-sm leading-6 text-white/55">{item.detail}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <p className="mb-4 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">When I’m not working</p>
+              <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-white/65">
+                {outside.map((item) => <span key={item}>{item}</span>)}
+              </div>
+              <p className="mt-6 text-sm leading-6 text-white/45">Also: I’m developing my watch game, and I’m probably going to bring up LeBron at some point.</p>
+            </div>
           </div>
         </motion.div>
       </div>
