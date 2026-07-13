@@ -8,16 +8,16 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const timeline = [
   {
-    period: "2020",
-    company: "Basketball camp",
-    role: "Founder",
-    detail: "Started a basketball camp and got my first experience organizing something for other people.",
-  },
-  {
     period: "2015 — Before Amherst",
     company: "Menlo School",
     role: "High school",
     detail: "Where I started getting serious about school, football, and what I wanted to build.",
+  },
+  {
+    period: "2020",
+    company: "Basketball camp",
+    role: "Founder",
+    detail: "Started a basketball camp and got my first experience organizing something for other people.",
   },
   {
     period: "Summer 2024",
