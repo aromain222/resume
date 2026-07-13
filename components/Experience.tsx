@@ -14,7 +14,7 @@ const timeline = [
     detail: "Started a basketball camp and got my first experience organizing something for other people.",
   },
   {
-    period: "Before Amherst",
+    period: "2015 — Before Amherst",
     company: "Menlo School",
     role: "High school",
     detail: "Where I started getting serious about school, football, and what I wanted to build.",
