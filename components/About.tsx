@@ -13,7 +13,7 @@ const details = [
   },
   {
     label: "Football",
-    value: "Defensive line",
+    value: "Defensive end",
     detail: "I’ve played since my freshman year of high school.",
   },
   {
@@ -48,10 +48,13 @@ export default function About() {
             </h2>
             <div className="mt-7 max-w-xl space-y-5 text-[15px] leading-[1.8] text-white/65">
               <p>
-                I’m at Amherst College studying Political Science and Black Studies, and I play defensive line for the football team. Most of my projects start with a question I keep running into—usually about money, data, or how a team makes a decision.
+                I’m a Political Science and Black Studies double major at Amherst College, where I play defensive end on the football team. I grew up in the Bay Area and went to Menlo School from middle school through high school. Being around that environment sparked my interest in technology.
               </p>
               <p>
-                I like taking those questions seriously, then making something people can actually use. Outside of school and work, I’m usually cooking, listening to R&amp;B or jazz, playing games, or looking for a good view.
+                My experience at SoFi during my sophomore summer showed me how much technology can change finance. That was the point where my interests started to come together. Now I’m exploring fintech and early-stage startups, hoping to break in through a forward-deployed engineering or customer-facing product role.
+              </p>
+              <p>
+                Outside of my professional and academic life, I’m an avid LeBron fan. I love to cook, work out, build Legos, play video games, and find a new place to catch a sunset.
               </p>
             </div>
           </div>
