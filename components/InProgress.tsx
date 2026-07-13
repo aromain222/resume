@@ -39,8 +39,8 @@ export default function InProgress() {
               </h3>
 
               <p className="text-sm text-[#5a5450] leading-[1.8] max-w-lg">
-                Plain English to SQL. Not a chatbot. A structured query interface
-                that gives non-technical users direct access to their data without
+                Plain English to SQL. Ask a question and get an answer from your
+                own data without
                 writing a single line of code.
               </p>
             </div>

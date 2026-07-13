@@ -88,7 +88,7 @@ export default function Hero() {
               className="mt-8 grid max-w-3xl gap-7 border-t border-black/[0.14] pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end"
             >
               <p className="max-w-xl text-[clamp(1.05rem,1.7vw,1.35rem)] font-medium leading-[1.45] tracking-[-0.02em] text-[#302c28]">
-                Student-athlete at Amherst building software for investing, personal finance, and college football.
+                I’m an Amherst student-athlete who likes making useful software for investing, personal finance, and college football.
               </p>
               <div className="flex items-center gap-4">
                 <a

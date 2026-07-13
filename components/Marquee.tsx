@@ -1,8 +1,8 @@
 const items = [
-  "CapitalBase — multi-agent investing",
+  "CapitalBase — investment research",
   "Stackwise — personal finance",
-  "Transfer Portal — sports intelligence",
-  "DataChat — natural-language analytics",
+  "Transfer Portal — recruiting tools",
+  "DataChat — ask your data questions",
 ];
 
 export default function Marquee() {

@@ -11,19 +11,19 @@ const roles = [
     period: "2026 — Now",
     company: "Murj",
     role: "AI Implementation Engineer",
-    detail: "Automating finance workflows and working directly with the team that uses them.",
+    detail: "Cleaning up finance workflows and building tools the team can use every day.",
   },
   {
     period: "2026 — Now",
     company: "Sankofa",
     role: "Co-Founder · Lead Engineer",
-    detail: "Building a multi-agent investment research and portfolio monitoring platform.",
+    detail: "Building an investment research and portfolio monitoring product with a small team.",
   },
   {
     period: "2025 — 2026",
     company: "CapitalBase",
     role: "Founder",
-    detail: "Built agent-based financial research, valuation, and diligence tools.",
+    detail: "Built tools for financial research, valuation, and diligence.",
   },
   {
     period: "Summer 2025",

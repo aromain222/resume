@@ -20,9 +20,9 @@ const projects: Project[] = [
   {
     num: "01",
     title: "Stackwise",
-    tagline: "Personalized account recommendations.",
+    tagline: "A better starting point for your finances.",
     description:
-      "A guided tool that recommends checking, savings, credit, and investing accounts based on eight questions.",
+      "Answer eight questions and get a short list of checking, savings, credit, and investing accounts that fit.",
     url: "https://stackr-silk.vercel.app",
     thumbnail: "stackwise",
     status: "Live",
@@ -31,9 +31,9 @@ const projects: Project[] = [
   {
     num: "02",
     title: "CapitalBase",
-    tagline: "Agent-based investment research and portfolio monitoring.",
+    tagline: "Research and portfolio monitoring in one place.",
     description:
-      "Specialized agents analyze markets, debate trade ideas, and monitor a portfolio. I built the agent coordination, data, and execution layers.",
+      "The app pulls together market research, competing views, and portfolio updates so an investor can see what changed and why.",
     url: "https://www.capital-base.com/app",
     thumbnail: "capitalbase",
     status: "Live",
@@ -42,20 +42,20 @@ const projects: Project[] = [
   {
     num: "03",
     title: "Transfer Portal",
-    tagline: "Search and fit scoring for transfer recruiting.",
+    tagline: "A faster way to find transfer targets.",
     description:
-      "A search and fit-scoring tool for college football personnel staffs evaluating players in the transfer portal.",
+      "A search and fit tool for college football staffs evaluating players in the transfer portal.",
     url: "https://jal-football.vercel.app",
     thumbnail: "portal",
     status: "Live",
-    category: "Sports intelligence",
+    category: "College football",
   },
   {
     num: "04",
     title: "DataChat",
-    tagline: "Natural-language analysis for spreadsheets.",
+    tagline: "Ask questions about a spreadsheet.",
     description:
-      "Upload a CSV and ask questions in plain English. The app writes the SQL and returns an answer, table, and chart.",
+      "Upload a CSV, ask a question, and get back an answer with the table and chart to support it.",
     url: "https://sql-oxm5mfre5-aromain222s-projects.vercel.app",
     thumbnail: "datachat",
     status: "Live",

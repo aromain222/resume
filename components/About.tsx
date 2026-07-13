@@ -19,7 +19,7 @@ const coordinates = [
   {
     number: "03",
     label: "Projects",
-    detail: "Four live apps across finance, data, and college football recruiting.",
+        detail: "Four live projects, mostly for finance, data, and college football recruiting.",
   },
 ];
 

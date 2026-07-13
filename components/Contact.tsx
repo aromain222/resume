@@ -17,9 +17,9 @@ export default function Contact() {
         transition={{ duration: 0.75, ease }}
         className="mx-auto max-w-[1320px] px-6 sm:px-10"
       >
-        <p className="mb-8 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
+          <p className="mb-8 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
           <span className="h-px w-8 bg-accent" />
-          Say hello
+            Get in touch
         </p>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">

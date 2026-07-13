@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PrintButton from "./PrintButton";
 
 export const metadata = { title: "Resume — Avery Romain" };
@@ -15,12 +16,12 @@ export default function ResumePage() {
 
       {/* Screen-only controls */}
       <div className="no-print fixed top-4 right-4 z-50 flex items-center gap-3">
-        <a
+        <Link
           href="/"
           className="px-4 py-2 bg-zinc-900 text-zinc-500 text-xs tracking-[0.15em] uppercase border border-white/10 hover:text-zinc-300 transition-colors duration-200"
         >
           ← Back
-        </a>
+        </Link>
         <PrintButton />
       </div>
 
@@ -50,9 +51,9 @@ export default function ResumePage() {
             location="Remote"
             period="June 2026 – Present"
             bullets={[
-              "Built internal automations that replace manual finance workflows, freeing the team from repetitive data handling",
+              "Built internal tools that take repetitive finance work off the team’s plate",
               "Automated AR reporting and the monthly rollover by extracting and structuring Sage 50 data into a scheduled Python job",
-              "Partnered with the finance team to map the existing AR workflow, then automated the manual steps end-to-end",
+              "Worked with the finance team to understand the AR process and automate it from start to finish",
             ]}
           />
           <Job
@@ -61,11 +62,11 @@ export default function ResumePage() {
             location="Remote"
             period="May 2026 – Present"
             bullets={[
-              "Built a 19-agent platform for autonomous investment research and real-time portfolio monitoring",
-              "Engineered analyst agents for news, sentiment, quant, and fundamentals, each creating a bullish or bearish signal with reasoning",
-              "Orchestrated 13 manager-persona agents that debate analyst signals into a single buy/sell/hold verdict",
-              "Designed a monitoring loop that re-scans holdings continuously and re-triggers agent deliberation on material change",
-              "Wired Slack alerts that fire only when re-analysis flips a thesis, with a written rationale for the change",
+              "Built a 19-agent platform that researches investments and monitors a live portfolio",
+              "Connected news, sentiment, quantitative, and fundamental research into one workflow",
+              "Built a debate process that turns competing views into a documented buy, sell, or hold recommendation",
+              "Designed monitoring that revisits a holding when its price, news, or thesis changes",
+              "Added Slack alerts when new research changes a thesis, with the reason attached",
             ]}
           />
           <Job
@@ -74,11 +75,11 @@ export default function ResumePage() {
             location="Remote"
             period="August 2025 – May 2026"
             bullets={[
-              "Architected a multi-agent pipeline ingesting SEC filings, earnings reports, and market data into structured analysis inputs",
-              "Built valuation and diligence workflows into a production app, orchestrating agent calls into auditable financial outputs",
-              "Integrated live news and sentiment signals into the modeling engine, grounding valuations in current market conditions",
-              "Designed an agentic system automating DCF, LBO, comps, and M&A end-to-end, replacing Excel with reproducible models",
-              "Cut modeling time from hours to minutes by parallelizing agent tasks and caching data fetches",
+              "Built a pipeline that combines SEC filings, earnings reports, and market data",
+              "Built valuation and diligence workflows for DCF, LBO, comps, and M&A",
+              "Added live news and sentiment to the research process",
+              "Built reproducible DCF, LBO, comps, and M&A models that can be reviewed instead of starting from a blank Excel file",
+              "Cut modeling time from hours to minutes by running research in parallel and reusing fetched data",
             ]}
           />
           <Job
@@ -109,19 +110,19 @@ export default function ResumePage() {
         {/* Projects */}
         <Section title="Relevant Coursework / Projects">
           <Project
-            title="Transfer Portal + PFF Tool (Data + Workflow System)"
+            title="Transfer Portal + PFF Tool (Recruiting Data Tool)"
             bullets={[
-              "Built a system that ingests, filters, and surfaces player data into actionable decision workflows",
-              "Designed interfaces that let users query and refine results based on specific constraints (measurables, usage, fit)",
-              "Turned messy datasets into structured outputs that support faster decision-making",
+              "Built a tool that pulls together player data and makes it easier to search",
+              "Designed filters for measurables, usage, and team fit",
+              "Turned messy recruiting data into shortlists that staffs can actually use",
             ]}
           />
           <Project
             title="Financial Stack (AI-Driven Financial Workflow Tool)"
             bullets={[
-              "Built a system that helps users set up their financial stack through guided, agent-like workflows",
-              "Turned fragmented financial decisions into a structured, interactive process rather than static recommendations",
-              "Designed flows that adapt to user inputs, simulating how a financial advisor guides decisions step-by-step",
+              "Built a guided tool that helps people choose checking, savings, credit, and investing accounts",
+              "Replaced a generic list of recommendations with questions and explanations tailored to each user",
+              "Designed the experience to adjust as users share more about their goals and habits",
             ]}
           />
         </Section>
@@ -135,7 +136,7 @@ export default function ResumePage() {
             period=""
             bullets={[
               "Mentored underserved students in coding, entrepreneurship, and digital skills to bridge the tech opportunity gap",
-              "Led workshops on software development fundamentals and business pitch creation, fostering practical problem-solving",
+              "Led workshops on software development fundamentals and business pitch creation",
             ]}
           />
           <Job
@@ -177,13 +178,13 @@ export default function ResumePage() {
               Python | JavaScript | TypeScript | React | Next.js | Tailwind | SQL
             </p>
             <p>
-              <span className="font-bold">Tools &amp; Infrastructure:</span>{" "}
+              <span className="font-bold">Tools:</span>{" "}
               Supabase | Git/GitHub | API Integration | Figma | Excel (Advanced
               Financial Modeling)
             </p>
             <p>
               <span className="font-bold">AI &amp; Automation:</span> AI Agents |
-              Multi-Agent Systems | Workflow Automation | Prompt Engineering
+              Agent Coordination | Workflow Automation | Prompt Engineering
             </p>
             <p>
               <span className="font-bold">Finance:</span> Financial Modeling |

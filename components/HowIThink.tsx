@@ -9,19 +9,19 @@ const pillars = [
   {
     number: "01",
     title: "Discipline",
-    body: "Football doesn't run on potential. It runs on reps, under pressure, with consequences. I build the same way — show up, ship, correct. No perfect conditions. No excuses.",
+    body: "Football has taught me to be consistent. I bring that same habit to building: make a first version, see what breaks, and keep improving it.",
     tag: "Football",
   },
   {
     number: "02",
-    title: "Systems Thinking",
-    body: "Finance and product are the same problem: a system with inputs, outputs, and failure modes you need to understand before you touch any of it. I map the whole thing first. Code comes after.",
+    title: "Start with the problem",
+    body: "I like understanding how a process works before I automate it. The best solutions usually come from asking better questions first.",
     tag: "Finance · Product",
   },
   {
     number: "03",
     title: "Execution",
-    body: "The only metric that matters: does it work when someone actually depends on it? Not in a demo. Not in review. In production, with a real user. That's the bar.",
+    body: "A project is not finished because the demo looks good. I care about whether someone can use it without me standing next to them.",
     tag: "Building",
   },
 ];

@@ -11,9 +11,9 @@ const experience = [
     title: "Murj",
     role: "AI Implementation Engineer",
     period: "June 2026 – Present",
-    summary: "Finance workflow automation.",
+    summary: "Making finance work less manual.",
     bullets: [
-      "Built internal automations that replace manual finance workflows",
+      "Built internal tools that take repetitive finance work off the team’s plate",
       "Automated AR reporting and monthly rollover from Sage 50 data",
       "Worked with the finance team to map and automate the workflow end-to-end",
     ],
@@ -22,24 +22,24 @@ const experience = [
     title: "Sankofa",
     role: "Co-Founder · Lead Engineer",
     period: "May 2026 – Present",
-    summary: "Multi-agent investment research and portfolio monitoring.",
+    summary: "Investment research and portfolio monitoring.",
     bullets: [
-      "Built a 19-agent platform for autonomous investment research and real-time portfolio monitoring",
-      "Engineered analyst agents for news, sentiment, quant, and fundamentals",
-      "Orchestrated manager-persona agents that debate signals into buy, sell, or hold verdicts",
-      "Built monitoring and Slack alerts for material thesis changes",
+      "Built a 19-agent platform that researches investments and monitors a live portfolio",
+      "Connected news, sentiment, quantitative, and fundamental research into one workflow",
+      "Built a debate process that turns competing views into a documented buy, sell, or hold recommendation",
+      "Added monitoring and Slack alerts when the evidence changes a thesis",
     ],
   },
   {
     title: "CapitalBase",
     role: "Founder",
     period: "Aug 2025 – May 2026",
-    summary: "Agent-based financial research and modeling.",
+    summary: "Financial research and modeling tools.",
     bullets: [
-      "Built a multi-agent pipeline for SEC filings, earnings reports, and market data",
+      "Built a pipeline that combines SEC filings, earnings reports, and market data",
       "Built valuation and diligence workflows for DCF, LBO, comps, and M&A",
-      "Integrated live news and sentiment signals into financial analysis",
-      "Cut modeling time from hours to minutes with parallel agents and cached data",
+      "Added live news and sentiment to the research process",
+      "Cut modeling time from hours to minutes by running research in parallel and reusing fetched data",
     ],
   },
   {
@@ -73,7 +73,7 @@ const skills = [
   },
   {
     label: "Finance",
-    items: "Multi-agent systems · AI coordination · Algorithmic trading · Quantitative finance · Risk modeling · Market analysis",
+    items: "Investment research · Agent coordination · Quantitative finance · Risk modeling · Market analysis",
   },
   {
     label: "Business",
@@ -165,7 +165,7 @@ export default function ResumeModal() {
                     Avery Romain
                   </h1>
                   <p className="text-base text-accent font-semibold mb-5">
-                    Student-athlete building software across finance, data, and college sports.
+                    Amherst student-athlete building tools for finance, data, and college sports.
                   </p>
                   <p className="text-xs text-[#7a7068] mb-3 tracking-wide">
                     Amherst College · Class of 2027 · Political Science & Black Studies

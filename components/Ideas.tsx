@@ -13,14 +13,14 @@ type Idea = {
 
 const ideas: Idea[] = [
   {
-    title: "AI as a Platform for Creative Access",
+    title: "AI and who gets to make things",
     tag: "AI · Access",
     paragraphs: [
       "A lot of creative people never get the chance to show what they can do. Not because they lack talent, but because they lack access to tools, technical skills, and the networks that put work in front of the right people. That gap has been consistent, and it has been especially visible for young Black and Brown creators.",
-      "AI is starting to shift that in a meaningful way. Tools like Cursor and Claude Code make it possible to build without a deep technical background. Someone with an idea can now turn it into something real, whether that is an app, a tool, or a system. The distance between thinking of something and actually creating it is smaller than it has ever been.",
+      "Tools like Cursor and Claude Code make it easier for someone with an idea to build a first version. You do not need to know everything before you start, and the distance between an idea and something you can show people is much shorter.",
       "That shift changes who gets to participate. More people can experiment, build, and iterate without needing formal training or permission. It opens the door for people with perspective and creativity to express it through things they can actually share and show.",
       "At the same time, the ability to build does not automatically lead to visibility. The gap around who gets seen and recognized still exists. Creating something meaningful is one step, but getting that work in front of the right audience is another layer entirely.",
-      "The opportunity now is to close that gap. As more people gain the ability to create, the focus shifts toward making sure their work is visible and taken seriously. The impact of these tools will depend on how well they connect creation to recognition, especially for the people who have historically been left out of those systems.",
+      "The harder part is still getting seen. More people can make things now, but access to an audience, useful feedback, and real opportunity still matters—especially for people who have usually been left out.",
     ],
   },
   {
@@ -32,7 +32,7 @@ const ideas: Idea[] = [
       "Work that used to take hours in Excel can now be generated in seconds. A DCF, a comps analysis, or even a first pass at an investment memo no longer requires the same level of manual effort. The mechanical layer of finance is being compressed. Fewer people are needed to produce the same output, and the traditional entry point into the industry starts to shrink.",
       "But the more important shift is not about fewer jobs. It is about what the job actually becomes.",
       "The value is no longer in building the model. It is in understanding it. Early career roles are moving away from execution and toward interpretation. The question is no longer whether you can put the model together. The question is whether you know what it is saying, whether the assumptions make sense, and whether you trust the output enough to act on it.",
-      "That changes the entire skill curve. The old system allowed people to rely on process. You could get by on effort and repetition, even if your understanding lagged behind. AI removes that layer. It speeds past the part of the job that used to quietly train you.",
+      "That changes how people learn the job. Repetition used to hide gaps in understanding; AI moves past the repetitive part quickly. You have to know what the model means, not just how to produce it.",
       "What is left is the thinking.",
       "Analysts are going to be expected to question assumptions, understand drivers, and explain outcomes much earlier in their careers. The barrier to producing work is lower, but the bar for understanding it is much higher. There is less room to hide behind the work itself.",
       "This creates a split. Some people will struggle because the repetition that once built their skill is gone. Others will accelerate because they can operate at a higher level from the start.",

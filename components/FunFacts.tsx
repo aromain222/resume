@@ -9,7 +9,8 @@ const facts = [
   "I’m a quarter-zip enthusiast.",
   "I’m probably LeBron’s biggest fan.",
   "I’m top 1,000 in the world in CFB26.",
-  "Bench: 315. Squat: 500.",
+  "I'm developing my watch game.",
+  "I'm a sucker for a good view or a long hike.",
   "My best dishes are curry chicken, jerk chicken, and steak.",
   "I was born in D.C. and grew up in the Bay Area.",
 ];
