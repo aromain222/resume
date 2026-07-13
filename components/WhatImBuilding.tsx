@@ -65,9 +65,9 @@ const projects: Project[] = [
 
 function StackwiseThumbnail() {
   return (
-    <div className="absolute inset-0 bg-[#F5F0E8] flex flex-col items-center justify-center px-6 text-center">
+    <div className="absolute inset-0 bg-[#e7edf7] flex flex-col items-center justify-center px-6 text-center">
       <div className="flex items-center gap-1.5 border border-black/15 bg-white px-3 py-1 mb-5">
-        <div className="w-1.5 h-1.5 rounded-full bg-[#d4562a]" />
+        <div className="w-1.5 h-1.5 rounded-full bg-[#4267d5]" />
         <span className="text-[7px] tracking-widest text-[#7a7068] font-bold uppercase">
           Checking · Savings · Credit · Investing
         </span>
@@ -93,12 +93,12 @@ function StackwiseThumbnail() {
 
 function CapitalBaseThumbnail() {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#F5F0E8]">
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#e7edf7]">
       <div className="w-12 h-12 border border-black/15 bg-white flex items-center justify-center">
         <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
           <path
             d="M2 16L7 9L12 12L18 4"
-            stroke="#d4562a"
+            stroke="#4267d5"
             strokeWidth="1.8"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -119,7 +119,7 @@ function PortalThumbnail() {
   return (
     <div className="absolute inset-0 flex overflow-hidden text-left">
       <div className="w-[44%] bg-white flex flex-col justify-center px-5 py-4 shrink-0 border-r border-black/[0.06]">
-        <p className="text-[6px] font-black tracking-[0.18em] text-[#d4562a] mb-2 uppercase">
+        <p className="text-[6px] font-black tracking-[0.18em] text-[#4267d5] mb-2 uppercase">
           Transfer Portal
         </p>
         <p className="text-[11px] font-black text-[#0a0a0a] leading-[1.05] tracking-tight mb-2">
@@ -127,14 +127,14 @@ function PortalThumbnail() {
           <br />
           RIGHT PLAYER.
           <br />
-          <span className="text-[#d4562a]">CLOSE THE EDGE.</span>
+          <span className="text-[#4267d5]">CLOSE THE EDGE.</span>
         </p>
         <p className="text-[6px] font-bold text-[#7a7068] mb-4 uppercase">
-          <span className="text-[#d4562a]">AI-Powered</span> search.
+          <span className="text-[#4267d5]">AI-Powered</span> search.
         </p>
       </div>
 
-      <div className="flex-1 bg-[#F5F0E8] p-2.5 overflow-hidden">
+      <div className="flex-1 bg-[#e7edf7] p-2.5 overflow-hidden">
         <div className="bg-white p-2.5 h-full flex flex-col gap-2">
           <div>
             <p className="text-[5px] text-[#9ca3af] tracking-widest mb-0.5 uppercase">DL · 3-Tech</p>
@@ -151,8 +151,8 @@ function PortalThumbnail() {
           </div>
           <div className="flex gap-1">
             {[
-              { l: "PASS RUSH", v: "62.6", c: "#d4562a" },
-              { l: "RUN DEF", v: "68.7", c: "#d4562a" },
+              { l: "PASS RUSH", v: "62.6", c: "#4267d5" },
+              { l: "RUN DEF", v: "68.7", c: "#4267d5" },
               { l: "TACKLING", v: "48.9", c: "#7a7068" },
             ].map(({ l, v, c }) => (
               <div key={l} className="flex-1 border border-black/[0.08] p-1">
@@ -177,10 +177,10 @@ function PortalThumbnail() {
 
 function DataChatThumbnail() {
   return (
-    <div className="absolute inset-0 bg-[#F5F0E8] flex flex-col justify-center px-5 py-4 gap-3">
+    <div className="absolute inset-0 bg-[#e7edf7] flex flex-col justify-center px-5 py-4 gap-3">
       <div className="bg-white border border-black/[0.08] px-3 py-2 flex items-center gap-2">
         <span className="text-[7px] text-[#7a7068] flex-1 truncate">What is the total revenue by region?</span>
-        <div className="w-4 h-4 rounded-sm bg-[#d4562a] flex items-center justify-center shrink-0">
+        <div className="w-4 h-4 rounded-sm bg-[#4267d5] flex items-center justify-center shrink-0">
           <svg width="7" height="7" viewBox="0 0 7 7" fill="none">
             <path d="M1 6L6 1M6 1H2.5M6 1v3.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -194,12 +194,12 @@ function DataChatThumbnail() {
         {[["West", "$482,310"], ["Northeast", "$371,640"], ["South", "$298,900"], ["Midwest", "$214,780"]].map(([region, rev]) => (
           <div key={region} className="grid grid-cols-2 border-b border-black/[0.04] last:border-0">
             <div className="px-3 py-1 text-[6px] text-[#0a0a0a] font-medium border-r border-black/[0.04]">{region}</div>
-            <div className="px-3 py-1 text-[6px] text-[#d4562a] font-bold">{rev}</div>
+            <div className="px-3 py-1 text-[6px] text-[#4267d5] font-bold">{rev}</div>
           </div>
         ))}
       </div>
       <div className="flex items-center gap-1.5">
-        <div className="w-1.5 h-1.5 rounded-full bg-[#d4562a]" />
+        <div className="w-1.5 h-1.5 rounded-full bg-[#4267d5]" />
         <span className="text-[6px] text-[#7a7068]">West leads by 30% — driven by Q3 product launch</span>
       </div>
     </div>
@@ -273,7 +273,7 @@ export default function WhatImBuilding() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="building" className="bg-[#f9f7f4] py-20 lg:py-28">
+    <section id="building" className="bg-[#f4f7fb] py-20 lg:py-28">
       <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
         <motion.div
           ref={ref}

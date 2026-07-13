@@ -30,7 +30,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-15% 0px" });
 
   return (
-    <section ref={ref} className="border-b border-black/[0.08] bg-[#0d0d0d] py-20 text-white lg:py-24">
+    <section ref={ref} className="border-b border-white/[0.08] bg-[#101d33] py-20 text-white lg:py-24">
       <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}

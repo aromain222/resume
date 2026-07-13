@@ -53,7 +53,7 @@ export default function InProgress() {
                 {["TypeScript", "PostgreSQL", "OpenAI API", "Next.js"].map((tech) => (
                   <span
                     key={tech}
-                    className="text-[11px] font-mono font-medium px-2.5 py-1 border border-black/[0.1] text-[#5a5450] bg-[#f9f7f4]"
+                    className="text-[11px] font-mono font-medium px-2.5 py-1 border border-black/[0.1] text-[#5a5450] bg-[#f4f7fb]"
                   >
                     {tech}
                   </span>

@@ -11,7 +11,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f9f7f4] text-[#0f0f0f]">
+    <main className="min-h-screen bg-[#f4f7fb] text-[#0b1628]">
       <ScrollProgress />
       <Navbar />
       <Hero />

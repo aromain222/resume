@@ -14,7 +14,7 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#f9f7f4",
+          background: "#f4f7fb",
           color: "#0f0f0f",
           padding: "72px 80px",
           fontFamily: "sans-serif",
@@ -42,7 +42,7 @@ export default function OpengraphImage() {
           </div>
         </div>
         <div style={{ display: "flex", gap: 16, fontSize: 24 }}>
-          <div style={{ background: "#0f0f0f", color: "#f9f7f4", padding: "10px 22px", borderRadius: 999 }}>
+          <div style={{ background: "#101d33", color: "#f4f7fb", padding: "10px 22px", borderRadius: 999 }}>
             CapitalBase
           </div>
           <div style={{ border: "2px solid #0f0f0f", padding: "10px 22px", borderRadius: 999 }}>

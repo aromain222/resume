@@ -154,7 +154,7 @@ export default function HeroIllustration() {
           <path d="M 123 141 C 128 136 134 135 140 136 C 146 135 152 136 157 141 C 152 145 146 146 140 146 C 134 146 128 145 123 141 Z" fill="#161616" opacity="0.88" />
           {/* Chin beard */}
           <ellipse cx="140" cy="159" rx="15" ry="11" fill="#161616" opacity="0.85" />
-          <ellipse cx="140" cy="162" rx="11" ry="7" fill="#0d0d0d" opacity="0.4" />
+          <ellipse cx="140" cy="162" rx="11" ry="7" fill="#101d33" opacity="0.4" />
 
           {/* Cheek warmth */}
           <ellipse cx="107" cy="124" rx="15" ry="11" fill="#8B5A35" opacity="0.22" />

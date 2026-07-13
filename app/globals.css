@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #d4562a;
+  --color-accent: #4267d5;
 }
 
 @theme inline {
@@ -11,13 +11,13 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #f9f7f4;
+  background-color: #f4f7fb;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-color: #f9f7f4;
-  color: #0a0a0a;
+  background-color: #f4f7fb;
+  color: #0b1628;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,12 +25,12 @@ body {
 }
 
 ::selection {
-  background-color: rgb(212 86 42 / 0.12);
-  color: #0a0a0a;
+  background-color: rgb(66 103 213 / 0.14);
+  color: #0b1628;
 }
 
 :focus-visible {
-  outline: 2px solid rgb(212 86 42 / 0.5);
+  outline: 2px solid rgb(66 103 213 / 0.5);
   outline-offset: 3px;
 }
 
@@ -38,7 +38,7 @@ body {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #f9f7f4;
+  background: #f4f7fb;
 }
 ::-webkit-scrollbar-thumb {
   background: #d6d0c8;
@@ -64,10 +64,10 @@ body {
 }
 
 .editorial-grid {
-  background-color: #f9f7f4;
+  background-color: #f4f7fb;
   background-image:
     linear-gradient(to right, rgb(15 15 15 / 0.045) 1px, transparent 1px),
-    radial-gradient(circle at 78% 34%, rgb(212 86 42 / 0.09), transparent 28%);
+    radial-gradient(circle at 78% 34%, rgb(66 103 213 / 0.10), transparent 28%);
   background-size: min(8.33vw, 120px) 100%, 100% 100%;
 }
 

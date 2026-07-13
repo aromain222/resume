@@ -101,7 +101,7 @@ export default function Experience() {
             >
               <div className={`col-start-2 lg:row-start-1 ${index % 2 === 0 ? "lg:col-start-1 lg:text-right" : "lg:col-start-3"}`}>
                 <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent">{item.period}</p>
-                <div className="mt-2 border border-black/[0.1] bg-[#f9f7f4] p-5 transition-colors group-hover:border-accent/50">
+                <div className="mt-2 border border-black/[0.1] bg-[#f4f7fb] p-5 transition-colors group-hover:border-accent/50">
                   <h3 className="text-xl font-black tracking-[-0.035em] text-[#0a0a0a] transition-colors group-hover:text-accent sm:text-2xl">
                     {item.company}
                   </h3>
