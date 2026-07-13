@@ -16,14 +16,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://averyromain.com"),
   title: "Avery Romain",
   description:
     "Avery Romain is an Amherst student-athlete who builds tools for finance, data, and college football.",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Avery Romain",
     description:
       "Amherst student-athlete. I build useful things for finance, data, and football.",
+    url: "https://averyromain.com",
+    siteName: "Avery Romain",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Avery Romain",
+    description:
+      "Amherst student-athlete. I build useful things for finance, data, and football.",
   },
 };
 

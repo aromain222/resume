@@ -56,7 +56,7 @@ const projects: Project[] = [
     tagline: "Ask questions about a spreadsheet.",
     description:
       "Upload a CSV, ask a question, and get back an answer with the table and chart to support it.",
-    url: "https://sql-oxm5mfre5-aromain222s-projects.vercel.app",
+    url: "https://sql-beta-roan.vercel.app",
     thumbnail: "datachat",
     status: "Live",
     category: "Data tooling",
