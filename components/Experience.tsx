@@ -15,8 +15,8 @@ const timeline = [
   },
   {
     period: "Summer 2024",
-    company: "Wealth management",
-    role: "Freshman summer",
+    company: "Clavius Wealth Management",
+    role: "Summer analyst",
     detail: "My first experience in finance. I got a close look at how advisors think about clients, portfolios, and long-term goals.",
   },
   {
