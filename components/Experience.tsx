@@ -63,20 +63,20 @@ export default function Experience() {
   const { setOpen } = useResume();
 
   return (
-    <section ref={ref} id="experience" className="border-t border-black/[0.08] bg-white py-16 lg:py-24">
+    <section ref={ref} id="experience" className="border-t border-black/[0.08] bg-white py-14 lg:py-20">
       <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, ease }}
-          className="mb-12 grid gap-7 md:grid-cols-[0.8fr_0.4fr] md:items-end lg:mb-14"
+          className="mb-10 grid gap-7 md:grid-cols-[0.8fr_0.4fr] md:items-end lg:mb-12"
         >
           <div>
             <p className="mb-5 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
               <span className="h-px w-8 bg-accent" />
               The path so far
             </p>
-            <h2 className="text-5xl font-black tracking-[-0.055em] text-[#0a0a0a] sm:text-6xl lg:text-6xl">
+            <h2 className="text-5xl font-black tracking-[-0.055em] text-[#0a0a0a] sm:text-6xl lg:text-5xl">
               From Menlo to now.
             </h2>
           </div>
@@ -94,15 +94,16 @@ export default function Experience() {
           {timeline.map((item, index) => (
             <motion.div
               key={`${item.company}-${item.role}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, ease, delay: 0.12 + index * 0.08 }}
-              className="group relative grid grid-cols-[28px_1fr] gap-5 py-4 lg:grid-cols-[1fr_64px_1fr] lg:gap-7 lg:py-5"
+              initial={{ opacity: 0, y: 18, scale: 0.985 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-12% 0px -12%" }}
+              transition={{ duration: 0.55, ease, delay: index * 0.04 }}
+              className="group relative grid grid-cols-[28px_1fr] gap-5 py-3 lg:grid-cols-[1fr_64px_1fr] lg:gap-7 lg:py-4"
             >
               <div className={`col-start-2 lg:row-start-1 ${index % 2 === 0 ? "lg:col-start-1 lg:text-right" : "lg:col-start-3"}`}>
                 <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent">{item.period}</p>
                 <div className="mt-2 border border-black/[0.1] bg-[#f4f7fb] p-4 transition-colors group-hover:border-accent/50">
-                  <h3 className="text-lg font-black tracking-[-0.035em] text-[#0a0a0a] transition-colors group-hover:text-accent sm:text-xl">
+                  <h3 className="text-lg font-black tracking-[-0.035em] text-[#0a0a0a] transition-colors group-hover:text-accent sm:text-lg">
                     {item.company}
                   </h3>
                   <p className="mt-1 text-sm font-semibold text-[#4f4943]">{item.role}</p>
