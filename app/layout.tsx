@@ -1,30 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 import { ResumeProvider } from "@/components/ResumeContext";
 import ResumeModal from "@/components/ResumeModal";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  axes: ["wdth"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://averyromain.com"),
   title: "Avery Romain",
   description:
-    "Avery Romain is an Amherst student-athlete who builds tools for finance, data, and college football.",
+    "Avery Romain is a senior at Amherst with four live apps for finance, data, and college football. He also plays D-line.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Avery Romain",
     description:
-      "Amherst student-athlete. I build useful things for finance, data, and football.",
+      "Amherst ’27. Four live apps for finance, data, and college football.",
     url: "https://averyromain.com",
     siteName: "Avery Romain",
     type: "website",
@@ -33,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Avery Romain",
     description:
-      "Amherst student-athlete. I build useful things for finance, data, and football.",
+      "Amherst ’27. Four live apps for finance, data, and college football.",
   },
 };
 
@@ -43,10 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${archivo.variable} h-full antialiased`}>
       <body className="min-h-full">
         <ResumeProvider>
           {children}

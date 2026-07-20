@@ -1,90 +1,93 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import Image from "next/image";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+const ease = [0.16, 1, 0.3, 1] as const;
 
-const details = [
-  {
-    label: "School",
-    value: "Amherst College",
-    detail: "Political Science and Black Studies · Class of 2027",
-  },
-  {
-    label: "Football",
-    value: "Defensive end",
-    detail: "I’ve played since my freshman year of high school.",
-  },
-  {
-    label: "Projects",
-    value: "Four live apps",
-    detail: "Finance, data, and college football recruiting.",
-  },
+const bio = [
+  "I’m a Political Science and Black Studies double major at Amherst College, where I play on the defensive line. I grew up in the Bay Area and went to Menlo School from middle school through high school — that environment is what sparked my interest in technology.",
+  "My summer at SoFi showed me how much technology can change finance, and that’s where my interests came together. Now I’m exploring fintech and early-stage startups, aiming to break in through forward-deployed engineering or a customer-facing product role.",
+  "Off the field and away from the editor: avid LeBron fan, cook, Lego builder, gamer, and always hunting a new place to catch a sunset.",
 ];
 
-const outside = ["Cooking", "R&B and jazz", "Gaming", "Legos", "Good views and long hikes"];
+const programCard = [
+  { label: "Hometown", value: "San Mateo, CA" },
+  { label: "High school", value: "Menlo School" },
+  { label: "Major", value: "Political Science & Black Studies" },
+  { label: "Team", value: "Amherst Football — #93, DL" },
+  { label: "Apps shipped", value: "4 live products" },
+];
 
 export default function About() {
   const ref = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
   const inView = useInView(ref, { once: true, margin: "-15% 0px" });
 
   return (
-    <section ref={ref} className="border-b border-white/[0.08] bg-[#101d33] py-20 text-white lg:py-24">
-      <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
+    <section ref={ref} className="bg-paper py-24 text-ink lg:py-32">
+      <div className="mx-auto max-w-[1440px] px-6 sm:px-14 lg:px-20">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease }}
-          className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,1.05fr)] lg:gap-24"
+          className="grid gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(340px,0.85fr)] lg:gap-24"
         >
           <div>
-            <p className="mb-6 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
-              <span className="h-px w-8 bg-accent" />
-              A little about me
-            </p>
-            <h2 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl">
-              I’m a student, a football player, and a builder.
+            <h2 className="type-display text-[clamp(2.75rem,6vw,4.75rem)] text-ink">
+              Student.
+              <br />
+              Lineman.
+              <br />
+              <span className="text-purple">Builder.</span>
             </h2>
-            <div className="mt-7 max-w-xl space-y-5 text-[15px] leading-[1.8] text-white/65">
-              <p>
-                I’m a Political Science and Black Studies double major at Amherst College, where I play defensive end on the football team. I grew up in the Bay Area and went to Menlo School from middle school through high school. Being around that environment sparked my interest in technology.
-              </p>
-              <p>
-                My experience at SoFi during my sophomore summer showed me how much technology can change finance. That was the point where my interests started to come together. Now I’m exploring fintech and early-stage startups, hoping to break in through a forward-deployed engineering or customer-facing product role.
-              </p>
-              <p>
-                Outside of my professional and academic life, I’m an avid LeBron fan. I love to cook, work out, build Legos, play video games, and find a new place to catch a sunset.
-              </p>
+            <div className="mt-10 max-w-[62ch] space-y-6 text-[16px] leading-[1.75] text-ink-soft">
+              {bio.map((p) => (
+                <p key={p.slice(0, 24)}>{p}</p>
+              ))}
             </div>
           </div>
 
-          <div className="lg:pt-9">
-            <div className="border-t border-white/20">
-              {details.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, x: 14 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, ease, delay: 0.12 + index * 0.08 }}
-                  className="grid gap-2 border-b border-white/15 py-5 sm:grid-cols-[100px_1fr] sm:gap-6"
-                >
-                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-accent">{item.label}</span>
-                  <div>
-                    <h3 className="text-base font-semibold text-white">{item.value}</h3>
-                    <p className="mt-1 text-sm leading-6 text-white/55">{item.detail}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <p className="mb-4 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">When I’m not working</p>
-              <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-white/65">
-                {outside.map((item) => <span key={item}>{item}</span>)}
+          {/* Program card: the printed-roster panel */}
+          <div className="lg:pt-3">
+            <div className="border-2 border-ink bg-paper-raised">
+              <div className="flex items-center justify-between border-b-2 border-ink px-6 py-4">
+                <span className="type-label text-[11px] text-ink">At a glance</span>
+                <span className="type-stat text-xl text-purple">#93</span>
               </div>
-              <p className="mt-6 text-sm leading-6 text-white/45">Also: I’m developing my watch game, and I’m probably going to bring up LeBron at some point.</p>
+              <div className="relative flex justify-center border-b border-ink/15 bg-paper px-6 pt-6">
+                <Image
+                  src="/images/avatar-quarterzip.png"
+                  alt="Illustrated portrait of Avery Romain in a quarter-zip"
+                  width={210}
+                  height={320}
+                  draggable={false}
+                  className="h-64 w-auto object-contain object-bottom"
+                />
+              </div>
+              <dl>
+                {programCard.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={reduceMotion ? false : { opacity: 0, x: 12 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.45, ease, delay: 0.15 + index * 0.06 }}
+                    className="grid grid-cols-[110px_1fr] gap-4 border-b border-ink/15 px-6 py-3.5 last:border-b-0"
+                  >
+                    <dt className="type-label self-center text-[10px] text-ink-soft">
+                      {item.label}
+                    </dt>
+                    <dd className="text-[14px] font-semibold leading-snug text-ink">
+                      {item.value}
+                    </dd>
+                  </motion.div>
+                ))}
+              </dl>
             </div>
+            <p className="mt-5 text-[13px] leading-relaxed text-ink-soft">
+              Also: developing my watch game, and LeBron will come up at some point.
+            </p>
           </div>
         </motion.div>
       </div>

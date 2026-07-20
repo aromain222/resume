@@ -9,17 +9,12 @@ export default function Marquee() {
   const doubled = [...items, ...items];
 
   return (
-    <div className="overflow-hidden bg-[#0b1628] py-4">
-      <div
-        className="marquee-track flex whitespace-nowrap"
-        style={{ animation: "marquee 34s linear infinite" }}
-      >
+    <div className="overflow-hidden border-y border-purple-deep bg-purple py-3.5">
+      <div className="ticker-track flex whitespace-nowrap">
         {doubled.map((item, i) => (
-          <span key={i} className="mx-7 inline-flex items-center gap-7">
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/64">
-              {item}
-            </span>
-            <span className="h-px w-10 bg-accent" />
+          <span key={i} className="mx-8 inline-flex items-center gap-8">
+            <span className="type-label text-[11px] text-white">{item}</span>
+            <span className="type-label text-[10px] text-white/60">Live</span>
           </span>
         ))}
       </div>

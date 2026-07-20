@@ -1,100 +1,56 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useResume } from "./ResumeContext";
 import Magnetic from "./Magnetic";
 
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-const ORIGINAL = "AVERY ROMAIN";
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [logoText, setLogoText] = useState(ORIGINAL);
   const { setOpen } = useResume();
-  const scrambleRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 48);
+    const handleScroll = () => setScrolled(window.scrollY > 64);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  function startScramble() {
-    let iterations = 0;
-    const maxIterations = 14;
-    scrambleRef.current = setInterval(() => {
-      setLogoText(
-        ORIGINAL.split("")
-          .map((char, i) =>
-            iterations > i * (maxIterations / ORIGINAL.length)
-              ? char
-              : CHARS[Math.floor(Math.random() * CHARS.length)]
-          )
-          .join("")
-      );
-      if (++iterations >= maxIterations) {
-        clearInterval(scrambleRef.current!);
-        setLogoText(ORIGINAL);
-      }
-    }, 40);
-  }
-
-  function stopScramble() {
-    if (scrambleRef.current) clearInterval(scrambleRef.current);
-    setLogoText(ORIGINAL);
-  }
-
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "border-b border-black/[0.08] backdrop-blur-xl bg-[#f4f7fb]/90 shadow-sm"
-          : ""
+      className={`fixed left-0 right-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
+        scrolled ? "border-b border-line bg-stage/80 backdrop-blur-xl" : ""
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-6 py-1 flex items-center justify-between">
-        <a
-          href="#"
-          onMouseEnter={startScramble}
-          onMouseLeave={stopScramble}
-          className="text-[13px] font-black tracking-[0.15em] text-[#0f0f0f] uppercase hover:text-accent transition-colors duration-200 font-mono"
-        >
-          {logoText}
+      <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 sm:px-10 lg:px-16">
+        <a href="#" className="type-label text-[13px] text-bone transition-colors duration-200 hover:text-purple-bright">
+          Avery Romain
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
-          {[
-            { label: "Building", href: "#building" },
-            { label: "Experience", href: "#experience" },
-            { label: "Ideas", href: "#ideas" },
-            { label: "Contact", href: "#contact" },
-          ].map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className="text-[11px] tracking-[0.15em] uppercase text-[#7a7068] font-medium hover:text-[#0a0a0a] transition-colors duration-200"
-            >
-              {label}
-            </a>
-          ))}
+        <div className="flex items-center gap-8">
+          <div className="hidden items-center gap-7 md:flex">
+            {[
+              { label: "Work", href: "#work" },
+              { label: "Path", href: "#path" },
+              { label: "Writing", href: "#writing" },
+              { label: "Contact", href: "#contact" },
+            ].map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="type-label text-[11px] text-bone-soft transition-colors duration-200 hover:text-bone"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
           <Magnetic>
             <button
               onClick={() => setOpen(true)}
-              className="text-[11px] tracking-[0.15em] uppercase px-4 py-2 bg-[#0f0f0f] text-white font-semibold hover:bg-accent transition-all duration-200 cursor-pointer"
+              className="type-label pressable cursor-pointer bg-purple px-4 py-2.5 text-[11px] text-white hover:bg-purple-bright hover:text-stage"
             >
               Resume
             </button>
           </Magnetic>
         </div>
-
-        <Magnetic>
-          <button
-            onClick={() => setOpen(true)}
-            className="md:hidden text-[11px] tracking-[0.15em] uppercase px-3 py-2 bg-[#0f0f0f] text-white font-semibold hover:bg-accent transition-all duration-200 cursor-pointer"
-          >
-            Resume
-          </button>
-        </Magnetic>
       </nav>
     </header>
   );

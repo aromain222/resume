@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+const ease = [0.16, 1, 0.3, 1] as const;
 
 type Idea = {
   title: string;
@@ -42,31 +42,27 @@ const ideas: Idea[] = [
 ];
 
 function IdeaRow({ idea, index }: { idea: Idea; index: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const reduceMotion = useReducedMotion();
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, ease, delay: index * 0.12 }}
-      className="border-t border-black/[0.14] py-8 lg:py-10"
+    <motion.article
+      initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-8% 0px" }}
+      transition={{ duration: 0.55, ease, delay: index * 0.08 }}
+      className="border-t border-line py-10 last:border-b lg:py-12"
     >
-      <div className="grid gap-6 lg:grid-cols-[76px_minmax(230px,0.72fr)_minmax(0,1.28fr)] lg:gap-10">
-        <span className="font-mono text-xs tracking-[0.15em] text-[#a0978d]">0{index + 1}</span>
+      <div className="grid gap-6 lg:grid-cols-[minmax(240px,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
         <div>
-          <span className="mb-4 block font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
-            {idea.tag}
-          </span>
-          <h3 className="text-balance text-2xl font-black leading-[1.15] tracking-[-0.035em] text-[#0a0a0a] sm:text-3xl">
+          <span className="type-label mb-4 block text-[10px] text-purple-bright">{idea.tag}</span>
+          <h3 className="text-balance type-display text-[clamp(1.6rem,3.5vw,2.6rem)] text-bone">
             {idea.title}
           </h3>
         </div>
 
         <div>
-          <p className="max-w-2xl text-[15px] leading-[1.8] text-[#4e4842]">
+          <p className="max-w-[62ch] text-[15px] leading-[1.8] text-bone-soft">
             {idea.paragraphs[0]}
           </p>
 
@@ -77,12 +73,12 @@ function IdeaRow({ idea, index }: { idea: Idea; index: number }) {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.45, ease }}
+                transition={{ duration: 0.4, ease }}
                 className="overflow-hidden"
               >
                 <div className="space-y-5 pt-5">
                   {idea.paragraphs.slice(1).map((p, i) => (
-                    <p key={i} className="max-w-2xl text-[14px] leading-[1.85] text-[#756d65]">
+                    <p key={i} className="max-w-[62ch] text-[14.5px] leading-[1.8] text-bone-soft">
                       {p}
                     </p>
                   ))}
@@ -93,51 +89,26 @@ function IdeaRow({ idea, index }: { idea: Idea; index: number }) {
 
           <button
             onClick={() => setExpanded((v) => !v)}
-            className="mt-7 flex cursor-pointer items-center gap-3 border-b border-black/20 pb-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#70675f] transition-colors hover:border-accent hover:text-accent"
+            className="stage-link type-label mt-7 cursor-pointer text-[12px] text-bone"
           >
             {expanded ? "Close essay" : "Read full essay"}
-            <motion.span animate={{ rotate: expanded ? 45 : 0 }} transition={{ duration: 0.25, ease }}>
-              +
-            </motion.span>
           </button>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
 
 export default function Ideas() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="ideas" className="border-t border-black/[0.08] bg-[#eaf0f7] py-20 lg:py-28">
-      <div className="mx-auto max-w-[1320px] px-6 sm:px-10">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease }}
-          className="mb-14 grid gap-5 md:grid-cols-[1fr_0.55fr] md:items-end lg:mb-16"
-        >
-          <div>
-            <p className="mb-5 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#756d65]">
-              <span className="h-px w-8 bg-accent" />
-              Writing
-            </p>
-            <h2 className="text-5xl font-black tracking-[-0.055em] text-[#0a0a0a] sm:text-6xl">A few things I’ve written.</h2>
-          </div>
-          <p className="max-w-sm text-sm leading-[1.75] text-[#756d65] md:justify-self-end">
-            Essays about AI, finance, access, and how entry-level work is changing.
-          </p>
-        </motion.div>
-
-        <div>
-          {ideas.map((idea, i) => (
-            <IdeaRow key={idea.title} idea={idea} index={i} />
-          ))}
-          <div className="border-t border-black/[0.14]" />
-        </div>
+    <section id="writing" className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16 lg:py-44">
+      <h2 className="type-display mb-14 text-[clamp(2.75rem,7vw,6rem)] text-bone">
+        Writing
+      </h2>
+      <div>
+        {ideas.map((idea, i) => (
+          <IdeaRow key={idea.title} idea={idea} index={i} />
+        ))}
       </div>
     </section>
   );

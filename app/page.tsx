@@ -1,27 +1,27 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import About from "@/components/About";
+import Manifesto from "@/components/Manifesto";
 import WhatImBuilding from "@/components/WhatImBuilding";
 import Experience from "@/components/Experience";
 import Ideas from "@/components/Ideas";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f4f7fb] text-[#0b1628]">
+    <main className="grain min-h-screen bg-stage text-bone">
+      <SmoothScroll />
+      <CustomCursor />
       <ScrollProgress />
       <Navbar />
       <Hero />
-      <Marquee />
-      <About />
-      <Experience />
+      <Manifesto />
       <WhatImBuilding />
+      <Experience />
       <Ideas />
       <Contact />
-      <Footer />
     </main>
   );
 }
