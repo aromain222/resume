@@ -7,8 +7,9 @@ type Project = {
   tagline: string;
   description: string;
   url: string;
-  thumbnail: "stackwise" | "capitalbase" | "portal" | "datachat";
+  thumbnail: "stackwise" | "financialModeling" | "portal" | "datachat";
   category: string;
+  destination: "Live" | "Source";
 };
 
 const projects: Project[] = [
@@ -20,15 +21,17 @@ const projects: Project[] = [
     url: "https://stackr-silk.vercel.app",
     thumbnail: "stackwise",
     category: "Personal finance",
+    destination: "Live",
   },
   {
-    title: "CapitalBase",
-    tagline: "Research and portfolio monitoring in one place.",
+    title: "Financial Modeling Engine",
+    tagline: "Full Excel models from a standalone modeling engine.",
     description:
-      "Pulls together market research, competing views, and portfolio updates so an investor can see what changed and why.",
-    url: "https://www.capital-base.com/app",
-    thumbnail: "capitalbase",
-    category: "Multi-agent investing",
+      "Generates finance-native DCF, LBO, three-statement, comps, M&A, and other linked Excel workbooks through one standalone API.",
+    url: "https://financial-modeling-engine-7nui27p1a-aromain222s-projects.vercel.app",
+    thumbnail: "financialModeling",
+    category: "Financial modeling",
+    destination: "Live",
   },
   {
     title: "Transfer Portal",
@@ -38,6 +41,7 @@ const projects: Project[] = [
     url: "https://jal-football.vercel.app",
     thumbnail: "portal",
     category: "College football",
+    destination: "Live",
   },
   {
     title: "DataChat",
@@ -47,6 +51,7 @@ const projects: Project[] = [
     url: "https://sql-beta-roan.vercel.app",
     thumbnail: "datachat",
     category: "Data tooling",
+    destination: "Live",
   },
 ];
 
@@ -78,13 +83,13 @@ function StackwiseThumbnail() {
   );
 }
 
-function CapitalBaseThumbnail() {
+function FinancialModelingThumbnail() {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#e7edf7]">
-      <div className="flex h-12 w-12 items-center justify-center border border-black/15 bg-white">
+    <div className="absolute inset-0 flex items-center justify-center gap-7 bg-[#e7edf7] px-8">
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center border border-black/15 bg-white">
         <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
           <path
-            d="M2 16L7 9L12 12L18 4"
+            d="M2 16L7 11L11 13L18 4"
             stroke="#4b2e7d"
             strokeWidth="1.8"
             strokeLinecap="round"
@@ -92,12 +97,15 @@ function CapitalBaseThumbnail() {
           />
         </svg>
       </div>
-      <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#0a0a0a]">
-        CapitalBase
-      </span>
-      <span className="text-[8px] uppercase tracking-widest text-[#7a7068]">
-        DCF · LBO · Comps
-      </span>
+      <div className="min-w-0">
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a0a0a]">Modeling Engine</p>
+        <p className="mt-1 text-[8px] uppercase tracking-widest text-[#7a7068]">DCF · LBO · Comps · M&amp;A</p>
+        <div className="mt-3 flex gap-1">
+          <span className="h-1.5 w-12 bg-[#4b2e7d]" />
+          <span className="h-1.5 w-7 bg-[#aa9ac8]" />
+          <span className="h-1.5 w-4 bg-[#d1c7df]" />
+        </div>
+      </div>
     </div>
   );
 }
@@ -197,7 +205,7 @@ function DataChatThumbnail() {
 
 const thumbnails = {
   stackwise: StackwiseThumbnail,
-  capitalbase: CapitalBaseThumbnail,
+  financialModeling: FinancialModelingThumbnail,
   portal: PortalThumbnail,
   datachat: DataChatThumbnail,
 };
@@ -228,7 +236,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             {project.title}
           </h3>
           <p className="mt-1.5 text-[14px] font-medium text-bone-soft">{project.tagline}</p>
-          <p className="type-label mt-2 text-[10px] text-purple-bright">{`${project.category} · Live`}</p>
+          <p className="type-label mt-2 text-[10px] text-purple-bright">{`${project.category} · ${project.destination}`}</p>
         </div>
         <span
           aria-hidden
