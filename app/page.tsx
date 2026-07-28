@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Manifesto from "@/components/Manifesto";
 import WhatImBuilding from "@/components/WhatImBuilding";
 import Experience from "@/components/Experience";
 import Ideas from "@/components/Ideas";
@@ -17,7 +16,6 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <Hero />
-      <Manifesto />
       <WhatImBuilding />
       <Experience />
       <Ideas />
