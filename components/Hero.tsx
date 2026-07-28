@@ -1,34 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useResume } from "./ResumeContext";
 import Magnetic from "./Magnetic";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const { setOpen } = useResume();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const nameY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -140]);
-  const nameOpacity = useTransform(scrollYProgress, [0, 0.85], [1, reduceMotion ? 1 : 0]);
-
-  const avatarY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 90]);
 
   return (
-    <section ref={ref} className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden">
+    <section className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden">
       {/* The character: mobile top-right, desktop standing bottom-right */}
       <motion.div
         initial={reduceMotion ? false : { opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease, delay: 0.5 }}
-        style={{ y: avatarY }}
         className="absolute right-3 top-20 z-20 sm:hidden"
       >
         <Image
@@ -45,7 +34,6 @@ export default function Hero() {
         initial={reduceMotion ? false : { opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease, delay: 0.45 }}
-        style={{ y: avatarY }}
         className="absolute bottom-14 right-6 z-20 hidden sm:block lg:right-20"
       >
         <Image
@@ -60,7 +48,6 @@ export default function Hero() {
       </motion.div>
 
       <motion.div
-        style={{ y: nameY, opacity: nameOpacity }}
         className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-12 sm:px-10 lg:px-16 lg:pb-16"
       >
         <motion.p
