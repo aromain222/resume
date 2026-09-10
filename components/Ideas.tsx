@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -42,20 +44,18 @@ const ideas: Idea[] = [
 ];
 
 function IdeaRow({ idea, index }: { idea: Idea; index: number }) {
-  const reduceMotion = useReducedMotion();
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <motion.article
-      initial={reduceMotion ? false : { opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-8% 0px" }}
-      transition={{ duration: 0.55, ease, delay: index * 0.08 }}
+    <Reveal
+      as="article"
+      variant="fade"
+      delay={Math.min(index * 0.06, 0.18)}
       className="border-t border-line py-10 last:border-b lg:py-12"
     >
       <div className="grid gap-6 lg:grid-cols-[minmax(240px,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
         <div>
-          <span className="type-label mb-4 block text-[10px] text-purple-bright">{idea.tag}</span>
+          <span className="type-label mb-4 block text-[10px] text-maroon-bright">{idea.tag}</span>
           <h3 className="text-balance type-display text-[clamp(1.6rem,3.5vw,2.6rem)] text-bone">
             {idea.title}
           </h3>
@@ -95,16 +95,16 @@ function IdeaRow({ idea, index }: { idea: Idea; index: number }) {
           </button>
         </div>
       </div>
-    </motion.article>
+    </Reveal>
   );
 }
 
 export default function Ideas() {
   return (
-    <section id="writing" className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16 lg:py-44">
-      <h2 className="type-display mb-14 text-[clamp(2.75rem,7vw,6rem)] text-bone">
-        Writing
-      </h2>
+    <section id="writing" className="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-28">
+      <div className="mb-10">
+        <SectionHeading>Writing</SectionHeading>
+      </div>
       <div>
         {ideas.map((idea, i) => (
           <IdeaRow key={idea.title} idea={idea} index={i} />

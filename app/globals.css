@@ -1,23 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  /* Cinematic on bone: off-white page (tinted toward the purple hue, not warm),
-     ink text, Amherst purple accents. Token names kept from the dark pass:
-     "stage" is now the light page, "bone" is now the ink. */
+  /* Cinematic on bone: off-white page, ink text, one deep oxblood accent —
+     confident and a little athletic without being a literal team color.
+     "stage" is the light page, "bone" is the ink. */
   --color-stage: oklch(96.5% 0.006 302);
   --color-stage-raised: oklch(99.3% 0.002 302);
   --color-bone: oklch(20% 0.015 302);
   --color-bone-soft: oklch(40% 0.018 302);
-  --color-bone-faint: oklch(55% 0.015 302);
+  /* 50%, not 55%: the lighter value lands at 4.37:1 on the stage, under AA. */
+  --color-bone-faint: oklch(50% 0.015 302);
   --color-line: oklch(0% 0 0 / 0.12);
-  --color-purple: oklch(42% 0.15 302);
-  --color-purple-deep: oklch(30% 0.13 302);
-  --color-purple-bright: oklch(45% 0.16 302);
+  --color-maroon: oklch(35% 0.11 25);
+  --color-maroon-deep: oklch(24% 0.09 20);
+  --color-maroon-bright: oklch(40% 0.13 27);
   /* Legacy alias used by ResumeModal + CustomCursor. */
-  --color-accent: oklch(42% 0.15 302);
+  --color-accent: oklch(35% 0.11 25);
 
   --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 @theme inline {
@@ -55,7 +57,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-purple-bright);
+  outline: 2px solid var(--color-maroon-bright);
   outline-offset: 3px;
 }
 
@@ -70,13 +72,13 @@ body {
   border-radius: 4px;
 }
 
-/* Display voice: condensed, heavy, tight. */
+/* Display voice: a plain confident grotesque, not a shouting condensed cap.
+   Sentence case, moderate weight, normal width — reads as a resume site
+   headline, not a streetwear drop. */
 .type-display {
-  font-stretch: 74%;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  line-height: 0.88;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
 }
 
 .type-label {
@@ -91,24 +93,17 @@ body {
   text-wrap: balance;
 }
 
-/* Film grain: tiny SVG noise tile, fixed over everything, screen-blended. */
+/* Film grain: tiny SVG noise tile, fixed over everything. Static — a
+   perpetually animating full-bleed layer competes with Lenis for frame budget. */
 .grain::after {
   content: "";
   position: fixed;
-  inset: -50%;
+  inset: 0;
   z-index: 100;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain-shift 0.9s steps(4) infinite;
-}
-
-@keyframes grain-shift {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-2%, 3%); }
-  50% { transform: translate(3%, -2%); }
-  75% { transform: translate(-1%, -3%); }
-  100% { transform: translate(0, 0); }
+  background-repeat: repeat;
 }
 
 /* Pressable: instant feedback. */
@@ -121,10 +116,10 @@ body {
   transform: scale(0.97);
 }
 
-/* Quiet link on stage: underline draws in purple. */
+/* Quiet link on stage: underline draws in oxblood. */
 .stage-link {
   background-image: linear-gradient(var(--color-line), var(--color-line)),
-    linear-gradient(var(--color-purple-bright), var(--color-purple-bright));
+    linear-gradient(var(--color-maroon-bright), var(--color-maroon-bright));
   background-size: 100% 1px, 0% 1px;
   background-position: 0 100%, 0 100%;
   background-repeat: no-repeat;
@@ -134,21 +129,125 @@ body {
 
 @media (hover: hover) and (pointer: fine) {
   .stage-link:hover {
-    color: var(--color-purple-bright);
+    color: var(--color-maroon-bright);
     background-size: 100% 1px, 100% 1px;
   }
 }
 
+/* Reduced motion drops movement, not feedback: colour and opacity still
+   respond so hover, focus, and press remain legible. */
 @media (prefers-reduced-motion: reduce) {
-  .grain::after {
-    animation: none;
+  html {
+    scroll-behavior: auto;
   }
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
+    animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-property: opacity, color, background-color, border-color, fill,
+      stroke, background-size !important;
+    transition-duration: 150ms !important;
   }
+}
+
+/* Pixel-world motion. Steps() keeps the retro feel — no eased tweening between
+   frames. The global reduced-motion rule collapses all of these. */
+@keyframes pixel-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+}
+
+@keyframes pixel-flame {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 1; }
+  50% { transform: translateY(-1px) scaleY(1.35); opacity: 0.75; }
+}
+
+@keyframes pixel-dribble {
+  0%, 100% { transform: translateY(-10px); }
+  50% { transform: translateY(0); }
+}
+
+@keyframes pixel-patrol {
+  0% { transform: translateX(0) scaleX(1); }
+  46% { transform: translateX(14px) scaleX(1); }
+  50% { transform: translateX(14px) scaleX(-1); }
+  96% { transform: translateX(0) scaleX(-1); }
+  100% { transform: translateX(0) scaleX(1); }
+}
+
+@keyframes pixel-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(120px); }
+}
+
+/* World layer — a deliberately dark, technical scope that sits alongside the
+   light "stage" theme rather than replacing it. Only used inside
+   components/world/*. Panels reuse the existing light card treatment
+   (stage-raised/bone/line), so only the scene itself needs new tokens. */
+.world {
+  /* A city at night: deep indigo ground, warm amber windows, cyan data, and
+     the site's oxblood as the brand accent. Reads as a place, not a diagram. */
+  --world-ground: oklch(21% 0.035 275);
+  --world-ground-deep: oklch(15% 0.03 275);
+  --world-plaza: oklch(27% 0.032 278);
+  --world-plaza-edge: oklch(34% 0.045 280);
+  --world-road: oklch(25% 0.028 276);
+  --world-road-line: oklch(72% 0.06 260 / 0.35);
+  /* Barely there — the streets carry the structure now, and a stronger grid
+     made the city read as a blueprint. */
+  --world-grid: oklch(100% 0 0 / 0.015);
+
+  /* Three faces give every volume its form. */
+  --world-face: oklch(33% 0.035 277);
+  --world-face-side: oklch(25% 0.03 277);
+  --world-face-top: oklch(41% 0.038 279);
+  --world-face-dim: oklch(27% 0.025 277);
+  --world-face-dim-side: oklch(21% 0.022 277);
+  --world-face-dim-top: oklch(33% 0.028 279);
+
+  --world-window-lit: oklch(84% 0.13 78);
+  --world-window-idle: oklch(58% 0.045 250);
+  --world-neon: oklch(80% 0.12 210);
+
+  --world-text: oklch(93% 0.008 275);
+  --world-text-faint: oklch(93% 0.008 275 / 0.62);
+  --world-glow: var(--color-maroon-bright);
+  --world-route: oklch(80% 0.12 210 / 0.18);
+}
+
+@keyframes world-glow-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes world-idle-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* A pedestrian pacing a stretch of street, turning at each end. */
+@keyframes world-walk {
+  0% { transform: translate(0, 0) scaleX(1); }
+  48% { transform: translate(var(--dx), var(--dy)) scaleX(1); }
+  50% { transform: translate(var(--dx), var(--dy)) scaleX(-1); }
+  98% { transform: translate(0, 0) scaleX(-1); }
+  100% { transform: translate(0, 0) scaleX(1); }
+}
+
+/* The two-frame bob that sells a walk cycle without a sprite sheet. */
+@keyframes world-step {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+
+/* Ambient traffic: a packet running its route, out and back. --dx/--dy are set
+   per courier, so every packet shares this one keyframe. */
+@keyframes world-courier {
+  0% { transform: translate(0, 0); opacity: 0; }
+  12% { opacity: 1; }
+  46% { transform: translate(var(--dx), var(--dy)); opacity: 1; }
+  54% { transform: translate(var(--dx), var(--dy)); opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translate(0, 0); opacity: 0; }
 }

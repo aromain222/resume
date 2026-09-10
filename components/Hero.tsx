@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useResume } from "./ResumeContext";
+import { useTabNavigation } from "./TabNavigationContext";
 import Magnetic from "./Magnetic";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -10,15 +11,16 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export default function Hero() {
   const reduceMotion = useReducedMotion();
   const { setOpen } = useResume();
+  const { goTo } = useTabNavigation();
 
   return (
-    <section className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden">
-      {/* The character: mobile top-right, desktop standing bottom-right */}
+    <section className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden pt-28">
+      {/* Portrait: mobile top-right, desktop standing bottom-right */}
       <motion.div
-        initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease, delay: 0.5 }}
-        className="absolute right-3 top-20 z-20 sm:hidden"
+        initial={reduceMotion ? false : { opacity: 0, transform: "translateY(24px)" }}
+        animate={{ opacity: 1, transform: "translateY(0px)" }}
+        transition={{ duration: 0.6, ease, delay: 0.22 }}
+        className="pointer-events-none absolute right-2 top-24 z-0 sm:hidden"
       >
         <Image
           src="/images/avatar-quarterzip.png"
@@ -27,14 +29,14 @@ export default function Hero() {
           height={768}
           draggable={false}
           priority
-          className="h-60 w-auto object-contain drop-shadow-[0_10px_14px_rgba(29,22,40,0.14)]"
+          className="h-44 w-auto object-contain opacity-90"
         />
       </motion.div>
       <motion.div
-        initial={reduceMotion ? false : { opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease, delay: 0.45 }}
-        className="absolute bottom-14 right-6 z-20 hidden sm:block lg:right-20"
+        initial={reduceMotion ? false : { opacity: 0, transform: "translateY(32px)" }}
+        animate={{ opacity: 1, transform: "translateY(0px)" }}
+        transition={{ duration: 0.6, ease, delay: 0.22 }}
+        className="pointer-events-none absolute bottom-0 right-[max(1.5rem,6vw)] z-0 hidden sm:block"
       >
         <Image
           src="/images/avatar-quarterzip.png"
@@ -43,38 +45,36 @@ export default function Hero() {
           height={768}
           draggable={false}
           priority
-          className="h-[70svh] w-auto object-contain object-bottom drop-shadow-[0_18px_24px_rgba(29,22,40,0.16)]"
+          className="h-[64svh] w-auto object-contain object-bottom drop-shadow-[0_18px_24px_rgba(29,22,40,0.14)]"
         />
       </motion.div>
 
-      <motion.div
-        className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-12 sm:px-10 lg:px-16 lg:pb-16"
-      >
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-10 sm:px-10 lg:px-16 lg:pb-14">
         <motion.p
-          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease, delay: 0.1 }}
-          className="type-label mb-8 text-[13px] text-purple-bright"
+          initial={reduceMotion ? false : { opacity: 0, transform: "translateY(12px)" }}
+          animate={{ opacity: 1, transform: "translateY(0px)" }}
+          transition={{ duration: 0.4, ease, delay: 0.04 }}
+          className="type-label mb-7 max-w-[16rem] text-[13px] text-maroon sm:max-w-none"
         >
           Amherst College &rsquo;27 &middot; D-line &middot; Four live apps
         </motion.p>
 
-        <h1 className="type-display text-[clamp(4.5rem,12.5vw,13rem)] text-bone">
-          <span className="block overflow-hidden pb-[0.06em]">
+        <h1 className="type-display text-[clamp(3rem,7.5vw,7rem)] text-bone">
+          <span className="block overflow-hidden">
             <motion.span
-              initial={reduceMotion ? false : { y: "108%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease, delay: 0.15 }}
+              initial={reduceMotion ? false : { transform: "translateY(108%)" }}
+              animate={{ transform: "translateY(0%)" }}
+              transition={{ duration: 0.62, ease, delay: 0.06 }}
               className="block"
             >
               Avery
             </motion.span>
           </span>
-          <span className="block overflow-hidden pb-[0.08em]">
+          <span className="block overflow-hidden">
             <motion.span
-              initial={reduceMotion ? false : { y: "108%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease, delay: 0.26 }}
+              initial={reduceMotion ? false : { transform: "translateY(108%)" }}
+              animate={{ transform: "translateY(0%)" }}
+              transition={{ duration: 0.62, ease, delay: 0.14 }}
               className="block"
             >
               Romain
@@ -83,44 +83,45 @@ export default function Hero() {
         </h1>
 
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease, delay: 0.55 }}
-          className="mt-10 flex flex-col items-start gap-8"
+          initial={reduceMotion ? false : { opacity: 0, transform: "translateY(14px)" }}
+          animate={{ opacity: 1, transform: "translateY(0px)" }}
+          transition={{ duration: 0.45, ease, delay: 0.3 }}
+          className="mt-9"
         >
-          <p className="max-w-[34ch] text-base leading-[1.7] text-bone-soft sm:text-lg">
-            I&rsquo;m a senior at Amherst. I&rsquo;ve built four apps and all
-            of them are live: personal finance, investing research, football
-            recruiting, and a tool that answers questions about spreadsheets.
-          </p>
-          <div className="flex items-center gap-6">
-            <Magnetic>
-              <button
-                onClick={() => setOpen(true)}
-                className="type-label pressable cursor-pointer bg-bone px-7 py-4 text-[12px] text-stage hover:bg-purple-bright"
+          <div className="flex max-w-[46ch] flex-col items-start gap-7">
+            <p className="text-base leading-[1.7] text-bone-soft sm:text-lg">
+              I study political science at Amherst and play on the defensive
+              line. I also build software. Four apps so far, all of them live.
+              Open the Work tab and use one right now.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+              <Magnetic>
+                <button
+                  onClick={() => setOpen(true)}
+                  className="type-label pressable cursor-pointer bg-bone px-7 py-4 text-[12px] text-stage hover:bg-maroon"
+                >
+                  View resume
+                </button>
+              </Magnetic>
+              <Magnetic>
+                <button
+                  onClick={() => goTo("world")}
+                  className="type-label pressable cursor-pointer border border-line px-7 py-4 text-[12px] text-bone hover:border-maroon hover:text-maroon"
+                >
+                  Enter world &rarr;
+                </button>
+              </Magnetic>
+              <a
+                href="mailto:averyromain5@gmail.com"
+                className="stage-link type-label text-[12px] text-bone"
               >
-                View resume
-              </button>
-            </Magnetic>
-            <a href="mailto:averyromain5@gmail.com" className="stage-link type-label text-[12px] text-bone">
-              Email
-            </a>
+                Email
+              </a>
+            </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
 
-      {/* Scroll cue */}
-      <motion.div
-        initial={reduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.1 }}
-        aria-hidden
-        className="absolute right-6 top-1/2 z-10 hidden -translate-y-1/2 items-center gap-3 sm:flex lg:right-16"
-        style={{ writingMode: "vertical-rl" }}
-      >
-        <span className="type-label text-[10px] text-bone-faint">Scroll</span>
-        <span className="h-12 w-px bg-purple-bright/60" />
-      </motion.div>
     </section>
   );
 }

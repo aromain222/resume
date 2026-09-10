@@ -1,0 +1,6 @@
+.playwright-cli/
+.impeccable/
+.shots/
+.claude-flow/
+output/playwright/
+plans/

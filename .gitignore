@@ -43,3 +43,6 @@ next-env.d.ts
 # local tooling
 .shots/
 .claude-flow/
+.playwright-cli/
+.impeccable/
+output/playwright/

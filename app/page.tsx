@@ -1,9 +1,4 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import WhatImBuilding from "@/components/WhatImBuilding";
-import Experience from "@/components/Experience";
-import Ideas from "@/components/Ideas";
-import Contact from "@/components/Contact";
+import SiteTabs from "@/components/SiteTabs";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 
@@ -12,12 +7,7 @@ export default function Home() {
     <main className="grain min-h-screen bg-stage text-bone">
       <CustomCursor />
       <ScrollProgress />
-      <Navbar />
-      <Hero />
-      <WhatImBuilding />
-      <Experience />
-      <Ideas />
-      <Contact />
+      <SiteTabs />
     </main>
   );
 }

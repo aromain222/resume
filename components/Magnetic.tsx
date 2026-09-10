@@ -3,14 +3,20 @@
 import { useRef, type ReactNode } from "react";
 import { motion, useSpring, useReducedMotion } from "framer-motion";
 
-export default function Magnetic({ children }: { children: ReactNode }) {
+export default function Magnetic({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const shouldReduce = useReducedMotion();
 
   const x = useSpring(0, { stiffness: 260, damping: 22 });
   const y = useSpring(0, { stiffness: 260, damping: 22 });
 
-  if (shouldReduce) return <>{children}</>;
+  if (shouldReduce) return <div className={className}>{children}</div>;
 
   function handleMouseMove(e: React.MouseEvent) {
     const el = ref.current;
@@ -28,6 +34,7 @@ export default function Magnetic({ children }: { children: ReactNode }) {
   return (
     <motion.div
       ref={ref}
+      className={className}
       style={{ x, y, display: "inline-block" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={reset}
